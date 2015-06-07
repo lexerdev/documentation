@@ -1,168 +1,99 @@
 ---
-title: API Reference
+title: Lexer API Reference
 
 language_tabs:
   - shell
   - ruby
-  - python
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
+  - <a href='http://lexer.io'>Find out more about Lexer</a>
   - <a href='http://github.com/tripit/slate'>Documentation Powered by Slate</a>
 
 includes:
-  - errors
+  - identities
+  - events
+  - publish
 
 search: true
 ---
 
 # Introduction
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+Welcome to the Lexer API.
 
-We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+We offer three APIs to our clients:
 
-This example API documentation page was created with [Slate](http://github.com/tripit/slate). Feel free to edit it and use it as a base for your own API's documentation.
+- Identities: Allowing clients to Contribute and Consume Identity data from the Lexer platform.
+- Events: Allowing clients to push Event data to the Lexer platform.
+- Publish: Allowing clients to extract and publish search results and other insights from the Lexer platform.
 
-# Authentication
+To access any of the APIs you will require `access tokens` which may have been provided to you. Please [contact support](mailto:support@lexer.io) if you have not received these.
 
-> To authorize, use this code:
+All our API's communicate via HTTPS using RESTful and [JSON](http://json.org/) data. We offer Ruby Gems for most of our APIs.
 
-```ruby
-require 'kittn'
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
+# Fair Use
 
-```python
-import kittn
+Lexer operates a fair use policy on all it's APIs.
 
-api = kittn.authorize('meowmeowmeow')
-```
+Refer to your projects terms of service for details on rate limiting, performance limitations, maintenance windows and SLAs.
 
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
+For further details please [contact support](mailto:support@lexer.io).
 
-> Make sure to replace `meowmeowmeow` with your API key.
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
+# Access Tokens
 
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-
-# Kittens
-
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
+> Tokens are used as part of the JSON request body:
 
 ```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
+curl -X POST -H "Content-Type: application/json" --data '{"api_token":"lexer-api-token","consumer_token":"lexer-consumer-token","contributor_token":"lexer-contrib-token", ... }' https://identity.apis.lexer.io
 ```
-
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Isis",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
-```
-
-This endpoint retrieves all kittens.
-
-### HTTP Request
-
-`GET http://example.com/kittens`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
 
 ```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
+# Using the `lexer-identity` Gem:
+Lexer::Identity.configure do |config|
+  config.api_token = 'lexer-api-token'
+  config.consumer_token = 'lexer-consumer-token'
+  config.contributor_token = 'lexer-contrib-token'
+end
 ```
 
-```python
-import kittn
+> Make sure to replace the tokens with those provided.
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
+Lexer protects it's APIs through access tokens.
 
-```shell
-curl "http://example.com/api/kittens/3"
-  -H "Authorization: meowmeowmeow"
-```
+In all cases a unique token should be generated for each party who should communicate with the APIs.
 
-> The above command returns JSON structured like this:
+Lexer can dispose of and recreate API tokens whenever required should a token be feared to have been leaked or a party should no longer require access to the APIs.
 
-```json
-{
-  "id": 2,
-  "name": "Isis",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
-```
+There are at least two of three possible tokens which you will need to communicate with the APIs:
 
-This endpoint retrieves a specific kitten.
+* API Token + Consumer Token: Read only access to Lexer APIs
+* API + Contributor Tokens: Write only access to Lexer APIs
+* API + Consumer + Contributor Tokens: Read and Write access to Lexer APIs
 
-<aside class="warning">If you're not using an administrator API key, note that some kittens will return 403 Forbidden if they are hidden for admins only.</aside>
+## API Token
 
-### HTTP Request
+An API token is required to communicate with our API.
 
-`GET http://example.com/kittens/<ID>`
+All requests require an API token and a unique token will be provided to each party who wishes to communicate with the Lexer APIs.
 
-### URL Parameters
+An API token alone offers no access to the Lexer APIs you need at lease a Consumer or Contributor (or one of each) tokens to make a valid request.
 
-Parameter | Description
---------- | -----------
-ID | The ID of the cat to retrieve
+## Consumer Token
+
+A Consumer Token is supplied if the party requires `read` access to the Lexer APIs.
+
+When created a Consumer Token is locked to a specific namespace only granting that token access to a specific dataset.
+
+A Consumer token does not allow a party to `write` data to a Lexer API.
+For that a Contributor token is required.
+
+## Contributor Token
+
+A Contributor token is supplied if the party requires `write` access to the Lexer APIs.
+
+When created a Contributor Token is locked to a specific namespace only granting that token access to a specific dataset.
+
+All requests made to the Lexer API will have limited responses unless a Contributor token (`write` access) is paired with a Consumer token (`read` access).
 
