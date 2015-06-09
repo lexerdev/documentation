@@ -13,7 +13,5 @@ Whatever is here is publicly available at http://developer.lexer.io.
     # build the documentation for deployment
     bundle exec rake build
 
-Builds are written to source and that folder is to be deployed.
+Builds are written to a "build" and that folder is to be deployed - this is not checked in.
 No special tech required, it's a static site.
-
-    
