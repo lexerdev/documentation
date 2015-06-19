@@ -4,9 +4,9 @@ TODO - identities spiel.
 
 ### ROOT Endpoint
 
-All access to the Lexer Identity API is performed via a single root endpoint. The correct behavior. All input must be securely `POST`ed in JSON format to this URL:
+All access to the Lexer Identity API is performed via a single root endpoint. The correct behavior of the API is determined by various input payload contexts. All input must be securely `POST`ed in JSON format to this URL:
 
-`https://identity.lexer.io/identity`
+`https://identity.api.lexer.io/`
 
 ### Namespaces
 
