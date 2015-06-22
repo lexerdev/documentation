@@ -52,10 +52,12 @@
 <p>We currently offer the following APIs to our clients:</p>
 
 <ul>
-<li>Identities: Allowing clients to Contribute and Consume Identity data from the Lexer platform.</li>
+<li><strong>Identity API</strong>: Allowing clients to Contribute and Consume Identity data from the Lexer platform.</li>
 </ul>
 
 <p>All of our APIs communicate via HTTPS and JSON data. We offer Ruby Gems for most of our APIs.</p>
+
+<p>Our <em>Event</em> and <em>Publish</em> API&rsquo;s are currently under development.</p>
 
 <h2 id="fair-use">Fair Use</h2>
 
@@ -66,18 +68,16 @@
 <p>For further details please <a href="mailto:support@lexer.io">contact support</a>.</p>
 
 <h1 id="access-tokens">Access Tokens</h1>
+<pre class="highlight shell"><code><span class="c"># Tokens are used as part of the JSON request body</span>
 
-<blockquote>
-<p>Tokens are used as part of the JSON request body:</p>
-</blockquote>
-<pre class="highlight shell"><code>curl https://identity.lexer.io/identity <span class="se">\</span>
+curl https://identity.lexer.io/identity <span class="se">\</span>
   -XPOST <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -d <span class="s1">'
 {
  "api_token": "lexer-api-token",
  "consumer_token": "lexer-consumer-token",
- "contributor_token":"lexer-contrib-token"
+ "contributor_token": "lexer-contrib-token"
 }'</span>
 </code></pre>
 <pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'lexer'</span>
@@ -93,59 +93,196 @@
 <p>Make sure to replace the tokens with those provided.</p>
 </blockquote>
 
-<p>To access any Lexer API you will require unique <code class="prettyprint">access tokens</code> which will be provided to you. Please <a href="mailto:support@lexer.io">contact support</a> if you have not received these.</p>
+<p>To access any Lexer API you will require access tokens which will be provided to you. Please <a href="mailto:support@lexer.io">contact support</a> if you have not received these.</p>
 
 <p>There are at least two of three possible tokens which you will need to communicate with the APIs:</p>
 
 <ul>
-<li>API Token + Consumer Token: Read only access to Lexer APIs</li>
-<li>API + Contributor Tokens: Write only access to Lexer APIs</li>
-<li>API + Consumer + Contributor Tokens: Read <em>and</em> Write access to Lexer APIs</li>
+<li><strong>API Token + Consumer Token</strong>: Read only access to Lexer APIs</li>
+<li><strong>API + Contributor Tokens</strong>: Write only access to Lexer APIs</li>
+<li><strong>API + Consumer + Contributor Tokens</strong>: Read <em>and</em> Write access to Lexer APIs</li>
 </ul>
+
+<aside class=“notice”>
+Tokens can reveal business critical or personally sensitive information and therefore should not be shared.
+
+If you believe your tokens have been exposed please contact [support@lexer.io](mailto:support@lexer.io) immediately.
+</aside>
 
 <h3 id="api-token">API Token</h3>
 
-<p>An API token is required to communicate with our API.</p>
+<p>All requests require an <em>API token</em> which will be provided to each party who require access to the Lexer APIs.</p>
 
-<p>All requests require an API token and a unique token will be provided to each party who wishes to communicate with the Lexer APIs.</p>
-
-<p>An API token alone offers no access to the Lexer APIs. You need at least a Consumer or Contributor token to make a valid request. Both a Consumer and Contributor token can be provided in a single request payload for simultaneous read/write access.</p>
+<p>An <em>API token</em> alone offers no access to the Lexer APIs. You need at least a <em>Consumer token</em> or <em>Contributor token</em> to make a valid request. Both a <em>Consumer token</em> and <em>Contributor token</em> can be provided in a single request payload for simultaneous read/write access.</p>
 
 <h3 id="consumer-token">Consumer Token</h3>
 
-<p>A Consumer Token is supplied if the party requires <strong>read</strong> access to the Lexer APIs.</p>
+<p>A <em>Consumer token</em> is supplied if the party requires <strong>read</strong> access to the Lexer APIs.</p>
 
-<p>When created, a Consumer Token is locked to a specific namespace only granting that token access to a specific dataset.</p>
+<p>When created, a <em>Consumer token</em> is locked to a specific namespace only granting that token access to a specific dataset.</p>
 
-<p>A Consumer token does not allow a party to <strong>write</strong> data to a Lexer API. For that a Contributor token is required.</p>
+<p>A <em>Consumer token</em> does not allow a party to <strong>write</strong> data to a Lexer APIs. For that a <em>Contributor token</em> is required.</p>
 
 <h3 id="contributor-token">Contributor Token</h3>
 
-<p>A Contributor token is supplied if the party requires <strong>write</strong> access to the Lexer APIs.</p>
+<p>A <em>Contributor token</em> is supplied if the party requires <strong>write</strong> access to the Lexer APIs.</p>
 
-<p>When created, a Contributor Token is locked to a specific namespace only granting that token access to a specific dataset.</p>
+<p>When created, a <em>Contributor token</em> is locked to a specific namespace only granting that token access to a specific dataset.</p>
 
 <aside class="notice">
 All contributor requests made to a Lexer API will have limited responses unless a Contributor token (<code>write</code> access) is paired with a Consumer token (<code>read</code> access).
 </aside>
 
-          <h1 id="identities-api">Identities API</h1>
+          <h1 id="identity-api">Identity API</h1>
 
-<p>TODO - identities spiel.</p>
+<p>The Lexer Identity API allows clients and their partners to read and write Identity information to <a href="http://lexer.io">Lexer Identify</a>.</p>
+
+<p>For details on the capability and project specific implementation of <a href="http://lexer.io">Lexer Identify</a> please contact support at <a href="mailto:support@lexer.io">support@lexer.io</a>.</p>
+
+<p>An Identity is a person, brand, place or thing.
+Each Identity has thousands of attributes which are generated and updated in real-time through the Lexer Identify platform.</p>
+
+<p>Each Identity is made up of:</p>
+
+<ul>
+<li><strong>Links</strong>: Highly personal and unique attributes such as Email address, Mobile number, Twitter handle, Facebook ID, etc. These attributes belong to a single identity.</li>
+<li><strong>Attributes</strong>: An identity could contain thousands of attributes - each one defining their behaviour, facts and engagements. Examples are <code class="prettyprint">age</code>, <code class="prettyprint">gender</code>, <code class="prettyprint">favourite food</code>, <code class="prettyprint">spouse</code>, etc.</li>
+</ul>
+
+<p>Clients can use the Lexer Identify platform to gather real-time insights on their customers, prospects and competitors by:</p>
+
+<ol>
+<li>Linking their proprietary data with a Lexer Identity</li>
+<li>Contributing additional information to enrich the Lexer Identity</li>
+<li>Consume the Identities attributes into internal or 3rd party platforms for activation</li>
+</ol>
+
+<p>All this is done within the Identity API.</p>
+
+<h2 id="configuration">Configuration</h2>
 
 <h3 id="root-endpoint">ROOT Endpoint</h3>
+<pre class="highlight plaintext"><code>https://identity.api.lexer.io/
+</code></pre>
 
-<p>All access to the Lexer Identity API is performed via a single root endpoint. The correct behavior. All input must be securely <code class="prettyprint">POST</code>ed in JSON format to this URL:</p>
+<p>All access to the Lexer Identity API is performed via a single root endpoint. The correct behaviour of the API is determined by various input payload contexts. All input must be securely <code class="prettyprint">POST</code>ed in JSON format to this URL:</p>
 
-<p><code class="prettyprint">https://identity.lexer.io/identity</code></p>
+<h3 id="payload">Payload</h3>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+ </span><span class="s2">"api_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abc-123-..."</span><span class="p">,</span><span class="w">
+ </span><span class="s2">"consumer_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"qwe-345-..."</span><span class="p">,</span><span class="w">
+ </span><span class="s2">"contributor_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ert-678-..."</span><span class="p">,</span><span class="w">
+ </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"987-mnb-..."</span><span class="p">,</span><span class="w">
+ </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+   </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"joe.blog@mybrand.com"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+61404555444"</span><span class="w">
+ </span><span class="p">},</span><span class="w">
+ </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+   </span><span class="s2">"com.mybrand.age"</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"com.mybrand.car.colour"</span><span class="p">:</span><span class="w"> </span><span class="s2">"red"</span><span class="w">
+ </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
-<h3 id="namespaces">Namespaces</h3>
+<p>All input must be securely <code class="prettyprint">POST</code>ed in JSON format to the <a href="#root-endpoint">ROOT endpoint</a> and must contain the following keys:</p>
 
-<p>TODO - namespace stuff.</p>
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>api_token</td>
+<td>Yes</td>
+<td>The api token as provided by Lexer.</td>
+</tr>
+<tr>
+<td>consumer_token</td>
+<td>No</td>
+<td>The consumer token as provided by Lexer.</td>
+</tr>
+<tr>
+<td>contributor_token</td>
+<td>No</td>
+<td>The contributor token as provided by Lexer.</td>
+</tr>
+<tr>
+<td>id</td>
+<td>No</td>
+<td>A Lexer ID if one is known. Is used over <code class="prettyprint">links</code> if provided.</td>
+</tr>
+<tr>
+<td>links</td>
+<td>No</td>
+<td>A hash of <a href="#links">linkage attributes</a> unique to the Identity. Only required if an <code class="prettyprint">id</code> is not present.</td>
+</tr>
+<tr>
+<td>attributes</td>
+<td>No</td>
+<td>A hash of <a href="#attributes">attributes</a> to be written to the Identity. Only required if a <code class="prettyprint">contributior_token</code> is present.</td>
+</tr>
+</tbody></table>
+
+<h3 id="tokens">Tokens</h3>
+<pre class="highlight shell"><code>curl https://identity.api.lexer.io/identity <span class="se">\</span>
+  -XPOST <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d ‘
+<span class="o">{</span>
+ <span class="s2">"api_token"</span>: <span class="s2">"your-api-token"</span>,
+ <span class="s2">"consumer_token"</span>: <span class="s2">"your-consumer-token"</span>,
+ <span class="s2">"contributor_token"</span>: <span class="s2">"your-contrib-token"</span>
+<span class="o">}</span>’
+</code></pre>
+<pre class="highlight ruby"><code><span class="n">curl</span> <span class="n">https</span><span class="ss">:/</span><span class="o">/</span><span class="n">identity</span><span class="p">.</span><span class="nf">api</span><span class="p">.</span><span class="nf">lexer</span><span class="p">.</span><span class="nf">io</span><span class="sr">/identity \
+  -XPOST \
+  -H "Content-Type: application/</span><span class="n">json</span><span class="s2">" \
+  -d ‘
+{
+ "</span><span class="n">api_token</span><span class="s2">": "</span><span class="n">your</span><span class="o">-</span><span class="n">api</span><span class="o">-</span><span class="n">token</span><span class="s2">",
+ "</span><span class="n">consumer_token</span><span class="s2">": "</span><span class="n">your</span><span class="o">-</span><span class="n">consumer</span><span class="o">-</span><span class="n">token</span><span class="s2">",
+ "</span><span class="n">contributor_token</span><span class="s2">": "</span><span class="n">your</span><span class="o">-</span><span class="n">contrib</span><span class="o">-</span><span class="n">token</span><span class="s2">"
+}’
+</span></code></pre>
+
+<p>As outlined in <a href="#access-tokens">Access Tokens</a> a set of tokens are required for all communication with the API.</p>
+
+<p>An API token along with a Contributor and/or a Consumer token is required.</p>
+
+<p>You can validate your tokens by making a <code class="prettyprint">curl</code> request to the API.</p>
+
+<p>A <code class="prettyprint">403: Forbidden</code> will be returned if your tokens are invalid.</p>
+
+<p>Contact <a href="mailto:support@lexer.io">support@lexer.io</a> if you require assistance.</p>
 
 <h2 id="contributions">Contributions</h2>
 
-<p>The presence of a valid <code>contributor_token</code> in the input payload instructs the Identity API to create or update a unique identity. Generally, two or more <em>linkage attributes</em>, or <code class="prettyprint">links</code>, that are unique to an identity, must be provided in order for an identity to be created.</p>
+<p>The presence of a valid <code class="prettyprint">contributor_token</code> in the input payload instructs the Identity API to create or update a unique identity. Generally, two or more <em>linkage attributes</em>, or <code class="prettyprint">links</code>, that are unique to an identity, must be provided in order for an identity to be created.</p>
+
+<h3 id="namespaces">Namespaces</h3>
+
+<p>Each <em>Consumer Token</em> and <em>Contributor Token</em> is bound to a particular namespace.</p>
+
+<p>A namespace is commonly defined as a reverse domain name. Such as <code class="prettyprint">io.lexer.*</code>.</p>
+
+<p>Namespaces are used within the platform to:</p>
+
+<ol>
+<li><strong>Protect Secure Information</strong>: Tokens can only read from defined namespaces, limiting each parties access to only the attributes permitted.</li>
+<li><strong>Enforce Business Policy</strong>: Our clients often have many partners with a complex permission tree. Using namespaces we’re able to allow certain partners to access certain attributes.</li>
+</ol>
+
+<p>Each attribute on an Identity has a name within the namespace. For example:</p>
+
+<ul>
+<li><code class="prettyprint">io.lexer.age</code> defines the age of the Identity according to Lexer</li>
+<li><code class="prettyprint">com.mybrand.age</code> defines the age of the Identity according to MyBrand</li>
+<li><code class="prettyprint">com.mybrand.car.colour</code> defines the colour of the Identities car according to MyBrand</li>
+</ul>
+
+<p>Please refer to the projects documentation on available namespaces for your implementation.</p>
 
 <h3 id="links">Links</h3>
 
@@ -156,6 +293,8 @@ All contributor requests made to a Lexer API will have limited responses unless 
 <h2 id="consumption">Consumption</h2>
 
 <h2 id="errors">Errors</h2>
+
+<h1 id="examples">Examples</h1>
 
       </div>
       <div class="dark-box">
