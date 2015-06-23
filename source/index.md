@@ -73,7 +73,7 @@ There are at least two of three possible tokens which you will need to communica
 * **API + Contributor Tokens**: Write only access to Lexer APIs
 * **API + Consumer + Contributor Tokens**: Read _and_ Write access to Lexer APIs
 
-<aside class=“notice”>
+<aside class="notice">
 Tokens can reveal business critical or personally sensitive information and therefore should not be shared.
 
 If you believe your tokens have been exposed please contact [support@lexer.io](mailto:support@lexer.io) immediately.

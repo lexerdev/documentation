@@ -3,7 +3,7 @@
 The Lexer Identity API allows clients and their partners to read and write Identity information to [Lexer Identify](http://lexer.io).
 
 For details on the capability and project specific implementation of [Lexer Identify](http://lexer.io) please contact support at [support@lexer.io](mailto:support@lexer.io).
-  
+
 An Identity is a person, brand, place or thing.
 Each Identity has thousands of attributes which are generated and updated in real-time through the Lexer Identify platform.
 
@@ -29,6 +29,7 @@ https://identity.api.lexer.io/
 ```
 
 All access to the Lexer Identity API is performed via a single root endpoint. The correct behaviour of the API is determined by various input payload contexts. All input must be securely `POST`ed in JSON format to this URL:
+
 
 ### Payload
 
@@ -88,17 +89,16 @@ curl https://identity.api.lexer.io/identity \
 ```
 
 As outlined in [Access Tokens](#access-tokens) a set of tokens are required for all communication with the API.
-
 An API token along with a Contributor and/or a Consumer token is required.
 
-You can validate your tokens by making a `curl` request to the API.
-
-A `403 Forbidden` will be returned if your tokens are invalid.
+You can validate your tokens by making a `curl` request to the API. A `403 Forbidden` will be returned if your tokens are invalid.
 
 Contact [support@lexer.io](mailto:support@lexer.io) if you require assistance.
 
 
 ## Contributions
+
+XXX: What is a contribution
 
 The presence of a valid `contributor_token` in the input payload instructs the Identity API to create or update a unique identity. Generally, two or more _linkage attributes_, or `links`, that are unique to an identity, must be provided in order for an identity to be created.
 
@@ -123,23 +123,146 @@ Please refer to the projects documentation on available namespaces for your impl
 
 ### Links
 
+```json
+{
+ "links": {
+   "email": ["joe.blog@mybrand.com", "joeblog1983@gmail.com"],
+   "mobile": "+61404555444",
+   "twitter": 1234567890,
+   "facebook": 2345678901,
+   "instagram": [3456789012, 4567890123],
+   "com.mybrand.customer_id": 9876543210,
+   "com.mybrand.loyalty_id": 6789054321
+ },
+ "attributes": {}
+}
+```
+
+Internally the Identify platform uses links as a lookup for unique identities. They're also used to unify records across a Clients systems and partner networks.
+
+In each case the link must be globally unique - meaning the link must belong to just one identity.
+An example of this is a mobile number, which in almost every case belongs to just one person, however an email may belong to more than one person - such as an email address provided by an ISP.
+
+If a link is provided to Lexer which belongs to multiple people an [error](#errors) will be returned.
+
+Currently Lexer supports the following pre-defined links:
+
+- `email`: the email address of the identity
+- `mobile`: the mobile phone number of the identity - written in international format with no spaces i.e. +61404000000
+- `twitter`: the Twitter id (not handle) of the identity
+- `facebook`: the Facebook id (not username) of the identity
+- `instagram`: the Instagram id (not username) of the identity
+
+We also allow clients and partners to write their own identifiers to an identity using the namespaces provided.
+
+This allows you to provide your own shared ID's for distribution through the Identify platform.
+Common cases include an internal _customer id_, _device id's_, _loyalty membership number_, etc.
+
+These links should be named using the following formula `<namespace>.<link name>` i.e. `com.mybrand.customer_id`.
+
+If multiple link values exist for a single identity (i.e. they have more than one email address) then simply provide the multiple values as an array.
+
 ### Attributes
 
-### Updates
+```json
+{
+ "links": {},
+ "attributes": {
+  "com.mybrand.product.names": {
+    "value": ["iphone", "ipad"],
+    "confidence": 2
+  },
+  "com.mybrand.product.versions": {
+    "value": ["iphone 6+", "ipad air 2"],
+    "confidence": 2
+  },
+  "com.mybrand.customer_since": {
+    "value": "2013-01-07T18:43:21Z",
+    "confidence": 2
+  },
+  "com.mybrand.annual_spend": {
+    "value": 2000.00,
+    "confidence": 1
+  },
+  "com.mybrand.churn_risk": {
+    "value": "low",
+    "confidence": 0
+  }
+ }
+}
+```
+
+An identity is made up of thousands of attributes defined by Lexer, our clients and partners.
+
+When a contribution is the changes becomes avaliable to the client and their partners according to the [namespace](#namespaces) policies defined.
+
+An attribute is defined by a:
+
+Property | Description |
+---------|-------------|
+name   | The name of an attribute. Prefixed by the designated [namespace](#namespaces)
+value  | The value of the attribute. A range of data types are allowed.
+confidence | The confidence score given by the contributor.
+
+#### Name
+
+An attribute name must be created following the formula `<namespace>.<attribute name>` i.e. `com.mybrand.products`.
+
+When selecting a name for an attribute rely on the following guidelines:
+
+* A name should only contain `A-Za-z0-9._` characters
+* Should answer the question `What is Sarah's <attribute name>?` or `What are Sarah's <attribute name>`. i.e. `What is Sarah's age?` or `What are Sarah's upcoming trips?`
+
+<aside class="notice">
+The name needs to be globally unique as each contribution is a write to the system - therefore two attributes with the same name can not exist.
+</aside>
+
+<aside class="notice">
+Any contributions to attributes with names that conflict with the [namespace](#namespaces) policy will be rejected.
+</aside>
+
+
+#### Values
+
+The API supports any values supported by the [JSON](http://json.org/) specification:
+
+* Strings: `"hello world"`
+* Numbers: `123.45`
+* Hashes: `{"make": "Tesla", "model": "S"}`
+* Arrays: `["hello", "world", 123.45, {"make": "Tesla"}]`
+
+If you wish to merge existing attribute values with a new value; for example the contents of an `array` or `hash`; then you must first consume from the API and manage the merge yourself.
+
+<aside class="notice">
+All contributions write over existing values.
+
+Lexer maintains a change log for security and auditing purposes, not for restoring data due to contributors bugs.
+</aside>
+
+#### Confidence
+
+Each attribute on an identity has a confidence score which is an enum defined by Lexer to help all clients understand the value of the accuracy of the source or method of inference.
+
+Score | Description
+------|-------------
+0     | Attribute is of low confidence - the value is most likely generated using aggregate data.
+1     | Attribute has been calculated using one or more other attributes using a validated function or equation.
+2     | Value is provided via customer or business data. Is considered factual.
 
 ## Consumption
 
+XXX: todo
+
 ## Status Codes
 
-HTTP status codes are returned to indicate the success or failure of a request. In addition, error messages are returned via a JSON object response.
-
-```
+```json
 {"error":"403 Forbidden"}
 ```
 
+HTTP status codes are returned to indicate the success or failure of a request. In addition, error messages are returned via a JSON object response.
 
-HTTP Status|Description
-----|---
+HTTP Status | Description
+------------|--------------
 200 OK|An existing Identity was found and returned.
 201 Created|A new Identity has been created. A Lexer ID will be returned.
 400 Bad Request|The payload contained invalid data.
@@ -150,3 +273,5 @@ HTTP Status|Description
 
 
 # Examples
+
+XXX: todo
