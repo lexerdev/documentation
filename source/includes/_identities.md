@@ -41,7 +41,7 @@ All access to the Lexer Identity API is performed via a single root endpoint. Th
  "id": "987-mnb-...",
  "links": {
    "email": "joe.blog@mybrand.com",
-   "mobile": "+61404555444"
+   "mobile": "+61404000000"
  },
  "attributes": {
    "com.mybrand.age": 32,
@@ -96,13 +96,7 @@ You can validate your tokens by making a `curl` request to the API. A `403 Forbi
 Contact [support@lexer.io](mailto:support@lexer.io) if you require assistance.
 
 
-## Contributions
-
-XXX: What is a contribution
-
-The presence of a valid `contributor_token` in the input payload instructs the Identity API to create or update a unique identity. Generally, two or more _linkage attributes_, or `links`, that are unique to an identity, must be provided in order for an identity to be created.
-
-### Namespaces
+## Namespaces
 
 Each _Consumer Token_ and _Contributor Token_ is bound to a particular namespace.
 
@@ -121,13 +115,13 @@ Each attribute on an Identity has a name within the namespace. For example:
 
 Please refer to the projects documentation on available namespaces for your implementation.
 
-### Links
+## Links
 
 ```json
 {
  "links": {
    "email": ["joe.blog@mybrand.com", "joeblog1983@gmail.com"],
-   "mobile": "+61404555444",
+   "mobile": "+61404000000",
    "twitter": 1234567890,
    "facebook": 2345678901,
    "instagram": [3456789012, 4567890123],
@@ -162,7 +156,7 @@ These links should be named using the following formula `<namespace>.<link name>
 
 If multiple link values exist for a single identity (i.e. they have more than one email address) then simply provide the multiple values as an array.
 
-### Attributes
+## Attributes
 
 ```json
 {
@@ -204,7 +198,7 @@ name   | The name of an attribute. Prefixed by the designated [namespace](#names
 value  | The value of the attribute. A range of data types are allowed.
 confidence | The confidence score given by the contributor.
 
-#### Name
+### Name
 
 An attribute name must be created following the formula `<namespace>.<attribute name>` i.e. `com.mybrand.products`.
 
@@ -217,12 +211,10 @@ When selecting a name for an attribute rely on the following guidelines:
 The name needs to be globally unique as each contribution is a write to the system - therefore two attributes with the same name can not exist.
 </aside>
 
-<aside class="notice">
 Any contributions to attributes with names that conflict with the [namespace](#namespaces) policy will be rejected.
-</aside>
 
 
-#### Values
+### Values
 
 The API supports any values supported by the [JSON](http://json.org/) specification:
 
@@ -239,7 +231,7 @@ All contributions write over existing values.
 Lexer maintains a change log for security and auditing purposes, not for restoring data due to contributors bugs.
 </aside>
 
-#### Confidence
+### Confidence
 
 Each attribute on an identity has a confidence score which is an enum defined by Lexer to help all clients understand the value of the accuracy of the source or method of inference.
 
@@ -249,9 +241,118 @@ Score | Description
 1     | Attribute has been calculated using one or more other attributes using a validated function or equation.
 2     | Value is provided via customer or business data. Is considered factual.
 
+
+## Contributions
+
+```shell
+curl https://identity.api.lexer.io/identity \
+  -XPOST \
+  -H "Content-Type: application/json" \
+  -d ‘
+{
+ "api_token": "your-api-token",
+ "contributor_token": "your-contrib-token",
+ "links": {
+  "email": "joe.blog@mybrand.com",
+  "mobile": "+61404000000"
+ },
+ "attributes": {
+  "com.mybrand.age": {
+    "value": 32,
+    "confidence": 2
+  }
+ }
+}’
+
+# Result
+# { "id": "862d10d5..." }
+```
+
+```ruby
+require 'lexer'
+
+Lexer::Identity.configure do |config|
+  config.api_token = 'lexer-api-token'
+  config.contributor_token = 'lexer-contrib-token'
+end
+
+link_hash = {
+  email: "joe.blog@mybrand.com",
+  mobile: "+61404000000",
+}
+
+attribute_hash = {
+  "com.mybrand.age": {
+    value: 32,
+    confidence: Lexer::Identity::CONFIDENCE_PROVIDED
+  }
+}
+
+identity = Lexer::Identity.enrich( links: link_hash, attributes: attribute_hash )
+# <Lexer::Identity::EnrichedResult @id="862d10d5...">
+
+identity.id
+# 862d10d5...
+
+identity.attributes
+# nil
+```
+
+A contribution is the process of writing links and/or attributes to an new or existing identity.
+
+The presence of a valid `contributor_token` in the input payload instructs the API to create or update a unique identity. Generally, two or more links, must be provided in order for an identity to be created.
+
+Unless a consumer token is provided only a Lexer ID will be returned upon a successful contribution to the API, otherwise an [error](#status-codes) will be returned.
+
 ## Consumption
 
-XXX: todo
+```shell
+curl https://identity.api.lexer.io/identity \
+  -XPOST \
+  -H "Content-Type: application/json" \
+  -d ‘
+{
+ "api_token": "your-api-token",
+ "consumer_token": "your-consumer-token",
+ "links": {
+  "email": "joe.blog@mybrand.com",
+  "mobile": "+61404000000"
+ }
+}’
+
+# Result
+# { "id": "862d10d5...", "attributes": { "com.mybrand.age": { "value": [32], "confidence": 2, "updated_at":"2015-06-23T11:51:16Z" } } }
+```
+
+```ruby
+require 'lexer'
+
+Lexer::Identity.configure do |config|
+  config.api_token = 'lexer-api-token'
+  config.consumer_token = 'lexer-consumer-token'
+end
+
+link_hash = {
+  email: "joe.blog@mybrand.com",
+  mobile: "+61404000000",
+}
+
+identity = Lexer::Identity.enrich( links: link_hash )
+# <Lexer::Identity::EnrichedResult @id="862d10d5...", @attributes={"com.mybrand.age"=>{...}}>
+
+identity.id
+# 862d10d5...
+
+identity.attributes
+# {"com.mybrand.age"=>{"value"=>[32], "confidence"=>2, "updated_at"=>"2015-06-23T11:56:26Z"}}
+```
+
+A consumption is the process of reading attributes from an existing identity.
+
+The presence of a valid `consumer_token` in the input payload instructs the API to return all attributes made avaliable to the requester via the namespace policies defined on the account.
+
+A `consumer_token` can be paired with a `contributor_token` which will result in a write then read procedure on the matched identity.
+
 
 ## Status Codes
 
@@ -271,7 +372,3 @@ HTTP Status | Description
 406 Not Acceptable|There were not enough valid `links` provided alongside a `contributor_token` for an Identity to be created.
 500 Internal Server Error|An internal server error occurred.
 
-
-# Examples
-
-XXX: todo
