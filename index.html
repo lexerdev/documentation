@@ -175,7 +175,7 @@ Each Identity has thousands of attributes which are generated and updated in rea
  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"987-mnb-..."</span><span class="p">,</span><span class="w">
  </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"joe.blog@mybrand.com"</span><span class="p">,</span><span class="w">
-   </span><span class="s2">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+61404555444"</span><span class="w">
+   </span><span class="s2">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+61404000000"</span><span class="w">
  </span><span class="p">},</span><span class="w">
  </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
    </span><span class="s2">"com.mybrand.age"</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span><span class="w">
@@ -254,13 +254,7 @@ An API token along with a Contributor and/or a Consumer token is required.</p>
 
 <p>Contact <a href="mailto:support@lexer.io">support@lexer.io</a> if you require assistance.</p>
 
-<h2 id="contributions">Contributions</h2>
-
-<p>XXX: What is a contribution</p>
-
-<p>The presence of a valid <code class="prettyprint">contributor_token</code> in the input payload instructs the Identity API to create or update a unique identity. Generally, two or more <em>linkage attributes</em>, or <code class="prettyprint">links</code>, that are unique to an identity, must be provided in order for an identity to be created.</p>
-
-<h3 id="namespaces">Namespaces</h3>
+<h2 id="namespaces">Namespaces</h2>
 
 <p>Each <em>Consumer Token</em> and <em>Contributor Token</em> is bound to a particular namespace.</p>
 
@@ -283,11 +277,11 @@ An API token along with a Contributor and/or a Consumer token is required.</p>
 
 <p>Please refer to the projects documentation on available namespaces for your implementation.</p>
 
-<h3 id="links">Links</h3>
+<h2 id="links">Links</h2>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
  </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"joe.blog@mybrand.com"</span><span class="p">,</span><span class="w"> </span><span class="s2">"joeblog1983@gmail.com"</span><span class="p">],</span><span class="w">
-   </span><span class="s2">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+61404555444"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+61404000000"</span><span class="p">,</span><span class="w">
    </span><span class="s2">"twitter"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
    </span><span class="s2">"facebook"</span><span class="p">:</span><span class="w"> </span><span class="mi">2345678901</span><span class="p">,</span><span class="w">
    </span><span class="s2">"instagram"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">3456789012</span><span class="p">,</span><span class="w"> </span><span class="mi">4567890123</span><span class="p">],</span><span class="w">
@@ -324,7 +318,7 @@ Common cases include an internal <em>customer id</em>, <em>device id&rsquo;s</em
 
 <p>If multiple link values exist for a single identity (i.e. they have more than one email address) then simply provide the multiple values as an array.</p>
 
-<h3 id="attributes">Attributes</h3>
+<h2 id="attributes">Attributes</h2>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
  </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
  </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -378,7 +372,7 @@ Common cases include an internal <em>customer id</em>, <em>device id&rsquo;s</em
 </tr>
 </tbody></table>
 
-<h4 id="name">Name</h4>
+<h3 id="name">Name</h3>
 
 <p>An attribute name must be created following the formula <code class="prettyprint">&lt;namespace&gt;.&lt;attribute name&gt;</code> i.e. <code class="prettyprint">com.mybrand.products</code>.</p>
 
@@ -393,11 +387,9 @@ Common cases include an internal <em>customer id</em>, <em>device id&rsquo;s</em
 The name needs to be globally unique as each contribution is a write to the system - therefore two attributes with the same name can not exist.
 </aside>
 
-<aside class="notice">
-Any contributions to attributes with names that conflict with the [namespace](#namespaces) policy will be rejected.
-</aside>
+<p>Any contributions to attributes with names that conflict with the <a href="#namespaces">namespace</a> policy will be rejected.</p>
 
-<h4 id="values">Values</h4>
+<h3 id="values">Values</h3>
 
 <p>The API supports any values supported by the <a href="http://json.org/">JSON</a> specification:</p>
 
@@ -416,7 +408,7 @@ All contributions write over existing values.
 Lexer maintains a change log for security and auditing purposes, not for restoring data due to contributors bugs.
 </aside>
 
-<h4 id="confidence">Confidence</h4>
+<h3 id="confidence">Confidence</h3>
 
 <p>Each attribute on an identity has a confidence score which is an enum defined by Lexer to help all clients understand the value of the accuracy of the source or method of inference.</p>
 
@@ -440,9 +432,108 @@ Lexer maintains a change log for security and auditing purposes, not for restori
 </tr>
 </tbody></table>
 
-<h2 id="consumption">Consumption</h2>
+<h2 id="contributions">Contributions</h2>
+<pre class="highlight shell"><code>curl https://identity.api.lexer.io/identity <span class="se">\</span>
+  -XPOST <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d ‘
+<span class="o">{</span>
+ <span class="s2">"api_token"</span>: <span class="s2">"your-api-token"</span>,
+ <span class="s2">"contributor_token"</span>: <span class="s2">"your-contrib-token"</span>,
+ <span class="s2">"links"</span>: <span class="o">{</span>
+  <span class="s2">"email"</span>: <span class="s2">"joe.blog@mybrand.com"</span>,
+  <span class="s2">"mobile"</span>: <span class="s2">"+61404000000"</span>
+ <span class="o">}</span>,
+ <span class="s2">"attributes"</span>: <span class="o">{</span>
+  <span class="s2">"com.mybrand.age"</span>: <span class="o">{</span>
+    <span class="s2">"value"</span>: 32,
+    <span class="s2">"confidence"</span>: 2
+  <span class="o">}</span>
+ <span class="o">}</span>
+<span class="o">}</span>’
 
-<p>XXX: todo</p>
+<span class="c"># Result</span>
+<span class="c"># { "id": "862d10d5..." }</span>
+</code></pre>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'lexer'</span>
+
+<span class="no">Lexer</span><span class="o">::</span><span class="no">Identity</span><span class="p">.</span><span class="nf">configure</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+  <span class="n">config</span><span class="p">.</span><span class="nf">api_token</span> <span class="o">=</span> <span class="s1">'lexer-api-token'</span>
+  <span class="n">config</span><span class="p">.</span><span class="nf">contributor_token</span> <span class="o">=</span> <span class="s1">'lexer-contrib-token'</span>
+<span class="k">end</span>
+
+<span class="n">link_hash</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="ss">email: </span><span class="s2">"joe.blog@mybrand.com"</span><span class="p">,</span>
+  <span class="ss">mobile: </span><span class="s2">"+61404000000"</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">attribute_hash</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"com.mybrand.age"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="ss">value: </span><span class="mi">32</span><span class="p">,</span>
+    <span class="ss">confidence: </span><span class="no">Lexer</span><span class="o">::</span><span class="no">Identity</span><span class="o">::</span><span class="no">CONFIDENCE_PROVIDED</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">identity</span> <span class="o">=</span> <span class="no">Lexer</span><span class="o">::</span><span class="no">Identity</span><span class="p">.</span><span class="nf">enrich</span><span class="p">(</span> <span class="ss">links: </span><span class="n">link_hash</span><span class="p">,</span> <span class="ss">attributes: </span><span class="n">attribute_hash</span> <span class="p">)</span>
+<span class="c1"># &lt;Lexer::Identity::EnrichedResult @id="862d10d5..."&gt;</span>
+
+<span class="n">identity</span><span class="p">.</span><span class="nf">id</span>
+<span class="c1"># 862d10d5...</span>
+
+<span class="n">identity</span><span class="p">.</span><span class="nf">attributes</span>
+<span class="c1"># nil</span>
+</code></pre>
+
+<p>A contribution is the process of writing links and/or attributes to an new or existing identity.</p>
+
+<p>The presence of a valid <code class="prettyprint">contributor_token</code> in the input payload instructs the API to create or update a unique identity. Generally, two or more links, must be provided in order for an identity to be created.</p>
+
+<p>Unless a consumer token is provided only a Lexer ID will be returned upon a successful contribution to the API, otherwise an <a href="#status-codes">error</a> will be returned.</p>
+
+<h2 id="consumption">Consumption</h2>
+<pre class="highlight shell"><code>curl https://identity.api.lexer.io/identity <span class="se">\</span>
+  -XPOST <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d ‘
+<span class="o">{</span>
+ <span class="s2">"api_token"</span>: <span class="s2">"your-api-token"</span>,
+ <span class="s2">"consumer_token"</span>: <span class="s2">"your-consumer-token"</span>,
+ <span class="s2">"links"</span>: <span class="o">{</span>
+  <span class="s2">"email"</span>: <span class="s2">"joe.blog@mybrand.com"</span>,
+  <span class="s2">"mobile"</span>: <span class="s2">"+61404000000"</span>
+ <span class="o">}</span>
+<span class="o">}</span>’
+
+<span class="c"># Result</span>
+<span class="c"># { "id": "862d10d5...", "attributes": { "com.mybrand.age": { "value": [32], "confidence": 2, "updated_at":"2015-06-23T11:51:16Z" } } }</span>
+</code></pre>
+<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'lexer'</span>
+
+<span class="no">Lexer</span><span class="o">::</span><span class="no">Identity</span><span class="p">.</span><span class="nf">configure</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+  <span class="n">config</span><span class="p">.</span><span class="nf">api_token</span> <span class="o">=</span> <span class="s1">'lexer-api-token'</span>
+  <span class="n">config</span><span class="p">.</span><span class="nf">consumer_token</span> <span class="o">=</span> <span class="s1">'lexer-consumer-token'</span>
+<span class="k">end</span>
+
+<span class="n">link_hash</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="ss">email: </span><span class="s2">"joe.blog@mybrand.com"</span><span class="p">,</span>
+  <span class="ss">mobile: </span><span class="s2">"+61404000000"</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">identity</span> <span class="o">=</span> <span class="no">Lexer</span><span class="o">::</span><span class="no">Identity</span><span class="p">.</span><span class="nf">enrich</span><span class="p">(</span> <span class="ss">links: </span><span class="n">link_hash</span> <span class="p">)</span>
+<span class="c1"># &lt;Lexer::Identity::EnrichedResult @id="862d10d5...", @attributes={"com.mybrand.age"=&gt;{...}}&gt;</span>
+
+<span class="n">identity</span><span class="p">.</span><span class="nf">id</span>
+<span class="c1"># 862d10d5...</span>
+
+<span class="n">identity</span><span class="p">.</span><span class="nf">attributes</span>
+<span class="c1"># {"com.mybrand.age"=&gt;{"value"=&gt;[32], "confidence"=&gt;2, "updated_at"=&gt;"2015-06-23T11:56:26Z"}}</span>
+</code></pre>
+
+<p>A consumption is the process of reading attributes from an existing identity.</p>
+
+<p>The presence of a valid <code class="prettyprint">consumer_token</code> in the input payload instructs the API to return all attributes made avaliable to the requester via the namespace policies defined on the account.</p>
+
+<p>A <code class="prettyprint">consumer_token</code> can be paired with a <code class="prettyprint">contributor_token</code> which will result in a write then read procedure on the matched identity.</p>
 
 <h2 id="status-codes">Status Codes</h2>
 <pre class="highlight json"><code><span class="p">{</span><span class="s2">"error"</span><span class="p">:</span><span class="s2">"403 Forbidden"</span><span class="p">}</span><span class="w">
@@ -485,10 +576,6 @@ Lexer maintains a change log for security and auditing purposes, not for restori
 <td>An internal server error occurred.</td>
 </tr>
 </tbody></table>
-
-<h1 id="examples">Examples</h1>
-
-<p>XXX: todo</p>
 
       </div>
       <div class="dark-box">
