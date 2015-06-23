@@ -37,7 +37,7 @@ Refer to your project's terms of service for details on rate limiting, performan
 For further details please [contact support](mailto:support@lexer.io).
 
 
-# Access Tokens
+# Authentication
 
 ```shell
 # Tokens are used as part of the JSON request body
@@ -65,7 +65,7 @@ end
 
 > Make sure to replace the tokens with those provided.
 
-To access any Lexer API you will require access tokens which will be provided to you. Please [contact support](mailto:support@lexer.io) if you have not received these.
+To access any Lexer API you will require access tokens which will be provided to you. Please [contact support](mailto:support@lexer.io) if you have not received these as part of your projects documentation.
 
 There are at least two of three possible tokens which you will need to communicate with the APIs:
 
@@ -74,31 +74,31 @@ There are at least two of three possible tokens which you will need to communica
 * **API + Consumer + Contributor Tokens**: Read _and_ Write access to Lexer APIs
 
 <aside class="notice">
-Tokens can reveal business critical or personally sensitive information and therefore should not be shared.
+Tokens reveal business critical or personally sensitive information and therefore should not be shared or made publically avaliable.
 
-If you believe your tokens have been exposed please contact [support@lexer.io](mailto:support@lexer.io) immediately.
+If you believe your tokens have been exposed please contact support@lexer.io immediately.
 </aside>
 
 
-### API Token
+## API Token
 
 All requests require an _API token_ which will be provided to each party who require access to the Lexer APIs.
 
 An _API token_ alone offers no access to the Lexer APIs. You need at least a _Consumer token_ or _Contributor token_ to make a valid request. Both a _Consumer token_ and _Contributor token_ can be provided in a single request payload for simultaneous read/write access.
 
-### Consumer Token
+## Consumer Token
 
 A _Consumer token_ is supplied if the party requires **read** access to the Lexer APIs.
 
-When created, a _Consumer token_ is locked to a specific namespace only granting that token access to a specific dataset.
+When created, a _Consumer token_ is locked to a specific [namespace](#namespaces) only granting that token access to a specific dataset.
 
 A _Consumer token_ does not allow a party to **write** data to a Lexer APIs. For that a _Contributor token_ is required.
 
-### Contributor Token
+## Contributor Token
 
 A _Contributor token_ is supplied if the party requires **write** access to the Lexer APIs.
 
-When created, a _Contributor token_ is locked to a specific namespace only granting that token access to a specific dataset.
+When created, a _Contributor token_ is locked to a specific [namespace](#namespaces) only granting that token access to a specific dataset.
 
 <aside class="notice">
 All contributor requests made to a Lexer API will have limited responses unless a Contributor token (<code>write</code> access) is paired with a Consumer token (<code>read</code> access).

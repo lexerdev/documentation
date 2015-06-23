@@ -4,31 +4,33 @@ The Lexer Identity API allows clients and their partners to read and write Ident
 
 For details on the capability and project specific implementation of [Lexer Identify](http://lexer.io) please contact support at [support@lexer.io](mailto:support@lexer.io).
 
-An Identity is a person, brand, place or thing.
+Within the Lexer Identify platform an Identity is a person, brand, place or thing.
 Each Identity has thousands of attributes which are generated and updated in real-time through the Lexer Identify platform.
 
 Each Identity is made up of:
 
-- **Links**: Highly personal and unique attributes such as Email address, Mobile number, Twitter handle, Facebook ID, etc. These attributes belong to a single identity.
-- **Attributes**: An identity could contain thousands of attributes - each one defining their behaviour, facts and engagements. Examples are `age`, `gender`, `favourite food`, `spouse`, etc.
+- **Links**: Unique, personally identifiable attributes including Email addresses, their Mobile number, Twitter handle, Facebook ID, etc.
+- **Attributes**: An identity could contain thousands of attributes - each one defining their behaviour, facts and engagements, for example: `age`, `gender`, `favourite food`, `spouse`, etc.
 
 Clients can use the Lexer Identify platform to gather real-time insights on their customers, prospects and competitors by:
 
-1. Linking their proprietary data with a Lexer Identity
-2. Contributing additional information to enrich the Lexer Identity
-3. Consume the Identities attributes into internal or 3rd party platforms for activation
+1. Linking their proprietary data with one or more identities
+2. Contributing additional information to enrich the identity
+3. Consume an identities attributes into internal or 3rd party platforms for activation
 
 All this is done within the Identity API.
 
 ## Configuration
 
-### ROOT Endpoint
+### Endpoints
 
 ```text
 https://identity.api.lexer.io/
 ```
 
-All access to the Lexer Identity API is performed via a single root endpoint. The correct behaviour of the API is determined by various input payload contexts. All input must be securely `POST`ed in JSON format to this URL:
+All access to the Lexer Identity API is performed via a single root endpoint. The correct behaviour of the API is determined by various input payload contexts.
+
+All input must be sent via `POST` in JSON format.
 
 
 ### Payload
@@ -50,16 +52,16 @@ All access to the Lexer Identity API is performed via a single root endpoint. Th
 }
 ```
 
-All input must be securely `POST`ed in JSON format to the [ROOT endpoint](#root-endpoint) and must contain the following keys:
+All input must be sent via `POST` in JSON format to the [ROOT endpoint](#root-endpoint) and must contain the following keys:
 
 Key   | Required | Description
 ----- | --- | ----
-api_token | Yes | The api token as provided by Lexer.
-consumer_token | No | The consumer token as provided by Lexer.
-contributor_token | No | The contributor token as provided by Lexer.
-id | No | A Lexer ID if one is known. Is used over `links` if provided.
-links | No | A hash of [linkage attributes](#links) unique to the Identity. Only required if an `id` is not present.
-attributes | No | A hash of [attributes](#attributes) to be written to the Identity. Only required if a `contributior_token` is present.
+api_token | Yes | The api token as provided by Lexer
+consumer_token | No | The consumer token as provided by Lexer
+contributor_token | No | The contributor token as provided by Lexer
+id | No | A Lexer ID if one is known. Is used over `links` if provided
+links | No | A hash of [linkage attributes](#links) unique to the Identity - only required if an `id` is not present
+attributes | No | A hash of [attributes](#attributes) to be written to the Identity - only required if a `contributior_token` is present
 
 
 ### Tokens
@@ -132,7 +134,7 @@ Please refer to the projects documentation on available namespaces for your impl
 }
 ```
 
-Internally the Identify platform uses links as a lookup for unique identities. They're also used to unify records across a Clients systems and partner networks.
+Internally the Lexer Identify platform uses links as a lookup for unique identities. They're also used to unify records across a Clients systems,  partner networks and Lexer's public data sources.
 
 In each case the link must be globally unique - meaning the link must belong to just one identity.
 An example of this is a mobile number, which in almost every case belongs to just one person, however an email may belong to more than one person - such as an email address provided by an ISP.
@@ -188,15 +190,15 @@ If multiple link values exist for a single identity (i.e. they have more than on
 
 An identity is made up of thousands of attributes defined by Lexer, our clients and partners.
 
-When a contribution is the changes becomes avaliable to the client and their partners according to the [namespace](#namespaces) policies defined.
+When a contribution is made the changes becomes avaliable to the client and their partners according to the [namespace](#namespaces) policies defined.
 
 An attribute is defined by a:
 
 Property | Description |
 ---------|-------------|
 name   | The name of an attribute. Prefixed by the designated [namespace](#namespaces)
-value  | The value of the attribute. A range of data types are allowed.
-confidence | The confidence score given by the contributor.
+value  | The value of the attribute. A range of data types are allowed
+confidence | The confidence score given by the contributor
 
 ### Name
 
@@ -208,7 +210,7 @@ When selecting a name for an attribute rely on the following guidelines:
 * Should answer the question `What is Sarah's <attribute name>?` or `What are Sarah's <attribute name>`. i.e. `What is Sarah's age?` or `What are Sarah's upcoming trips?`
 
 <aside class="notice">
-The name needs to be globally unique as each contribution is a write to the system - therefore two attributes with the same name can not exist.
+The name needs to be globally unique as each contribution is a write to the system - therefore two attributes with the same name can not exist. An contribution on the same name will overwrite the existing attributes value.
 </aside>
 
 Any contributions to attributes with names that conflict with the [namespace](#namespaces) policy will be rejected.
@@ -228,18 +230,18 @@ If you wish to merge existing attribute values with a new value; for example the
 <aside class="notice">
 All contributions write over existing values.
 
-Lexer maintains a change log for security and auditing purposes, not for restoring data due to contributors bugs.
+Lexer maintains a change log for security and auditing purposes. This log is not capable of restoring data due to issues with contributions.
 </aside>
 
 ### Confidence
 
-Each attribute on an identity has a confidence score which is an enum defined by Lexer to help all clients understand the value of the accuracy of the source or method of inference.
+Each attribute on an identity has a confidence score which is an enum defined by Lexer to help all clients understand the accuracy of the source or method of inference.
 
 Score | Description
 ------|-------------
-0     | Attribute is of low confidence - the value is most likely generated using aggregate data.
-1     | Attribute has been calculated using one or more other attributes using a validated function or equation.
-2     | Value is provided via customer or business data. Is considered factual.
+0     | Attribute is of low confidence - the value is most likely generated using aggregate data
+1     | Attribute has been calculated using one or more other attributes using a validated function or equation
+2     | Value is provided via customer or business data. Is considered factual
 
 
 ## Contributions
