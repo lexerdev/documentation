@@ -103,7 +103,7 @@ curl https://identity.lexer.io/identity <span class="se">\</span>
 <li><strong>API + Consumer + Contributor Tokens</strong>: Read <em>and</em> Write access to Lexer APIs</li>
 </ul>
 
-<aside class=“notice”>
+<aside class="notice">
 Tokens can reveal business critical or personally sensitive information and therefore should not be shared.
 
 If you believe your tokens have been exposed please contact [support@lexer.io](mailto:support@lexer.io) immediately.
@@ -247,17 +247,16 @@ Each Identity has thousands of attributes which are generated and updated in rea
 }’
 </span></code></pre>
 
-<p>As outlined in <a href="#access-tokens">Access Tokens</a> a set of tokens are required for all communication with the API.</p>
+<p>As outlined in <a href="#access-tokens">Access Tokens</a> a set of tokens are required for all communication with the API.
+An API token along with a Contributor and/or a Consumer token is required.</p>
 
-<p>An API token along with a Contributor and/or a Consumer token is required.</p>
-
-<p>You can validate your tokens by making a <code class="prettyprint">curl</code> request to the API.</p>
-
-<p>A <code class="prettyprint">403: Forbidden</code> will be returned if your tokens are invalid.</p>
+<p>You can validate your tokens by making a <code class="prettyprint">curl</code> request to the API. A <code class="prettyprint">403 Forbidden</code> will be returned if your tokens are invalid.</p>
 
 <p>Contact <a href="mailto:support@lexer.io">support@lexer.io</a> if you require assistance.</p>
 
 <h2 id="contributions">Contributions</h2>
+
+<p>XXX: What is a contribution</p>
 
 <p>The presence of a valid <code class="prettyprint">contributor_token</code> in the input payload instructs the Identity API to create or update a unique identity. Generally, two or more <em>linkage attributes</em>, or <code class="prettyprint">links</code>, that are unique to an identity, must be provided in order for an identity to be created.</p>
 
@@ -285,16 +284,211 @@ Each Identity has thousands of attributes which are generated and updated in rea
 <p>Please refer to the projects documentation on available namespaces for your implementation.</p>
 
 <h3 id="links">Links</h3>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+ </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+   </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"joe.blog@mybrand.com"</span><span class="p">,</span><span class="w"> </span><span class="s2">"joeblog1983@gmail.com"</span><span class="p">],</span><span class="w">
+   </span><span class="s2">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+61404555444"</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"twitter"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567890</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"facebook"</span><span class="p">:</span><span class="w"> </span><span class="mi">2345678901</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"instagram"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">3456789012</span><span class="p">,</span><span class="w"> </span><span class="mi">4567890123</span><span class="p">],</span><span class="w">
+   </span><span class="s2">"com.mybrand.customer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9876543210</span><span class="p">,</span><span class="w">
+   </span><span class="s2">"com.mybrand.loyalty_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6789054321</span><span class="w">
+ </span><span class="p">},</span><span class="w">
+ </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Internally the Identify platform uses links as a lookup for unique identities. They&rsquo;re also used to unify records across a Clients systems and partner networks.</p>
+
+<p>In each case the link must be globally unique - meaning the link must belong to just one identity.
+An example of this is a mobile number, which in almost every case belongs to just one person, however an email may belong to more than one person - such as an email address provided by an ISP.</p>
+
+<p>If a link is provided to Lexer which belongs to multiple people an <a href="#errors">error</a> will be returned.</p>
+
+<p>Currently Lexer supports the following pre-defined links:</p>
+
+<ul>
+<li><code class="prettyprint">email</code>: the email address of the identity</li>
+<li><code class="prettyprint">mobile</code>: the mobile phone number of the identity - written in international format with no spaces i.e. +61404000000</li>
+<li><code class="prettyprint">twitter</code>: the Twitter id (not handle) of the identity</li>
+<li><code class="prettyprint">facebook</code>: the Facebook id (not username) of the identity</li>
+<li><code class="prettyprint">instagram</code>: the Instagram id (not username) of the identity</li>
+</ul>
+
+<p>We also allow clients and partners to write their own identifiers to an identity using the namespaces provided.</p>
+
+<p>This allows you to provide your own shared ID&rsquo;s for distribution through the Identify platform.
+Common cases include an internal <em>customer id</em>, <em>device id&rsquo;s</em>, <em>loyalty membership number</em>, etc.</p>
+
+<p>These links should be named using the following formula <code class="prettyprint">&lt;namespace&gt;.&lt;link name&gt;</code> i.e. <code class="prettyprint">com.mybrand.customer_id</code>.</p>
+
+<p>If multiple link values exist for a single identity (i.e. they have more than one email address) then simply provide the multiple values as an array.</p>
 
 <h3 id="attributes">Attributes</h3>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+ </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+ </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="s2">"com.mybrand.product.names"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"iphone"</span><span class="p">,</span><span class="w"> </span><span class="s2">"ipad"</span><span class="p">],</span><span class="w">
+    </span><span class="s2">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"com.mybrand.product.versions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"iphone 6+"</span><span class="p">,</span><span class="w"> </span><span class="s2">"ipad air 2"</span><span class="p">],</span><span class="w">
+    </span><span class="s2">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"com.mybrand.customer_since"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2013-01-07T18:43:21Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"com.mybrand.annual_spend"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">2000.00</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"com.mybrand.churn_risk"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"low"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+ </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
-<h3 id="updates">Updates</h3>
+<p>An identity is made up of thousands of attributes defined by Lexer, our clients and partners.</p>
+
+<p>When a contribution is the changes becomes avaliable to the client and their partners according to the <a href="#namespaces">namespace</a> policies defined.</p>
+
+<p>An attribute is defined by a:</p>
+
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>The name of an attribute. Prefixed by the designated <a href="#namespaces">namespace</a></td>
+</tr>
+<tr>
+<td>value</td>
+<td>The value of the attribute. A range of data types are allowed.</td>
+</tr>
+<tr>
+<td>confidence</td>
+<td>The confidence score given by the contributor.</td>
+</tr>
+</tbody></table>
+
+<h4 id="name">Name</h4>
+
+<p>An attribute name must be created following the formula <code class="prettyprint">&lt;namespace&gt;.&lt;attribute name&gt;</code> i.e. <code class="prettyprint">com.mybrand.products</code>.</p>
+
+<p>When selecting a name for an attribute rely on the following guidelines:</p>
+
+<ul>
+<li>A name should only contain <code class="prettyprint">A-Za-z0-9._</code> characters</li>
+<li>Should answer the question <code class="prettyprint">What is Sarah&#39;s &lt;attribute name&gt;?</code> or <code class="prettyprint">What are Sarah&#39;s &lt;attribute name&gt;</code>. i.e. <code class="prettyprint">What is Sarah&#39;s age?</code> or <code class="prettyprint">What are Sarah&#39;s upcoming trips?</code></li>
+</ul>
+
+<aside class="notice">
+The name needs to be globally unique as each contribution is a write to the system - therefore two attributes with the same name can not exist.
+</aside>
+
+<aside class="notice">
+Any contributions to attributes with names that conflict with the [namespace](#namespaces) policy will be rejected.
+</aside>
+
+<h4 id="values">Values</h4>
+
+<p>The API supports any values supported by the <a href="http://json.org/">JSON</a> specification:</p>
+
+<ul>
+<li>Strings: <code class="prettyprint">&quot;hello world&quot;</code></li>
+<li>Numbers: <code class="prettyprint">123.45</code></li>
+<li>Hashes: <code class="prettyprint">{&quot;make&quot;: &quot;Tesla&quot;, &quot;model&quot;: &quot;S&quot;}</code></li>
+<li>Arrays: <code class="prettyprint">[&quot;hello&quot;, &quot;world&quot;, 123.45, {&quot;make&quot;: &quot;Tesla&quot;}]</code></li>
+</ul>
+
+<p>If you wish to merge existing attribute values with a new value; for example the contents of an <code class="prettyprint">array</code> or <code class="prettyprint">hash</code>; then you must first consume from the API and manage the merge yourself.</p>
+
+<aside class="notice">
+All contributions write over existing values.
+
+Lexer maintains a change log for security and auditing purposes, not for restoring data due to contributors bugs.
+</aside>
+
+<h4 id="confidence">Confidence</h4>
+
+<p>Each attribute on an identity has a confidence score which is an enum defined by Lexer to help all clients understand the value of the accuracy of the source or method of inference.</p>
+
+<table><thead>
+<tr>
+<th>Score</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>0</td>
+<td>Attribute is of low confidence - the value is most likely generated using aggregate data.</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Attribute has been calculated using one or more other attributes using a validated function or equation.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Value is provided via customer or business data. Is considered factual.</td>
+</tr>
+</tbody></table>
 
 <h2 id="consumption">Consumption</h2>
 
-<h2 id="errors">Errors</h2>
+<p>XXX: todo</p>
+
+<h2 id="status-codes">Status Codes</h2>
+<pre class="highlight json"><code><span class="p">{</span><span class="s2">"error"</span><span class="p">:</span><span class="s2">"403 Forbidden"</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>HTTP status codes are returned to indicate the success or failure of a request. In addition, error messages are returned via a JSON object response.</p>
+
+<table><thead>
+<tr>
+<th>HTTP Status</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200 OK</td>
+<td>An existing Identity was found and returned.</td>
+</tr>
+<tr>
+<td>201 Created</td>
+<td>A new Identity has been created. A Lexer ID will be returned.</td>
+</tr>
+<tr>
+<td>400 Bad Request</td>
+<td>The payload contained invalid data.</td>
+</tr>
+<tr>
+<td>403 Forbidden</td>
+<td>Your request has been denied due to an invalid/missing <code class="prettyprint">api_token</code> and or <code class="prettyprint">contributor_token</code>/<code class="prettyprint">consumer_token</code>.</td>
+</tr>
+<tr>
+<td>404 Not Found</td>
+<td>The Lexer ID provided alongside a <code class="prettyprint">consumer_token</code> was not found.</td>
+</tr>
+<tr>
+<td>406 Not Acceptable</td>
+<td>There were not enough valid <code class="prettyprint">links</code> provided alongside a <code class="prettyprint">contributor_token</code> for an Identity to be created.</td>
+</tr>
+<tr>
+<td>500 Internal Server Error</td>
+<td>An internal server error occurred.</td>
+</tr>
+</tbody></table>
 
 <h1 id="examples">Examples</h1>
+
+<p>XXX: todo</p>
 
       </div>
       <div class="dark-box">
