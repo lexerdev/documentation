@@ -93,7 +93,7 @@ An API token along with a Contributor and/or a Consumer token is required.
 
 You can validate your tokens by making a `curl` request to the API.
 
-A `403: Forbidden` will be returned if your tokens are invalid.
+A `403 Forbidden` will be returned if your tokens are invalid.
 
 Contact [support@lexer.io](mailto:support@lexer.io) if you require assistance.
 
@@ -129,6 +129,24 @@ Please refer to the projects documentation on available namespaces for your impl
 
 ## Consumption
 
-## Errors
+## Status Codes
+
+HTTP status codes are returned to indicate the success or failure of a request. In addition, error messages are returned via a JSON object response.
+
+```
+{"error":"403 Forbidden"}
+```
+
+
+HTTP Status|Description
+----|---
+200 OK|An existing Identity was found and returned.
+201 Created|A new Identity has been created. A Lexer ID will be returned.
+400 Bad Request|The payload contained invalid data.
+403 Forbidden|Your request has been denied due to an invalid/missing `api_token` and or `contributor_token`/`consumer_token`.
+404 Not Found|The Lexer ID provided alongside a `consumer_token` was not found.
+406 Not Acceptable|There were not enough valid `links` provided alongside a `contributor_token` for an Identity to be created.
+500 Internal Server Error|An internal server error occurred.
+
 
 # Examples
