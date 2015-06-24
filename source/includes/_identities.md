@@ -60,7 +60,7 @@ api_token | Yes | The api token as provided by Lexer.
 consumer_token | No | The consumer token as provided by Lexer.
 contributor_token | No | The contributor token as provided by Lexer.
 id | No | A Lexer ID if one is known. Is used over `links` if provided.
-links | No | An key-value object of [linkage attributes](#links) unique to the Identity - only required if an `id` is not present.
+links | No | A key-value object of [linkage attributes](#links) unique to the Identity - only required if an `id` is not present.
 attributes | No | An object of [attributes](#attributes) to be written to the Identity - only required if a `contributor_token` is present.
 
 
