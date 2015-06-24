@@ -67,7 +67,7 @@
 
 <p>For further details please <a href="mailto:support@lexer.io">contact support</a>.</p>
 
-<h1 id="access-tokens">Access Tokens</h1>
+<h1 id="authentication">Authentication</h1>
 <pre class="highlight shell"><code><span class="c"># Tokens are used as part of the JSON request body</span>
 
 curl https://identity.lexer.io/identity <span class="se">\</span>
@@ -93,7 +93,7 @@ curl https://identity.lexer.io/identity <span class="se">\</span>
 <p>Make sure to replace the tokens with those provided.</p>
 </blockquote>
 
-<p>To access any Lexer API you will require access tokens which will be provided to you. Please <a href="mailto:support@lexer.io">contact support</a> if you have not received these.</p>
+<p>To access any Lexer API you will require access tokens which will be provided to you. Please <a href="mailto:support@lexer.io">contact support</a> if you have not received these as part of your projects documentation.</p>
 
 <p>There are at least two of three possible tokens which you will need to communicate with the APIs:</p>
 
@@ -104,30 +104,30 @@ curl https://identity.lexer.io/identity <span class="se">\</span>
 </ul>
 
 <aside class="notice">
-Tokens can reveal business critical or personally sensitive information and therefore should not be shared.
+Tokens reveal business critical or personally sensitive information and therefore should not be shared or made publically avaliable.
 
-If you believe your tokens have been exposed please contact [support@lexer.io](mailto:support@lexer.io) immediately.
+If you believe your tokens have been exposed please contact support@lexer.io immediately.
 </aside>
 
-<h3 id="api-token">API Token</h3>
+<h2 id="api-token">API Token</h2>
 
 <p>All requests require an <em>API token</em> which will be provided to each party who require access to the Lexer APIs.</p>
 
 <p>An <em>API token</em> alone offers no access to the Lexer APIs. You need at least a <em>Consumer token</em> or <em>Contributor token</em> to make a valid request. Both a <em>Consumer token</em> and <em>Contributor token</em> can be provided in a single request payload for simultaneous read/write access.</p>
 
-<h3 id="consumer-token">Consumer Token</h3>
+<h2 id="consumer-token">Consumer Token</h2>
 
 <p>A <em>Consumer token</em> is supplied if the party requires <strong>read</strong> access to the Lexer APIs.</p>
 
-<p>When created, a <em>Consumer token</em> is locked to a specific namespace only granting that token access to a specific dataset.</p>
+<p>When created, a <em>Consumer token</em> is locked to a specific <a href="#namespaces">namespace</a> only granting that token access to a specific dataset.</p>
 
 <p>A <em>Consumer token</em> does not allow a party to <strong>write</strong> data to a Lexer APIs. For that a <em>Contributor token</em> is required.</p>
 
-<h3 id="contributor-token">Contributor Token</h3>
+<h2 id="contributor-token">Contributor Token</h2>
 
 <p>A <em>Contributor token</em> is supplied if the party requires <strong>write</strong> access to the Lexer APIs.</p>
 
-<p>When created, a <em>Contributor token</em> is locked to a specific namespace only granting that token access to a specific dataset.</p>
+<p>When created, a <em>Contributor token</em> is locked to a specific <a href="#namespaces">namespace</a> only granting that token access to a specific dataset.</p>
 
 <aside class="notice">
 All contributor requests made to a Lexer API will have limited responses unless a Contributor token (<code>write</code> access) is paired with a Consumer token (<code>read</code> access).
@@ -139,33 +139,35 @@ All contributor requests made to a Lexer API will have limited responses unless 
 
 <p>For details on the capability and project specific implementation of <a href="http://lexer.io">Lexer Identify</a> please contact support at <a href="mailto:support@lexer.io">support@lexer.io</a>.</p>
 
-<p>An Identity is a person, brand, place or thing.
+<p>Within the Lexer Identify platform an Identity is a person, brand, place or thing.
 Each Identity has thousands of attributes which are generated and updated in real-time through the Lexer Identify platform.</p>
 
 <p>Each Identity is made up of:</p>
 
 <ul>
-<li><strong>Links</strong>: Highly personal and unique attributes such as Email address, Mobile number, Twitter handle, Facebook ID, etc. These attributes belong to a single identity.</li>
-<li><strong>Attributes</strong>: An identity could contain thousands of attributes - each one defining their behaviour, facts and engagements. Examples are <code class="prettyprint">age</code>, <code class="prettyprint">gender</code>, <code class="prettyprint">favourite food</code>, <code class="prettyprint">spouse</code>, etc.</li>
+<li><strong>Links</strong>: Unique, personally identifiable attributes including Email addresses, their Mobile number, Twitter handle, Facebook ID, etc.</li>
+<li><strong>Attributes</strong>: An identity could contain thousands of attributes - each one defining their behaviour, facts and engagements, for example: <code class="prettyprint">age</code>, <code class="prettyprint">gender</code>, <code class="prettyprint">favourite food</code>, <code class="prettyprint">spouse</code>, etc.</li>
 </ul>
 
 <p>Clients can use the Lexer Identify platform to gather real-time insights on their customers, prospects and competitors by:</p>
 
 <ol>
-<li>Linking their proprietary data with a Lexer Identity</li>
-<li>Contributing additional information to enrich the Lexer Identity</li>
-<li>Consume the Identities attributes into internal or 3rd party platforms for activation</li>
+<li>Linking their proprietary data with one or more identities</li>
+<li>Contributing additional information to enrich the identity</li>
+<li>Consume an identities attributes into internal or 3rd party platforms for activation</li>
 </ol>
 
 <p>All this is done within the Identity API.</p>
 
 <h2 id="configuration">Configuration</h2>
 
-<h3 id="root-endpoint">ROOT Endpoint</h3>
+<h3 id="endpoints">Endpoints</h3>
 <pre class="highlight plaintext"><code>https://identity.api.lexer.io/
 </code></pre>
 
-<p>All access to the Lexer Identity API is performed via a single root endpoint. The correct behaviour of the API is determined by various input payload contexts. All input must be securely <code class="prettyprint">POST</code>ed in JSON format to this URL:</p>
+<p>All access to the Lexer Identity API is performed via a single root endpoint. The correct behaviour of the API is determined by various input payload contexts.</p>
+
+<p>All input must be sent via <code class="prettyprint">POST</code> in JSON format.</p>
 
 <h3 id="payload">Payload</h3>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
@@ -184,7 +186,7 @@ Each Identity has thousands of attributes which are generated and updated in rea
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>All input must be securely <code class="prettyprint">POST</code>ed in JSON format to the <a href="#root-endpoint">ROOT endpoint</a> and must contain the following keys:</p>
+<p>All input must be sent via <code class="prettyprint">POST</code> in JSON format to the <a href="#root-endpoint">ROOT endpoint</a> and must contain the following keys:</p>
 
 <table><thead>
 <tr>
@@ -196,32 +198,32 @@ Each Identity has thousands of attributes which are generated and updated in rea
 <tr>
 <td>api_token</td>
 <td>Yes</td>
-<td>The api token as provided by Lexer.</td>
+<td>The api token as provided by Lexer</td>
 </tr>
 <tr>
 <td>consumer_token</td>
 <td>No</td>
-<td>The consumer token as provided by Lexer.</td>
+<td>The consumer token as provided by Lexer</td>
 </tr>
 <tr>
 <td>contributor_token</td>
 <td>No</td>
-<td>The contributor token as provided by Lexer.</td>
+<td>The contributor token as provided by Lexer</td>
 </tr>
 <tr>
 <td>id</td>
 <td>No</td>
-<td>A Lexer ID if one is known. Is used over <code class="prettyprint">links</code> if provided.</td>
+<td>A Lexer ID if one is known. Is used over <code class="prettyprint">links</code> if provided</td>
 </tr>
 <tr>
 <td>links</td>
 <td>No</td>
-<td>A hash of <a href="#links">linkage attributes</a> unique to the Identity. Only required if an <code class="prettyprint">id</code> is not present.</td>
+<td>A hash of <a href="#links">linkage attributes</a> unique to the Identity - only required if an <code class="prettyprint">id</code> is not present</td>
 </tr>
 <tr>
 <td>attributes</td>
 <td>No</td>
-<td>A hash of <a href="#attributes">attributes</a> to be written to the Identity. Only required if a <code class="prettyprint">contributior_token</code> is present.</td>
+<td>A hash of <a href="#attributes">attributes</a> to be written to the Identity - only required if a <code class="prettyprint">contributior_token</code> is present</td>
 </tr>
 </tbody></table>
 
@@ -292,7 +294,7 @@ An API token along with a Contributor and/or a Consumer token is required.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>Internally the Identify platform uses links as a lookup for unique identities. They&rsquo;re also used to unify records across a Clients systems and partner networks.</p>
+<p>Internally the Lexer Identify platform uses links as a lookup for unique identities. They&rsquo;re also used to unify records across a Clients systems,  partner networks and Lexer&rsquo;s public data sources.</p>
 
 <p>In each case the link must be globally unique - meaning the link must belong to just one identity.
 An example of this is a mobile number, which in almost every case belongs to just one person, however an email may belong to more than one person - such as an email address provided by an ISP.</p>
@@ -348,7 +350,7 @@ Common cases include an internal <em>customer id</em>, <em>device id&rsquo;s</em
 
 <p>An identity is made up of thousands of attributes defined by Lexer, our clients and partners.</p>
 
-<p>When a contribution is the changes becomes avaliable to the client and their partners according to the <a href="#namespaces">namespace</a> policies defined.</p>
+<p>When a contribution is made the changes becomes avaliable to the client and their partners according to the <a href="#namespaces">namespace</a> policies defined.</p>
 
 <p>An attribute is defined by a:</p>
 
@@ -364,11 +366,11 @@ Common cases include an internal <em>customer id</em>, <em>device id&rsquo;s</em
 </tr>
 <tr>
 <td>value</td>
-<td>The value of the attribute. A range of data types are allowed.</td>
+<td>The value of the attribute. A range of data types are allowed</td>
 </tr>
 <tr>
 <td>confidence</td>
-<td>The confidence score given by the contributor.</td>
+<td>The confidence score given by the contributor</td>
 </tr>
 </tbody></table>
 
@@ -384,7 +386,7 @@ Common cases include an internal <em>customer id</em>, <em>device id&rsquo;s</em
 </ul>
 
 <aside class="notice">
-The name needs to be globally unique as each contribution is a write to the system - therefore two attributes with the same name can not exist.
+The name needs to be globally unique as each contribution is a write to the system - therefore two attributes with the same name can not exist. An contribution on the same name will overwrite the existing attributes value.
 </aside>
 
 <p>Any contributions to attributes with names that conflict with the <a href="#namespaces">namespace</a> policy will be rejected.</p>
@@ -405,12 +407,12 @@ The name needs to be globally unique as each contribution is a write to the syst
 <aside class="notice">
 All contributions write over existing values.
 
-Lexer maintains a change log for security and auditing purposes, not for restoring data due to contributors bugs.
+Lexer maintains a change log for security and auditing purposes. This log is not capable of restoring data due to issues with contributions.
 </aside>
 
 <h3 id="confidence">Confidence</h3>
 
-<p>Each attribute on an identity has a confidence score which is an enum defined by Lexer to help all clients understand the value of the accuracy of the source or method of inference.</p>
+<p>Each attribute on an identity has a confidence score which is an enum defined by Lexer to help all clients understand the accuracy of the source or method of inference.</p>
 
 <table><thead>
 <tr>
@@ -420,15 +422,15 @@ Lexer maintains a change log for security and auditing purposes, not for restori
 </thead><tbody>
 <tr>
 <td>0</td>
-<td>Attribute is of low confidence - the value is most likely generated using aggregate data.</td>
+<td>Attribute is of low confidence - the value is most likely generated using aggregate data</td>
 </tr>
 <tr>
 <td>1</td>
-<td>Attribute has been calculated using one or more other attributes using a validated function or equation.</td>
+<td>Attribute has been calculated using one or more other attributes using a validated function or equation</td>
 </tr>
 <tr>
 <td>2</td>
-<td>Value is provided via customer or business data. Is considered factual.</td>
+<td>Value is provided via customer or business data. Is considered factual</td>
 </tr>
 </tbody></table>
 
