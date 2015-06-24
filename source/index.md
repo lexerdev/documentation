@@ -25,7 +25,7 @@ We currently offer the following APIs to our clients:
 
 All of our APIs communicate via HTTPS and JSON data. We offer Ruby Gems for most of our APIs.
 
-Our _Event_ and _Publish_ API's are currently under development.
+Our _Event_ and _Publish_ APIs are currently under development.
 
 
 ## Fair Use
