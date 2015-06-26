@@ -14,9 +14,9 @@ Each Identity is made up of:
 
 Clients can use the Lexer Identify platform to gather real-time insights on their customers, prospects and competitors by:
 
-1. Linking their proprietary data with one or more identities
-2. Contributing additional information to enrich the identity
-3. Consume an identities attributes into internal or 3rd party platforms for activation
+1. Linking their proprietary data with one or more identities.
+2. Contributing additional information to enrich the identity.
+3. Consume an identities attributes into internal or 3rd party platforms for activation.
 
 All this is done within the Identity API.
 
@@ -46,8 +46,8 @@ All input must be sent via `POST` in JSON format.
    "mobile": "+61404000000"
  },
  "attributes": {
-   "com.mybrand.age": 32,
-   "com.mybrand.car.colour": "red"
+   "com.mybrand.age": {...},
+   "com.mybrand.car.color": {...}
  }
 }
 ```
@@ -56,12 +56,12 @@ All input must be sent via `POST` in JSON format to the [ROOT endpoint](#root-en
 
 Key   | Required | Description
 ----- | --- | ----
-api_token | Yes | The api token as provided by Lexer
-consumer_token | No | The consumer token as provided by Lexer
-contributor_token | No | The contributor token as provided by Lexer
-id | No | A Lexer ID if one is known. Is used over `links` if provided
-links | No | A hash of [linkage attributes](#links) unique to the Identity - only required if an `id` is not present
-attributes | No | A hash of [attributes](#attributes) to be written to the Identity - only required if a `contributior_token` is present
+api_token | Yes | The api token as provided by Lexer.
+consumer_token | No | The consumer token as provided by Lexer.
+contributor_token | No | The contributor token as provided by Lexer.
+id | No | A Lexer ID if one is known. Is used over `links` if provided.
+links | No | A key-value object of [linkage attributes](#links) unique to the Identity - only required if an `id` is not present.
+attributes | No | An object of [attributes](#attributes) to be written to the Identity - only required if a `contributor_token` is present.
 
 
 ### Tokens
@@ -70,24 +70,20 @@ attributes | No | A hash of [attributes](#attributes) to be written to the Ident
 curl https://identity.api.lexer.io/identity \
   -XPOST \
   -H "Content-Type: application/json" \
-  -d ‘
+  -d '
 {
  "api_token": "your-api-token",
  "consumer_token": "your-consumer-token",
  "contributor_token": "your-contrib-token"
-}’
+}'
 ```
 
 ```ruby
-curl https://identity.api.lexer.io/identity \
-  -XPOST \
-  -H "Content-Type: application/json" \
-  -d ‘
-{
- "api_token": "your-api-token",
- "consumer_token": "your-consumer-token",
- "contributor_token": "your-contrib-token"
-}’
+Lexer::Identity.configure do |config|
+  config.api_token = 'lexer-api-token'
+  config.contributor_token = 'lexer-contrib-token'
+  config.consumer_token = 'lexer-consumer-token'
+end
 ```
 
 As outlined in [Access Tokens](#access-tokens) a set of tokens are required for all communication with the API.
@@ -102,11 +98,11 @@ Contact [support@lexer.io](mailto:support@lexer.io) if you require assistance.
 
 Each _Consumer Token_ and _Contributor Token_ is bound to a particular namespace.
 
-A namespace is commonly defined as a reverse domain name. Such as `io.lexer.*`.
+A namespace is commonly defined as a reverse domain name. Such as `io.lexer`.
 
 Namespaces are used within the platform to:
 
-1. **Protect Secure Information**: Tokens can only read from defined namespaces, limiting each parties access to only the attributes permitted.
+1. **Protect Secure Information**: Tokens can only read from defined namespaces, limiting each party's access to only the attributes permitted.
 2. **Enforce Business Policy**: Our clients often have many partners with a complex permission tree. Using namespaces we’re able to allow certain partners to access certain attributes.
 
 Each attribute on an Identity has a name within the namespace. For example:
@@ -115,7 +111,7 @@ Each attribute on an Identity has a name within the namespace. For example:
 - `com.mybrand.age` defines the age of the Identity according to MyBrand
 - `com.mybrand.car.colour` defines the colour of the Identities car according to MyBrand
 
-Please refer to the projects documentation on available namespaces for your implementation.
+Please refer to the project's documentation on available namespaces for your implementation.
 
 ## Links
 
@@ -134,14 +130,14 @@ Please refer to the projects documentation on available namespaces for your impl
 }
 ```
 
-Internally the Lexer Identify platform uses links as a lookup for unique identities. They're also used to unify records across a Clients systems,  partner networks and Lexer's public data sources.
+Internally the Lexer Identify platform uses links as a lookup for unique identities. They are also used to unify records across a Client's systems,  partner networks and Lexer's public data sources.
 
 In each case the link must be globally unique - meaning the link must belong to just one identity.
 An example of this is a mobile number, which in almost every case belongs to just one person, however an email may belong to more than one person - such as an email address provided by an ISP.
 
-If a link is provided to Lexer which belongs to multiple people an [error](#errors) will be returned.
+If a link is provided to Lexer which belongs to multiple Identities an [error](#errors) will be returned.
 
-Currently Lexer supports the following pre-defined links:
+Currently, Lexer supports the following predefined links:
 
 - `email`: the email address of the identity
 - `mobile`: the mobile phone number of the identity - written in international format with no spaces i.e. +61404000000
@@ -151,8 +147,8 @@ Currently Lexer supports the following pre-defined links:
 
 We also allow clients and partners to write their own identifiers to an identity using the namespaces provided.
 
-This allows you to provide your own shared ID's for distribution through the Identify platform.
-Common cases include an internal _customer id_, _device id's_, _loyalty membership number_, etc.
+This allows you to provide your own shared IDs for distribution through the Identify platform.
+Common cases include an internal _customer id_, _device IDs_, _loyalty membership number_, etc.
 
 These links should be named using the following formula `<namespace>.<link name>` i.e. `com.mybrand.customer_id`.
 
@@ -190,7 +186,7 @@ If multiple link values exist for a single identity (i.e. they have more than on
 
 An identity is made up of thousands of attributes defined by Lexer, our clients and partners.
 
-When a contribution is made the changes become avaliable to the client and their partners according to the [namespace](#namespaces) policies defined.
+When a contribution is made the changes become available to the client and their partners according to the [namespace](#namespaces) policies defined.
 
 An attribute is defined by a:
 
@@ -210,7 +206,7 @@ When selecting a name for an attribute rely on the following guidelines:
 * Should answer the question `What is Sarah's <attribute name>?` or `What are Sarah's <attribute name>`. i.e. `What is Sarah's age?` or `What are Sarah's upcoming trips?`
 
 <aside class="notice">
-The name needs to be globally unique as each contribution is a write to the system - therefore two attributes with the same name can not exist. A contribution on the same name will overwrite the existing attributes value.
+The name needs to be globally unique as each contribution is a write to the system - therefore two attributes with the same name can not exist. A contribution on the same name will overwrite the existing attribute's value.
 </aside>
 
 Any contributions to attributes with names that conflict with the [namespace](#namespaces) policy will be rejected.
@@ -222,26 +218,34 @@ The API supports any values supported by the [JSON](http://json.org/) specificat
 
 * Strings: `"hello world"`
 * Numbers: `123.45`
-* Hashes: `{"make": "Tesla", "model": "S"}`
+* Objects: `{"make": "Tesla", "model": "S"}`
 * Arrays: `["hello", "world", 123.45, {"make": "Tesla"}]`
 
-If you wish to merge existing attribute values with a new value; for example the contents of an `array` or `hash`; then you must first consume from the API and manage the merge yourself.
+If you wish to merge existing attribute values with a new value; for example the contents of an `array` or `object`; then you must first consume from the API and manage the merge yourself.
 
 <aside class="notice">
-All contributions write over existing values.
+All contributions overwrite existing values.
 
 Lexer maintains a change log for security and auditing purposes. This log is not capable of restoring data due to issues with contributions.
 </aside>
 
 ### Confidence
 
-Each attribute on an identity has a confidence score which is an enum defined by Lexer to help all clients understand the accuracy of the source or method of inference.
+```ruby
+# The following are the Ruby constants you should use
+# to specify attribute confidence
+Lexer::Identity::CONFIDENCE_INFERRED
+Lexer::Identity::CONFIDENCE_CALCULATED
+Lexer::Identity::CONFIDENCE_PROVIDED
+```
 
-Score | Description
-------|-------------
-0     | Attribute is of low confidence - the value is most likely generated using aggregate data
-1     | Attribute has been calculated using one or more other attributes using a validated function or equation
-2     | Value is provided via customer or business data. Is considered factual
+Each attribute on an identity has a confidence score which is a constant defined by Lexer to help all clients understand the accuracy of the source or method of inference.
+
+Score |Description
+------|-----------
+0     |Attribute is of low confidence - the value is most likely generated using aggregate data.
+1     |Attribute has been calculated using one or more other attributes using a validated function or equation.
+2     |Value is provided via customer or business data. Is considered factual.
 
 
 ## Contributions
@@ -250,7 +254,7 @@ Score | Description
 curl https://identity.api.lexer.io/identity \
   -XPOST \
   -H "Content-Type: application/json" \
-  -d ‘
+  -d '
 {
  "api_token": "your-api-token",
  "contributor_token": "your-contrib-token",
@@ -264,33 +268,31 @@ curl https://identity.api.lexer.io/identity \
     "confidence": 2
   }
  }
-}’
+}'
 
 # Result
-# { "id": "862d10d5..." }
+# {"id": "862d10d5..."}
 ```
 
 ```ruby
-require 'lexer'
-
 Lexer::Identity.configure do |config|
   config.api_token = 'lexer-api-token'
   config.contributor_token = 'lexer-contrib-token'
 end
 
-link_hash = {
-  email: "joe.blog@mybrand.com",
-  mobile: "+61404000000",
+links = {
+  email: 'joe.blog@mybrand.com',
+  mobile: '+61404000000',
 }
 
-attribute_hash = {
-  "com.mybrand.age": {
+attributes = {
+  'com.mybrand.age': {
     value: 32,
     confidence: Lexer::Identity::CONFIDENCE_PROVIDED
   }
 }
 
-identity = Lexer::Identity.enrich( links: link_hash, attributes: attribute_hash )
+identity = Lexer::Identity.enrich(links: links, attributes: attributes)
 # <Lexer::Identity::EnrichedResult @id="862d10d5...">
 
 identity.id
@@ -312,7 +314,7 @@ Unless a consumer token is provided only a Lexer ID will be returned upon a succ
 curl https://identity.api.lexer.io/identity \
   -XPOST \
   -H "Content-Type: application/json" \
-  -d ‘
+  -d '
 {
  "api_token": "your-api-token",
  "consumer_token": "your-consumer-token",
@@ -320,26 +322,24 @@ curl https://identity.api.lexer.io/identity \
   "email": "joe.blog@mybrand.com",
   "mobile": "+61404000000"
  }
-}’
+}'
 
 # Result
-# { "id": "862d10d5...", "attributes": { "com.mybrand.age": { "value": [32], "confidence": 2, "updated_at":"2015-06-23T11:51:16Z" } } }
+# {"id": "862d10d5...", "attributes": {"com.mybrand.age": {"value": [32], "confidence": 2, "updated_at":"2015-06-23T11:51:16Z"}}}
 ```
 
 ```ruby
-require 'lexer'
-
 Lexer::Identity.configure do |config|
   config.api_token = 'lexer-api-token'
   config.consumer_token = 'lexer-consumer-token'
 end
 
-link_hash = {
+links = {
   email: "joe.blog@mybrand.com",
   mobile: "+61404000000",
 }
 
-identity = Lexer::Identity.enrich( links: link_hash )
+identity = Lexer::Identity.enrich(links: links)
 # <Lexer::Identity::EnrichedResult @id="862d10d5...", @attributes={"com.mybrand.age"=>{...}}>
 
 identity.id
@@ -351,7 +351,7 @@ identity.attributes
 
 A consumption is the process of reading attributes from an existing identity.
 
-The presence of a valid `consumer_token` in the input payload instructs the API to return all attributes made avaliable to the requester via the namespace policies defined on the account.
+The presence of a valid `consumer_token` in the input payload instructs the API to return all attributes made available to the requester via the namespace policies defined on the account.
 
 A `consumer_token` can be paired with a `contributor_token` which will result in a write then read procedure on the matched identity.
 
@@ -359,7 +359,7 @@ A `consumer_token` can be paired with a `contributor_token` which will result in
 ## Status Codes
 
 ```json
-{"error":"403 Forbidden"}
+{"error": "403 Forbidden"}
 ```
 
 HTTP status codes are returned to indicate the success or failure of a request. In addition, error messages are returned via a JSON object response.
