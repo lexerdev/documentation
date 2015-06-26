@@ -190,7 +190,7 @@ If multiple link values exist for a single identity (i.e. they have more than on
 
 An identity is made up of thousands of attributes defined by Lexer, our clients and partners.
 
-When a contribution is made the changes becomes avaliable to the client and their partners according to the [namespace](#namespaces) policies defined.
+When a contribution is made the changes become avaliable to the client and their partners according to the [namespace](#namespaces) policies defined.
 
 An attribute is defined by a:
 
@@ -210,7 +210,7 @@ When selecting a name for an attribute rely on the following guidelines:
 * Should answer the question `What is Sarah's <attribute name>?` or `What are Sarah's <attribute name>`. i.e. `What is Sarah's age?` or `What are Sarah's upcoming trips?`
 
 <aside class="notice">
-The name needs to be globally unique as each contribution is a write to the system - therefore two attributes with the same name can not exist. An contribution on the same name will overwrite the existing attributes value.
+The name needs to be globally unique as each contribution is a write to the system - therefore two attributes with the same name can not exist. A contribution on the same name will overwrite the existing attributes value.
 </aside>
 
 Any contributions to attributes with names that conflict with the [namespace](#namespaces) policy will be rejected.
