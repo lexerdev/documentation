@@ -42,7 +42,7 @@ For further details please [contact support](mailto:support@lexer.io).
 ```shell
 # Tokens are used as part of the JSON request body
 
-curl https://identity.lexer.io/identity \
+curl https://identity.api.lexer.io/ \
   -XPOST \
   -H "Content-Type: application/json" \
   -d '

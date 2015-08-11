@@ -67,7 +67,7 @@ attributes | No | An object of [attributes](#attributes) to be written to the Id
 ### Tokens
 
 ```shell
-curl https://identity.api.lexer.io/identity \
+curl https://identity.api.lexer.io/ \
   -XPOST \
   -H "Content-Type: application/json" \
   -d '
@@ -251,7 +251,7 @@ Score |Description
 ## Contributions
 
 ```shell
-curl https://identity.api.lexer.io/identity \
+curl https://identity.api.lexer.io/ \
   -XPOST \
   -H "Content-Type: application/json" \
   -d '
@@ -311,7 +311,7 @@ Unless a consumer token is provided only a Lexer ID will be returned upon a succ
 ## Consumption
 
 ```shell
-curl https://identity.api.lexer.io/identity \
+curl https://identity.api.lexer.io/ \
   -XPOST \
   -H "Content-Type: application/json" \
   -d '
