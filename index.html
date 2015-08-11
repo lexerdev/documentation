@@ -70,7 +70,7 @@
 <h1 id="authentication">Authentication</h1>
 <pre class="highlight shell"><code><span class="c"># Tokens are used as part of the JSON request body</span>
 
-curl https://identity.lexer.io/identity <span class="se">\</span>
+curl https://identity.api.lexer.io/ <span class="se">\</span>
   -XPOST <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -d <span class="s1">'
@@ -228,7 +228,7 @@ Each Identity has thousands of attributes which are generated and updated in rea
 </tbody></table>
 
 <h3 id="tokens">Tokens</h3>
-<pre class="highlight shell"><code>curl https://identity.api.lexer.io/identity <span class="se">\</span>
+<pre class="highlight shell"><code>curl https://identity.api.lexer.io/ <span class="se">\</span>
   -XPOST <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -d <span class="s1">'
@@ -437,7 +437,7 @@ Lexer maintains a change log for security and auditing purposes. This log is not
 </tbody></table>
 
 <h2 id="contributions">Contributions</h2>
-<pre class="highlight shell"><code>curl https://identity.api.lexer.io/identity <span class="se">\</span>
+<pre class="highlight shell"><code>curl https://identity.api.lexer.io/ <span class="se">\</span>
   -XPOST <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -d <span class="s1">'
@@ -493,7 +493,7 @@ Lexer maintains a change log for security and auditing purposes. This log is not
 <p>Unless a consumer token is provided only a Lexer ID will be returned upon a successful contribution to the API, otherwise an <a href="#status-codes">error</a> will be returned.</p>
 
 <h2 id="consumption">Consumption</h2>
-<pre class="highlight shell"><code>curl https://identity.api.lexer.io/identity <span class="se">\</span>
+<pre class="highlight shell"><code>curl https://identity.api.lexer.io/ <span class="se">\</span>
   -XPOST <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -d <span class="s1">'
