@@ -11,6 +11,8 @@ toc_footers:
 
 includes:
   - identities
+  - command
+  - activity
 
 search: true
 ---
