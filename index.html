@@ -22,11 +22,11 @@
     <a href="#" id="nav-button">
       <span>
         NAV
-        <img src="images/navbar.png" />
+        <img src="images/navbar.png" alt="Navbar" />
       </span>
     </a>
     <div class="tocify-wrapper">
-      <img src="images/logo.png" />
+      <img src="images/logo.png" alt="Logo" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
               <a href="#" data-language-name="ruby">ruby</a>
@@ -46,6 +46,8 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id="introduction">Introduction</h1>
+
+<p>HELLO WORLD</p>
 
 <p>Welcome to the Lexer API documentation.</p>
 
@@ -576,6 +578,38 @@ Lexer maintains a change log for security and auditing purposes. This log is not
 <td>An internal server error occurred.</td>
 </tr>
 </tbody></table>
+
+          <h1 id="command-api">Command API</h1>
+
+<p>Coming soon&hellip;</p>
+
+<h2 id="configuration">Configuration</h2>
+
+<h3 id="endpoints">Endpoints</h3>
+<pre class="highlight plaintext"><code>https://clients.lexer.io/api/clients/&lt;account_id&gt;/screens/&lt;screen_id&gt;/charts/&lt;chart_id&gt;/result?client_token=&lt;client token&gt;
+</code></pre>
+
+<p>An example request&hellip;</p>
+
+<h3 id="payload">Payload</h3>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">17635096</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-22T02:49:02Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"mentions"</span><span class="p">:</span><span class="w"> </span><span class="mi">40573</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sources"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"authors"</span><span class="p">:</span><span class="w"> </span><span class="mi">27878</span><span class="p">,</span><span class="w">
+  </span><span class="err">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>An example response&hellip;</p>
+
+<h2 id="live-stream-volume">Live Stream Volume</h2>
+
+          <h1 id="activity-api">Activity API</h1>
+
+<p>Coming soon&hellip;</p>
 
       </div>
       <div class="dark-box">
