@@ -581,31 +581,90 @@ Lexer maintains a change log for security and auditing purposes. This log is not
 
           <h1 id="command-api">Command API</h1>
 
-<p>Coming soon&hellip;.</p>
+<p>Lexer Command allows you to access the underlying data that powers each chart displayed on a screen via an API. Access to these endpoints is retrieved via the charts themselves by clicking on the small link button in the top right corner of each chart.</p>
+
+<p>For details on how to build a Command Screen please read our <a href="https://learn.lexer.io/export-and-report/command/command-screens">learn article</a> or contact support via live chat or at <a href="mailto:support@lexer.io">support@lexer.io</a>.</p>
+
+<h2 id="prerequisites">Prerequisites</h2>
 
 <h2 id="configuration">Configuration</h2>
 
+<p>Access to the Command API is performed via endpoints generated from live screens. Generate your screens to display the information that your require, and retrieve the constructed endpoint by clicking on the link button in the top right corner.</p>
+
+<p>Next we&rsquo;ll look at the various charts and the response formats they provide.</p>
+
 <h3 id="endpoints">Endpoints</h3>
-<pre class="highlight plaintext"><code>https://clients.lexer.io/api/clients/&lt;account_id&gt;/screens/&lt;screen_id&gt;/charts/&lt;chart_id&gt;/result?client_token=&lt;client token&gt;
+<pre class="highlight plaintext"><code>https://clients.lexer.io/api/clients/{account_id}/screens/{screen_id}/charts/{chart_id}/result?client_token={client token}
 </code></pre>
 
-<p>An example request&hellip;</p>
+<p>All access to the Command API is performed via a single root endpoint, extended by the parameters that define the account id, screen id, chart id and the client token.</p>
 
-<h3 id="payload">Payload</h3>
+<h3 id="parameters">Parameters</h3>
+
+<p>All endpoints can be modified with specific paramaters to adjust the date range or filter for specific terms.</p>
+<pre class="highlight plaintext"><code>;date_ending=2018-02-21
+</code></pre>
+
+<p>Updating the date ending time:</p>
+<pre class="highlight plaintext"><code>;terms=lexer
+</code></pre>
+<pre class="highlight plaintext"><code>;terms=lexer%20OR%20data
+</code></pre>
+
+<p>Adding a terms filter to your query:</p>
+
+<h3 id="live-stream-volume">Live Stream Volume</h3>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">17635096</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-22T02:49:02Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">17633606</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-22T03:14:51Z"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"mentions"</span><span class="p">:</span><span class="w"> </span><span class="mi">40573</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"sources"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"authors"</span><span class="p">:</span><span class="w"> </span><span class="mi">27878</span><span class="p">,</span><span class="w">
-  </span><span class="err">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
+    </span><span class="s2">"Nintendo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"1519185600000"</span><span class="p">:</span><span class="w"> </span><span class="mi">1459</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1519189200000"</span><span class="p">:</span><span class="w"> </span><span class="mi">1284</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1519192800000"</span><span class="p">:</span><span class="w"> </span><span class="mi">1243</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1519196400000"</span><span class="p">:</span><span class="w"> </span><span class="mi">1123</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1519200000000"</span><span class="p">:</span><span class="w"> </span><span class="mi">1422</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1519203600000"</span><span class="p">:</span><span class="w"> </span><span class="mi">1295</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1519207200000"</span><span class="p">:</span><span class="w"> </span><span class="mi">1388</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1519210800000"</span><span class="p">:</span><span class="w"> </span><span class="mi">1764</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1519214400000"</span><span class="p">:</span><span class="w"> </span><span class="mi">1899</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1519218000000"</span><span class="p">:</span><span class="w"> </span><span class="mi">1748</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1519221600000"</span><span class="p">:</span><span class="w"> </span><span class="mi">1956</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1519225200000"</span><span class="p">:</span><span class="w"> </span><span class="mi">2111</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1519228800000"</span><span class="p">:</span><span class="w"> </span><span class="mi">2185</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1519232400000"</span><span class="p">:</span><span class="w"> </span><span class="mi">2243</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1519236000000"</span><span class="p">:</span><span class="w"> </span><span class="mi">2044</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1519239600000"</span><span class="p">:</span><span class="w"> </span><span class="mi">2082</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1519243200000"</span><span class="p">:</span><span class="w"> </span><span class="mi">2174</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1519246800000"</span><span class="p">:</span><span class="w"> </span><span class="mi">2024</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1519250400000"</span><span class="p">:</span><span class="w"> </span><span class="mi">1825</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1519254000000"</span><span class="p">:</span><span class="w"> </span><span class="mi">1701</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1519257600000"</span><span class="p">:</span><span class="w"> </span><span class="mi">1514</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1519261200000"</span><span class="p">:</span><span class="w"> </span><span class="mi">1427</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1519264800000"</span><span class="p">:</span><span class="w"> </span><span class="mi">1289</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1519268400000"</span><span class="p">:</span><span class="w"> </span><span class="mi">364</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"original"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span><span class="w">
+
+      </span><span class="s2">"summary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"current"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"mentions"</span><span class="p">:</span><span class="w"> </span><span class="mi">39564</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5448</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#ed1941"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="err">```</span><span class="w">
+
+</span><span class="err">The</span><span class="w"> </span><span class="err">Live</span><span class="w"> </span><span class="err">Stream</span><span class="w"> </span><span class="err">Volume</span><span class="w"> </span><span class="err">chart</span><span class="w"> </span><span class="err">will</span><span class="w"> </span><span class="err">return</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">data</span><span class="w"> </span><span class="err">object</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">each</span><span class="w"> </span><span class="err">filter</span><span class="w"> </span><span class="err">presented</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">chart.</span><span class="w"> </span><span class="err">In</span><span class="w"> </span><span class="err">this</span><span class="w"> </span><span class="err">example</span><span class="w"> </span><span class="err">we're</span><span class="w"> </span><span class="err">just</span><span class="w"> </span><span class="err">looking</span><span class="w"> </span><span class="err">at</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">Nintendo</span><span class="w"> </span><span class="err">filter.</span><span class="w"> </span><span class="err">Within</span><span class="w"> </span><span class="err">this</span><span class="w"> </span><span class="err">object</span><span class="w"> </span><span class="err">are</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">count</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">mentions</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">each</span><span class="w"> </span><span class="err">time</span><span class="w"> </span><span class="err">interval.</span><span class="w">
+
+</span><span class="err">Also</span><span class="w"> </span><span class="err">included</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">this</span><span class="w"> </span><span class="err">response</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">total</span><span class="w"> </span><span class="err">number</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">mentions</span><span class="w"> </span><span class="err">and</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">color</span><span class="w"> </span><span class="err">code</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">line</span><span class="w"> </span><span class="err">chart.</span><span class="w">
+
+
+</span><span class="err">###</span><span class="w"> </span><span class="err">Terms</span><span class="w"> </span><span class="err">Volume</span><span class="w">
 </span></code></pre>
-
-<p>An example response&hellip;</p>
-
-<h2 id="live-stream-volume">Live Stream Volume</h2>
 
           <h1 id="activity-api">Activity API</h1>
 
