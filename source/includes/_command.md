@@ -1,6 +1,6 @@
 # Command API
 
-Coming soon...
+Coming soon....
 
 ## Configuration
 
