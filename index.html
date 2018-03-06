@@ -1,3 +1,4 @@
+<link href="images/favicon.png" rel="icon" type="image/png" />
 <!doctype html>
 <html>
   <head>
@@ -597,10 +598,10 @@ Lexer maintains a change log for security and auditing purposes. This log is not
 <p>Access is performed via endpoints generated from live screens. Generate your screens to display the information that your require, and retrieve the constructed endpoint by clicking on the link button in the top right corner.</p>
 
 <h3 id="endpoints">Endpoints</h3>
+
+<p>Endpoints look like the example displayed to the right. They always include the account id, screen id, chart id, and finally the client token. Note that Command screens are designed for public use and can be accessed without authentication.</p>
 <pre class="highlight plaintext"><code>https://clients.lexer.io/api/clients/{account_id}/screens/{screen_id}/charts/{chart_id}/result?client_token={client token}
 </code></pre>
-
-<p>Endpoints look like the example displayed to the right. The include the account id, screen id, chart id, and finally the client token. Note that Command screens are designed for public use and can be accessed without authentication.</p>
 
 <p>All of your requests should match this format.</p>
 
@@ -617,7 +618,7 @@ Lexer maintains a change log for security and auditing purposes. This log is not
 
 <p>Append terms to filter your saved dive even further. Here we&rsquo;re filtering for mentions of <em>Lexer OR Data</em>. Tip: it&rsquo;s easier to define this from your saved dive within Listen!</p>
 
-<h3 id="live-stream-volume">Live Stream Volume</h3>
+<h2 id="live-stream-volume">Live Stream Volume</h2>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">17633606</span><span class="p">,</span><span class="w">
   </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-22T03:14:51Z"</span><span class="p">,</span><span class="w">
@@ -650,7 +651,7 @@ Lexer maintains a change log for security and auditing purposes. This log is not
 
 <p>Also included in this response is the total number of mentions and various other information to render this in the chart interface.</p>
 
-<h3 id="terms-volume">Terms Volume</h3>
+<h2 id="terms-volume">Terms Volume</h2>
 
           <h1 id="activity-api">Activity API</h1>
 
