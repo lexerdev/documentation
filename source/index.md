@@ -1,5 +1,5 @@
 ---
-title: Lexer API Reference
+title: Lexer - Developers
 
 language_tabs:
   - shell
@@ -10,26 +10,30 @@ toc_footers:
   - <a href='http://github.com/tripit/slate'>(Docs Powered by Slate)</a>
 
 includes:
-  - identities
   - command
   - activity
+  - identities
 
 search: true
 ---
 
 # Introduction
 
-HELLO WORLD
-
 Welcome to the Lexer API documentation.
 
 We currently offer the following APIs to our clients:
 
+- **Command API**: Allowing you to read the data powering charts.
+
+- **Chatbot API**: Integrating your chatbot to claim ownership of conversations it is handling.
+
+- **Activity API**: Allowing you to read team performance metrics collected about your team in Engage.
+
 - **Identity API**: Allowing clients to Contribute and Consume Identity data from the Lexer platform.
 
-All of our APIs communicate via HTTPS and JSON data. We offer Ruby Gems for most of our APIs.
+All of our APIs communicate via HTTPS and JSON data.
 
-Our _Event_ and _Publish_ APIs are currently under development.
+Our _Activity_ API is currently under development.
 
 
 ## Fair Use
@@ -41,70 +45,4 @@ Refer to your project's terms of service for details on rate limiting, performan
 For further details please [contact support](mailto:support@lexer.io).
 
 
-# Authentication
-
-```shell
-# Tokens are used as part of the JSON request body
-
-curl https://identity.api.lexer.io/ \
-  -XPOST \
-  -H "Content-Type: application/json" \
-  -d '
-{
- "api_token": "lexer-api-token",
- "consumer_token": "lexer-consumer-token",
- "contributor_token": "lexer-contrib-token"
-}'
-```
-
-```ruby
-require 'lexer'
-
-Lexer::Identity.configure do |config|
-  config.api_token = 'lexer-api-token'
-  config.contributor_token = 'lexer-contrib-token'
-  config.consumer_token = 'lexer-consumer-token'
-end
-```
-
-> Make sure to replace the tokens with those provided.
-
-To access any Lexer API you will require access tokens which will be provided to you. Please [contact support](mailto:support@lexer.io) if you have not received these as part of your projects documentation.
-
-There are at least two of three possible tokens which you will need to communicate with the APIs:
-
-* **API Token + Consumer Token**: Read only access to Lexer APIs
-* **API + Contributor Tokens**: Write only access to Lexer APIs
-* **API + Consumer + Contributor Tokens**: Read _and_ Write access to Lexer APIs
-
-<aside class="notice">
-Tokens reveal business critical or personally sensitive information and therefore should not be shared or made publicly available.
-
-If you believe your tokens have been exposed please contact support@lexer.io immediately.
-</aside>
-
-
-## API Token
-
-All requests require an _API token_ which will be provided to each party who require access to the Lexer APIs.
-
-An _API token_ alone offers no access to the Lexer APIs. You need at least a _Consumer token_ or _Contributor token_ to make a valid request. Both a _Consumer token_ and _Contributor token_ can be provided in a single request payload for simultaneous read/write access.
-
-## Consumer Token
-
-A _Consumer token_ is supplied if the party requires **read** access to the Lexer APIs.
-
-When created, a _Consumer token_ is locked to a specific [namespace](#namespaces) only granting that token access to a specific dataset.
-
-A _Consumer token_ does not allow a party to **write** data to a Lexer APIs. For that a _Contributor token_ is required.
-
-## Contributor Token
-
-A _Contributor token_ is supplied if the party requires **write** access to the Lexer APIs.
-
-When created, a _Contributor token_ is locked to a specific [namespace](#namespaces) only granting that token access to a specific dataset.
-
-<aside class="notice">
-All contributor requests made to a Lexer API will have limited responses unless a Contributor token (<code>write</code> access) is paired with a Consumer token (<code>read</code> access).
-</aside>
 
