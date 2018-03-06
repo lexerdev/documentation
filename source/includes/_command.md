@@ -16,12 +16,11 @@ Access is performed via endpoints generated from live screens. Generate your scr
 
 ### Endpoints
 
+Endpoints look like the example displayed to the right. They always include the account id, screen id, chart id, and finally the client token. Note that Command screens are designed for public use and can be accessed without authentication.
+
 ```text
 https://clients.lexer.io/api/clients/{account_id}/screens/{screen_id}/charts/{chart_id}/result?client_token={client token}
 ```
-
-Endpoints look like the example displayed to the right. The include the account id, screen id, chart id, and finally the client token. Note that Command screens are designed for public use and can be accessed without authentication.
-
 All of your requests should match this format.
 
 
@@ -44,7 +43,7 @@ Append terms to filter your saved dive even further. Here we're filtering for me
 
 
 
-### Live Stream Volume
+## Live Stream Volume
 
 ```json
 {
@@ -80,4 +79,4 @@ The Live Stream Volume chart will return a data object for each filter presented
 Also included in this response is the total number of mentions and various other information to render this in the chart interface.
 
 
-### Terms Volume
+## Terms Volume
