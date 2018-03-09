@@ -1,6 +1,6 @@
-# Command API
+# Content API
 
-Our Command API allows you to access the data powering each chart in a simple JSON format. Access to these endpoints is retrieved via the charts themselves by clicking on the small link button in the top right corner of each chart, which can be seen in edit mode.
+Our Content API allows you to access social and news content the data powering each chart in a simple JSON format. Access to these endpoints is retrieved via the charts themselves by clicking on the small link button in the top right corner of each chart, which can be seen in edit mode.
 
 For details on how to build a Command Screen please read our [learn article](https://learn.lexer.io/export-and-report/command/command-screens) or contact support via live chat or at [support@lexer.io](mailto:support@lexer.io).
 
