@@ -23,17 +23,15 @@ Welcome to the Lexer API documentation.
 
 We currently offer the following APIs to our clients:
 
-- **Command API**: Allowing you to read the data powering charts.
+- **Command API**: read the data powering your live screens.
 
-- **Chatbot API**: Integrating your chatbot to claim ownership of conversations it is handling.
+- **Chatbot API**: integrate a chatbot into your team.
 
-- **Activity API**: Allowing you to read team performance metrics collected about your team in Engage.
+- **Activity API**: read service team performance metrics (Coming Soon)
 
 - **Identity API**: Allowing clients to Contribute and Consume Identity data from the Lexer platform.
 
 All of our APIs communicate via HTTPS and JSON data.
-
-Our _Activity_ API is currently under development.
 
 
 ## Fair Use
