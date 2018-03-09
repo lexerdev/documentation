@@ -10,7 +10,8 @@ toc_footers:
   - <a href='http://github.com/tripit/slate'>(Docs Powered by Slate)</a>
 
 includes:
-  - command
+  - content
+  - chatbot
   - activity
   - identities
 
@@ -23,13 +24,13 @@ Welcome to the Lexer API documentation.
 
 We currently offer the following APIs to our clients:
 
-- **Command API**: read the data powering your live screens.
+- **Content**: read the data powering your live screens.
 
-- **Chatbot API**: integrate a chatbot into your team.
+- **Chatbot**: integrate a chatbot into your team.
 
-- **Activity API**: read service team performance metrics (Coming Soon)
+- **Activity**: read customer service team performance metrics (Coming Soon)
 
-- **Identity API**: Allowing clients to Contribute and Consume Identity data from the Lexer platform.
+- **Identity**: read and write Identity data.
 
 All of our APIs communicate via HTTPS and JSON data.
 
