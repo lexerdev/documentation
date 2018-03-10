@@ -55,7 +55,7 @@
 <ul>
 <li><p><strong>Content</strong>: read the data powering your live screens.</p></li>
 <li><p><strong>Chatbot</strong>: integrate a chatbot into your team.</p></li>
-<li><p><strong>Activity</strong>: read customer service team performance metrics (Coming Soon)</p></li>
+<li><p><strong>Activity</strong>: read customer service team performance metrics (Coming Soon).</p></li>
 <li><p><strong>Identity</strong>: read and write Identity data.</p></li>
 </ul>
 
@@ -67,47 +67,50 @@
 
 <p>Refer to your project&rsquo;s terms of service for details on rate limiting, performance limitations, maintenance windows and SLAs.</p>
 
-<p>For further details please <a href="mailto:support@lexer.io">contact support</a>.</p>
+<h2 id="support">Support</h2>
 
-          <h1 id="content-api">Content API</h1>
+<p>Our team are here to help you build an integration with any of our products, so please don&rsquo;t hesitate to reach out! Reach out via live chat within the Hub or <a href="mailto:support@lexer.io">via email</a>.</p>
 
-<p>Our Content API allows you to access social and news content the data powering each chart in a simple JSON format. Access to these endpoints is retrieved via the charts themselves by clicking on the small link button in the top right corner of each chart, which can be seen in edit mode.</p>
+          <h1 id="content">Content</h1>
 
-<p>For details on how to build a Command Screen please read our <a href="https://learn.lexer.io/export-and-report/command/command-screens">learn article</a> or contact support via live chat or at <a href="mailto:support@lexer.io">support@lexer.io</a>.</p>
+<p>Our Content API allows you to access social and news content in a simple JSON format. Your queries are defined by saved dives within Listen, and your endpoints are retrieved from the Command charts they are connected to. Once you have a chart displaying in Command, simply click on the small link button in the top right corner.</p>
+
+<p>Read our <a href="https://learn.lexer.io/export-and-report/command/command-screens">help article</a> for details on building a Command screen or contact support via live chat or at <a href="mailto:support@lexer.io">support@lexer.io</a>.</p>
 
 <h2 id="prerequisites">Prerequisites</h2>
 
 <ul>
-<li><strong>Listen</strong>: to create your saved dives the define your search</li>
-<li><strong>Command</strong>: to creat the screens to display various charts. Here you will access the endpoints for each chart.</li>
+<li><strong>Listen</strong>: to create your saved dives that define your search.</li>
+<li><strong>Command</strong>: to create the charts using yoru saved dives.</li>
 </ul>
 
 <h2 id="configuration">Configuration</h2>
 
-<p>Access is performed via endpoints generated from live screens. Generate your screens to display the information that your require, and retrieve the constructed endpoint by clicking on the link button in the top right corner.</p>
+<p>Unlike traditional APIs, your requests for the Content API must be created from Command; our live dashboard feature. Your Command screen allows you to test and visualise the results before retrieving the API endpoint. Once you&rsquo;re happy with the results, simply click the link button on the chart and your request will be provided in the URL.</p>
 
 <h3 id="endpoints">Endpoints</h3>
-
-<p>Endpoints look like the example displayed to the right. They always include the account id, screen id, chart id, and finally the client token. Note that Command screens are designed for public use and can be accessed without authentication.</p>
 <pre class="highlight plaintext"><code>https://clients.lexer.io/api/clients/{account_id}/screens/{screen_id}/charts/{chart_id}/result?client_token={client token}
 </code></pre>
+
+<p>Retrieved from each chart in your screen, endpoints look like the example displayed to the right. They always include the account id, screen id, chart id, and your client token. Note that Command screens are designed for public use and can be accessed without authentication.</p>
 
 <p>All of your requests should match this format.</p>
 
 <h3 id="parameters">Parameters</h3>
-
-<p>Requests can be modified with two paramaters to adjust the date range or filter for specific terms.</p>
 <pre class="highlight plaintext"><code>;date_ending=2018-02-21
 </code></pre>
 
-<p>Append date_ending to adjust the ending date of your query. This will adjust the time window of your chart to finish at this day or time.</p>
-<pre class="highlight plaintext"><code>;terms=lexer
+<p>Requests can be modified with two paramaters to adjust the date range or filter for specific terms.</p>
+
+<p>Append date_ending to adjust the ending date of your query. This will adjust the time window of your chart to finish at this day or time.
+<code class="prettyprint">text
+;terms=lexer
 ;terms=lexer%20OR%20data
-</code></pre>
+</code></p>
 
 <p>Append terms to filter your saved dive even further. Here we&rsquo;re filtering for mentions of <em>Lexer OR Data</em>. Tip: it&rsquo;s easier to define this from your saved dive within Listen!</p>
 
-<h2 id="live-stream-volume">Live Stream Volume</h2>
+<h2 id="summary-metrics">Summary Metrics</h2>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">17633606</span><span class="p">,</span><span class="w">
   </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-22T03:14:51Z"</span><span class="p">,</span><span class="w">
@@ -140,7 +143,29 @@
 
 <p>Also included in this response is the total number of mentions and various other information to render this in the chart interface.</p>
 
-<h2 id="terms-volume">Terms Volume</h2>
+<h2 id="mentions">Mentions</h2>
+
+<p>Recent mentions, influential mentions, media, top links</p>
+
+<h2 id="trending-terms">Trending Terms</h2>
+
+<p>Terms volume, top terms table</p>
+
+<h2 id="sources">Sources</h2>
+
+<p>Top sources, source types, source groups</p>
+
+<h2 id="authors">Authors</h2>
+
+<p>Influential authors, engaged authors</p>
+
+<h2 id="locations">Locations</h2>
+
+<p>Top locations</p>
+
+<h2 id="classifications">Classifications</h2>
+
+<p>Classification counts</p>
 
           <h1 id="chatbot-api">Chatbot API</h1>
 
