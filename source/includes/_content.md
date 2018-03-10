@@ -1,39 +1,35 @@
-# Content API
+# Content
 
-Our Content API allows you to access social and news content the data powering each chart in a simple JSON format. Access to these endpoints is retrieved via the charts themselves by clicking on the small link button in the top right corner of each chart, which can be seen in edit mode.
+Our Content API allows you to access social and news content in a simple JSON format. Your queries are defined by saved dives within Listen, and your endpoints are retrieved from the Command charts they are connected to. Once you have a chart displaying in Command, simply click on the small link button in the top right corner.
 
-For details on how to build a Command Screen please read our [learn article](https://learn.lexer.io/export-and-report/command/command-screens) or contact support via live chat or at [support@lexer.io](mailto:support@lexer.io).
+Read our [help article](https://learn.lexer.io/export-and-report/command/command-screens) for details on building a Command screen or contact support via live chat or at [support@lexer.io](mailto:support@lexer.io).
 
 ## Prerequisites
 
-- **Listen**: to create your saved dives the define your search
-- **Command**: to creat the screens to display various charts. Here you will access the endpoints for each chart.
+- **Listen**: to create your saved dives that define your search.
+- **Command**: to create the charts using yoru saved dives.
 
 
 ## Configuration
 
-Access is performed via endpoints generated from live screens. Generate your screens to display the information that your require, and retrieve the constructed endpoint by clicking on the link button in the top right corner.
+Unlike traditional APIs, your requests for the Content API must be created from Command; our live dashboard feature. Your Command screen allows you to test and visualise the results before retrieving the API endpoint. Once you're happy with the results, simply click the link button on the chart and your request will be provided in the URL.
 
 ### Endpoints
-
-Endpoints look like the example displayed to the right. They always include the account id, screen id, chart id, and finally the client token. Note that Command screens are designed for public use and can be accessed without authentication.
-
 ```text
 https://clients.lexer.io/api/clients/{account_id}/screens/{screen_id}/charts/{chart_id}/result?client_token={client token}
 ```
+Retrieved from each chart in your screen, endpoints look like the example displayed to the right. They always include the account id, screen id, chart id, and your client token. Note that Command screens are designed for public use and can be accessed without authentication.
+
 All of your requests should match this format.
 
 
 ### Parameters
-
-Requests can be modified with two paramaters to adjust the date range or filter for specific terms.
-
 ```text
 ;date_ending=2018-02-21
 ```
+Requests can be modified with two paramaters to adjust the date range or filter for specific terms.
 
 Append date_ending to adjust the ending date of your query. This will adjust the time window of your chart to finish at this day or time.
-
 ```text
 ;terms=lexer
 ;terms=lexer%20OR%20data
@@ -42,9 +38,7 @@ Append date_ending to adjust the ending date of your query. This will adjust the
 Append terms to filter your saved dive even further. Here we're filtering for mentions of *Lexer OR Data*. Tip: it's easier to define this from your saved dive within Listen!
 
 
-
-## Live Stream Volume
-
+## Summary Metrics
 ```json
 {
   "id": 17633606,
@@ -79,4 +73,28 @@ The Live Stream Volume chart will return a data object for each filter presented
 Also included in this response is the total number of mentions and various other information to render this in the chart interface.
 
 
-## Terms Volume
+
+## Mentions
+
+Recent mentions, influential mentions, media, top links
+
+## Trending Terms
+
+Terms volume, top terms table
+
+## Sources
+
+Top sources, source types, source groups
+
+## Authors
+
+Influential authors, engaged authors
+
+## Locations
+
+Top locations
+
+## Classifications
+
+Classification counts
+

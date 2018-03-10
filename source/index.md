@@ -28,7 +28,7 @@ We currently offer the following APIs to our clients:
 
 - **Chatbot**: integrate a chatbot into your team.
 
-- **Activity**: read customer service team performance metrics (Coming Soon)
+- **Activity**: read customer service team performance metrics (Coming Soon).
 
 - **Identity**: read and write Identity data.
 
@@ -41,7 +41,9 @@ Lexer operates a fair use policy on all of its APIs.
 
 Refer to your project's terms of service for details on rate limiting, performance limitations, maintenance windows and SLAs.
 
-For further details please [contact support](mailto:support@lexer.io).
+## Support
+
+Our team are here to help you build an integration with any of our products, so please don't hesitate to reach out! Reach out via live chat within the Hub or [via email](mailto:support@lexer.io).
 
 
 
