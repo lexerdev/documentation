@@ -112,6 +112,8 @@
 <h2 id="summary-metrics">Summary Metrics</h2>
 
 <p>Here we&rsquo;ll describe the summary bar and live stream volume charts.</p>
+
+<h3 id="summary-bar">Summary Bar</h3>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">18041857</span><span class="p">,</span><span class="w">
   </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-13T02:04:04Z"</span><span class="p">,</span><span class="w">
@@ -120,13 +122,10 @@
     </span><span class="s2">"sources"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
     </span><span class="s2">"authors"</span><span class="p">:</span><span class="w"> </span><span class="mi">46134</span><span class="p">,</span><span class="w">
     </span><span class="s2">"reach"</span><span class="p">:</span><span class="w"> </span><span class="mi">284297204</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"influence"</span><span class="p">:</span><span class="w"> </span><span class="mi">13139</span><span class="p">,</span><span class="w">
     </span><span class="s2">"average_engagements"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.4674643430008236</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-
-<h3 id="summary-bar">Summary Bar</h3>
 
 <p>The summary bar displays the headline metrics for your saved dive. Each of the individual big number charts (i.e. Matches, Authors) uses the same query and will return all of the results.</p>
 
@@ -135,7 +134,6 @@
 <li><p><code class="prettyprint">sources</code>: where the content has come from i.e. Twitter.</p></li>
 <li><p><code class="prettyprint">authors</code>: unique authors that have published this content.</p></li>
 <li><p><code class="prettyprint">reach</code>: sum of the followers for each author.</p></li>
-<li><p><code class="prettyprint">influence</code>: Lexer calculated influence score for this result (not displayed in chart). Calculated using followers, following, count of posts and lists on Twitter.</p></li>
 <li><p><code class="prettyprint">average_engagements</code>: mentions divided by authors.</p></li>
 </ul>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
@@ -173,10 +171,13 @@
 <p>Also included in this response is the total number of mentions and various other information to render this in the chart interface.</p>
 
 <p>Our volume charts bucket counts into time intervals based on the period covered in the report. Here is a summary of the query ranges and corresponding time intervals returned.
-- <code class="prettyprint">&lt;2 days</code>: results are grouped into 1 hour intervals.
-- <code class="prettyprint">2-3 days</code>: results are grouped into 3 hour intervals.
-- <code class="prettyprint">7 days</code>: results are grouped into 12 hour intervals.
-- <code class="prettyprint">8+ days</code>: results are grouped into 1 day intervals.</p>
+- <code class="prettyprint">&lt;2 days</code>: results are grouped into 1 hour intervals.</p>
+
+<ul>
+<li><p><code class="prettyprint">2-3 days</code>: results are grouped into 3 hour intervals.</p></li>
+<li><p><code class="prettyprint">7 days</code>: results are grouped into 12 hour intervals.</p></li>
+<li><p><code class="prettyprint">8+ days</code>: results are grouped into 1 day intervals.</p></li>
+</ul>
 
 <p>Note: all of our volume over time charts are returned using unix time.</p>
 
@@ -184,7 +185,7 @@
 
 <p>Let&rsquo;s take a closer look at the mention objects that are displayed in the Recent Mentions, Influential Mentions, and Recent Media charts. Each of these charts returns the top 100 hits for the query, allowing you to recreate a display feed of content in your app.</p>
 
-<p>&lt;%= image_tag &lsquo;example_tweet.png %&gt;</p>
+<p><img alt="Tweet Example" src="documentation/source/images/example_tweet.png" /></p>
 
 <p>Here we&rsquo;ll review a Tweet from the @camplexer account. All of the information that is displayed in our charts is found in the <em>data</em> section of the payload. Let&rsquo;s take a closer look in the table below.</p>
 
