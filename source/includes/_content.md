@@ -70,6 +70,8 @@ The summary bar displays the headline metrics for your saved dive. Each of the i
 
 - `average_engagements`: mentions divided by authors.
 
+![Summary Bar](../images/content/summary_bar.png)
+
 
 ### Live Stream Volume
 ```json
@@ -117,7 +119,13 @@ Our volume charts bucket counts into time intervals based on the period covered 
 
 Note: all of our volume over time charts are returned using unix time.
 
+![Summary Bar](../images/content/livestreamvolume_chart.png)
+
 ## Mentions
+
+Let's take a closer look at the mention objects that are displayed in the Recent Mentions, Influential Mentions, and Recent Media charts. Each of these charts returns the top 100 hits for the query, allowing you to recreate a display feed of content in your app.
+
+![Tweet Example](../images/content/mention_tweet.png)
 
 ```json
 {
@@ -261,9 +269,6 @@ Note: all of our volume over time charts are returned using unix time.
   }
 }
 ```
-Let's take a closer look at the mention objects that are displayed in the Recent Mentions, Influential Mentions, and Recent Media charts. Each of these charts returns the top 100 hits for the query, allowing you to recreate a display feed of content in your app.
-
-![Tweet Example](../images/mention_tweet.png)
 
 Here we'll review a Tweet from the @camplexer account. Let's take a closer look in the table below.
 
@@ -301,38 +306,6 @@ data.processed | Date and time this content was processed in Lexer.
 original.entities.media | contains details about the media within the content.
 original.entities.urls | contains details about the links within the content.
 
-### Property and description
-- `data.content `: Body of the message.
-- `data.geography`: Location details about the message.
-- `data.geography.accuracy`: Supplied if specifically provided with the content. Guessed if inferred from the data.account settings. Uknown if no location data is provided.
-- `data.geography.code`: State and city code provided for this location.
-- `data.geography.point`: Latitude and longitude points.
-- `data.mentions`: Details on links or authors mentioned in the content.
-- `data.mentions.links`: Array of links in the content.
-- `data.mentions.mentions`: Objects mentioned i.e. a retweet.
-- `data.mentions.authors`: Authors tagged in the content.
-- `data.mentions.author_ids`: IDs of the authors tagged in the content.
-- `data.terms`: Tokenized words extracted from the content (array).
-- `data.source.name`: Domain name for the source.
-- `data.source.group`: Facebook or Instagram account the content lives on. Empty for Twitter.
-- `data.source.id`: Numeric ID associated with the source type.
-- `data.source.type`: Image, video, link, text. Image and video are mutually exclusive. Text contains no links or data.media.
-- `data.author`: Information about the author of the content.
-- `data.author.id`: Author ID appended with the network prefix.
-- `data.author.fullname`: Display name of the author.
-- `data.author.username`: Username of the author i.e Twitter handle.
-- `data.author.link`: URL to the author's account.
-- `data.author.bio`: Bio description for the author.
-- `data.author.avatar`: URL to the author's avatar image.
-- `data.author.influence`: Lexer calculated influence score.
-- `data.author.reach.inbound`: Count of users this account is following.
-- `data.author.reach.outbound`: Count of followers.
-- `data.engagements`: We do not collect engagement metrics. These counts will return zero.
-- `data.link`: URL to the content.
-- `data.published`: Date and time this content was created.
-- `data.processed`: Date and time this content was processed in Lexer.
-- `original.entities.media`: contains details about the media within the content.
-- `original.entities.urls`: contains details about the links within the content.
 
 ## Terms
 
