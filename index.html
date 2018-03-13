@@ -189,7 +189,11 @@
 
 <p>Let&rsquo;s take a closer look at the mention objects that are displayed in the Recent Mentions, Influential Mentions, and Recent Media charts. Each of these charts returns the top 100 hits for the query, allowing you to recreate a display feed of content in your app.</p>
 
+<h3 id="recent-&amp;-influential-mentions">Recent &amp; Influential Mentions</h3>
+
 <p><img alt="Tweet Example" src="images/content/mention_tweet_2.png" /></p>
+
+<p>Here we&rsquo;ll review a Tweet from the @camplexer account. Let&rsquo;s take a closer look in the table below. Most of the data you need to recreate a mention is contained within the <em>data</em> object. The <em>original</em> object is what we receive from the source, and will give you access to the media content (image or video) attached to the object. We suggest referring to the Twitter, Facebook or Instagram API documentation for more on the structure of the results.</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -265,8 +269,6 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>Here we&rsquo;ll review a Tweet from the @camplexer account. Let&rsquo;s take a closer look in the table below. Most of the data you need to recreate a mention is contained within the <em>data</em> object. The <em>original</em> object will give you access to the media content (image or video) attached to the content. We suggest referring to the Twitter, Facebook or Instagram API documentation for more on the structure of the results.</p>
-
 <table><thead>
 <tr>
 <th>Property</th>
@@ -278,24 +280,16 @@
 <td>Body of the message.</td>
 </tr>
 <tr>
-<td>geography</td>
-<td>Location details about the message.</td>
-</tr>
-<tr>
 <td>geography.accuracy</td>
 <td>Supplied if specifically provided with the content. Guessed if inferred from the account settings. Uknown if no location data is provided.</td>
 </tr>
 <tr>
 <td>geography.code</td>
-<td>State and city code provided for this location.</td>
+<td>Country code provided for this location.</td>
 </tr>
 <tr>
 <td>geography.point</td>
 <td>Latitude and longitude points.</td>
-</tr>
-<tr>
-<td>mentions</td>
-<td>Details on links or authors mentioned in the content.</td>
 </tr>
 <tr>
 <td>mentions.links</td>
@@ -332,10 +326,6 @@
 <tr>
 <td>source.type</td>
 <td>Image, video, link, text. Image and video are mutually exclusive. An object may be type video,link or image,link. Text indicates no media or links.</td>
-</tr>
-<tr>
-<td>author</td>
-<td>Information about the author of the content.</td>
 </tr>
 <tr>
 <td>author.id</td>
@@ -375,11 +365,11 @@
 </tr>
 <tr>
 <td>engagements</td>
-<td>Unused.</td>
+<td>Unused. We do not collect engagement metrics on objects.</td>
 </tr>
 <tr>
 <td>engagement_count</td>
-<td>Unused.</td>
+<td>Unused. We do not collect engagement metrics on objects.</td>
 </tr>
 <tr>
 <td>language</td>
@@ -409,7 +399,11 @@
 
 <h2 id="terms">Terms</h2>
 
-<p>Terms volume, top terms table</p>
+<p>Let&rsquo;s take a closer look at how we analyse trending keywords in the Terms Volume and Trending Terms charts. It&rsquo;s important to note that we remove stop words before tokenizing our objects.</p>
+
+<h3 id="terms-volume">Terms Volume</h3>
+
+<h3 id="trending-terms">Trending Terms</h3>
 
 <h2 id="sources">Sources</h2>
 
