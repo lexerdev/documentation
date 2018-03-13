@@ -86,7 +86,7 @@
 
 <h2 id="configuration">Configuration</h2>
 
-<p>Unlike traditional APIs, your requests for the Content API must be created from Command; our live dashboard feature. Your Command screen allows you to test and visualise the results before retrieving the API endpoint. Once you&rsquo;re happy with the results, simply click the link button on the chart and your request will be provided in the URL.</p>
+<p>Unlike traditional APIs, your requests for the Content API must be created from our live dashboard feature Command. Your Command screen allows you to test and visualise the results before retrieving the API endpoint. Once you&rsquo;re happy with the results, simply click the link button on the top right corner of the chart and your request will be provided in the URL.</p>
 
 <h3 id="endpoints">Endpoints</h3>
 <pre class="highlight plaintext"><code>https://clients.lexer.io/api/clients/{account_id}/screens/{screen_id}/charts/{chart_id}/result?client_token={client token}
@@ -97,10 +97,10 @@
 <p>All of your requests should match this format.</p>
 
 <h3 id="parameters">Parameters</h3>
-<pre class="highlight plaintext"><code>;date_ending=2018-02-21
-</code></pre>
 
 <p>Requests can be modified with two paramaters to adjust the date range or filter for specific terms.</p>
+<pre class="highlight plaintext"><code>;date_ending=2018-02-21
+</code></pre>
 
 <p>Append date_ending to adjust the ending date of your query. This will adjust the time window of your chart to finish at this day or time.</p>
 <pre class="highlight plaintext"><code>;terms=lexer
@@ -109,15 +109,11 @@
 
 <p>Append terms to filter your saved dive even further. Here we&rsquo;re filtering for mentions of <em>Lexer OR Data</em>. Tip: it&rsquo;s easier to define this from your saved dive within Listen!</p>
 
-<h3 id="chart-categories">Chart Categories</h3>
-
-<p>We&rsquo;ve organised the various charts and metrics you can access from Command into categories</p>
-
 <h2 id="summary-metrics">Summary Metrics</h2>
 
 <p>Here we&rsquo;ll describe the summary bar and live stream volume charts.</p>
 
-<h2 id="summary-bar">Summary Bar</h2>
+<h3 id="summary-bar">Summary Bar</h3>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">18041857</span><span class="p">,</span><span class="w">
   </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-13T02:04:04Z"</span><span class="p">,</span><span class="w">
@@ -134,12 +130,17 @@
 
 <p>The summary bar displays the headline metrics for your saved dive.</p>
 
-<p>mentions: the total number of objects matching your query.
-sources: where the content has come from i.e. Twitter.
-authors: unique authors that have published this content.
-reach: sum of the followers for each author.
-influence: Lexer calculated influence score for this result (not displayed in chart).
-average_engagements: mentions divided by authors.</p>
+<p>mentions: the total number of objects matching your query.</p>
+
+<p>sources: where the content has come from i.e. Twitter.</p>
+
+<p>authors: unique authors that have published this content.</p>
+
+<p>reach: sum of the followers for each author.</p>
+
+<p>influence: Lexer calculated influence score for this result (not displayed in chart). Calculated using followers, following, count of posts and lists on Twitter.</p>
+
+<p>average_engagements: mentions divided by authors.</p>
 
 <p>Each of the individual big number charts (i.e. Matches, Authors) uses the same query and will return all of the results above.</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
@@ -170,7 +171,7 @@ average_engagements: mentions divided by authors.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<h2 id="live-stream-volume">Live Stream Volume</h2>
+<h3 id="live-stream-volume">Live Stream Volume</h3>
 
 <p>The Live Stream Volume chart will return a data object for each filter presented in the chart. In this example we&rsquo;re just looking at the Nintendo filter. Within this object are the count of mentions for each time interval.</p>
 
