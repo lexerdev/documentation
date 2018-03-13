@@ -71,7 +71,7 @@ The summary bar displays the headline metrics for your saved dive. Each of the i
 - `average_engagements`: mentions divided by authors.
 
 
-
+### Live Stream Volume
 ```json
 {
   "id": 17633606,
@@ -100,12 +100,12 @@ The summary bar displays the headline metrics for your saved dive. Each of the i
   }
 }
 ```
-### Live Stream Volume
 The Live Stream Volume chart will return a data object for each filter presented in the chart. In this example we're just looking at the Nintendo filter. Within this object are the count of mentions for each time interval.
 
 Also included in this response is the total number of mentions and various other information to render this in the chart interface.
 
 Our volume charts bucket counts into time intervals based on the period covered in the report. Here is a summary of the query ranges and corresponding time intervals returned.
+
 - `<2 days`: results are grouped into 1 hour intervals.
 
 - `2-3 days`: results are grouped into 3 hour intervals.
@@ -118,9 +118,152 @@ Our volume charts bucket counts into time intervals based on the period covered 
 Note: all of our volume over time charts are returned using unix time.
 
 ## Mentions
+```json
+{
+  "id": [...],
+  "data": {
+    "content": "Ahead of #eTailWest, we’ve launched our 2018 Data Culture Study. This annual study benchmarks the opportunities in customer data and the actions you can take to capitalize on them: http://lexer.link/2CccBM0 ⚡ https://t.co/BG1n6IpJka",
+    "geography": {
+      "accuracy": "guessed",
+      "code": "AU/VIC",
+      "point": {
+        "lat": -37.814107,
+        "lon": 144.96328
+      }
+    },
+    "mentions": {
+      "links": [
+        "t.co/BG1n6IpJka",
+        "lexer.link/2CccBM0"
+      ],
+      "mentions": [],
+      "authors": [],
+      "author_ids": []
+    },
+    "terms": [
+      "benchmarks",
+      "capitalize",
+      "opportunities",
+      "ahead",
+      "culture",
+      "actions",
+      "#etailwest",
+      "customer",
+      "annual",
+      "study",
+      "data",
+      "launched"
+    ],
+    "source": {
+      "name": "twitter.com",
+      "group": [],
+      "id": 102,
+      "type": [
+        "image",
+        "link"
+      ]
+    },
+    "author": {
+      "id": "twitter_219052087",
+      "fullname": "Lexer",
+      "lexer_id": "",
+      "username": "camplexer",
+      "link": "https://twitter.com/camplexer/",
+      "bio": "Put data to work to genuinely understand and engage customers.",
+      "avatar": "https://pbs.twimg.com/profile_images/595397359808356352/ULzphDZ__normal.png",
+      "influence": 0.506,
+      "reach": {
+        "inbound": 1081,
+        "outbound": 942
+      }
+    },
+    "engagements": {
+      "comments": 0,
+      "likes": 0,
+      "shares": 0
+    },
+    "engagement_count": 0,
+    "language": "en",
+    "link": "https://twitter.com/camplexer/statuses/967621409668177920",
+    "original": [...],
+    "id": "967621409668177920",
+    "published": "2018-02-25T04:44:56Z",
+    "processed": "2018-02-25T04:44:57Z",
+    "_id": "twitter_967621409668177920"
+  },
+  "original": {
+    "entities": {
+      "media": [
+        {
+          "id": 967621407310925824,
+          "id_str": "967621407310925824",
+          "indices": [
+            207,
+            230
+          ],
+          "media_url": "http://pbs.twimg.com/media/DW2uixPU0AAuUnq.jpg",
+          "media_url_https": "https://pbs.twimg.com/media/DW2uixPU0AAuUnq.jpg",
+          "url": "https://t.co/BG1n6IpJka",
+          "display_url": "pic.twitter.com/BG1n6IpJka",
+          "expanded_url": "https://twitter.com/camplexer/status/967621409668177920/photo/1",
+          "type": "photo",
+          "sizes": {
+            "medium": {
+              "w": 1200,
+              "h": 627,
+              "resize": "fit"
+            },
+            "thumb": {
+              "w": 150,
+              "h": 150,
+              "resize": "crop"
+            },
+            "small": {
+              "w": 680,
+              "h": 355,
+              "resize": "fit"
+            },
+            "large": {
+              "w": 1200,
+              "h": 627,
+              "resize": "fit"
+            }
+          }
+        }
+      ],
+      "urls": [
+        {
+          "url": "https://t.co/XR9qqiPC7a",
+          "expanded_url": "https://twitter.com/i/web/status/967621409668177920",
+          "display_url": "twitter.com/i/web/status/9…",
+          "indices": [
+            116,
+            139
+          ]
+        },
+        {
+          "url": "https://t.co/chjeD7N0Zd",
+          "expanded_url": "http://lexer.link/2CccBM0",
+          "display_url": "lexer.link/2CccBM0",
+          "indices": [
+            181,
+            204
+          ]
+        }
+      ]
+    },
+    "user": {
+      "name": "Lexer",
+      "screen_name": "camplexer",
+      "followers_count": 942,
+      "profile_image_url": "http://pbs.twimg.com/profile_images/595397359808356352/ULzphDZ__normal.png"
+    }
+  }
+}
+```
 Let's take a closer look at the mention objects that are displayed in the Recent Mentions, Influential Mentions, and Recent Media charts. Each of these charts returns the top 100 hits for the query, allowing you to recreate a display feed of content in your app.
 
-![Tweet Example](../images/example_tweet.png)
+![Tweet Example](../images/mention_tweet.png)
 
 Here we'll review a Tweet from the @camplexer account. All of the information that is displayed in our charts is found in the _data_ section of the payload. Let's take a closer look in the table below.
 
@@ -133,8 +276,8 @@ geography.code | State and city code provided for this location.
 geography.point | Latitude and longitude points.
 mentions | Details on links or authors mentioned in the content.
 mentions.links | Array of links in the content.
-mentions.mentions | Other objects mentioned i.e. a retweet.
-mentions.authors | Other authors tagged in the content.
+mentions.mentions | Objects mentioned i.e. a retweet.
+mentions.authors | Authors tagged in the content.
 
 
 ## Terms
