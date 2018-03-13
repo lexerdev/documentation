@@ -1,3 +1,3 @@
-# Chatbot API
+# Chatbot
 
 Coming soon...

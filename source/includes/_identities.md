@@ -1,4 +1,4 @@
-# Identity API
+# Identity
 
 The Lexer Identity API allows clients and their partners to read and write Identity information to [Lexer Identify](http://lexer.io).
 

@@ -1,3 +1,3 @@
-# Activity API
+# Activity
 
 Coming soon...

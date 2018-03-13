@@ -7,7 +7,7 @@ Read our [help article](https://learn.lexer.io/export-and-report/command/command
 ## Prerequisites
 
 - **Listen**: to create your saved dives that define your search.
-- **Command**: to create the charts using yoru saved dives.
+- **Command**: to create the charts using your saved dives.
 
 
 ## Configuration
@@ -30,6 +30,7 @@ All of your requests should match this format.
 Requests can be modified with two paramaters to adjust the date range or filter for specific terms.
 
 Append date_ending to adjust the ending date of your query. This will adjust the time window of your chart to finish at this day or time.
+
 ```text
 ;terms=lexer
 ;terms=lexer%20OR%20data
@@ -37,8 +38,41 @@ Append date_ending to adjust the ending date of your query. This will adjust the
 
 Append terms to filter your saved dive even further. Here we're filtering for mentions of *Lexer OR Data*. Tip: it's easier to define this from your saved dive within Listen!
 
+### Chart Categories
+
+We've organised the various charts and metrics you can access from Command into categories
+
 
 ## Summary Metrics
+
+Here we'll describe the summary bar and live stream volume charts.
+
+## Summary Bar
+```json
+{
+  "id": 18041857,
+  "updated_at": "2018-03-13T02:04:04Z",
+  "data": {
+    "mentions": 67700,
+    "sources": 3,
+    "authors": 46134,
+    "reach": 284297204,
+    "influence": 13139,
+    "average_engagements": 1.4674643430008236
+  }
+}
+```
+The summary bar displays the headline metrics for your saved dive.
+
+mentions: the total number of objects matching your query.
+sources: where the content has come from i.e. Twitter.
+authors: unique authors that have published this content.
+reach: sum of the followers for each author.
+influence: Lexer calculated influence score for this result (not displayed in chart).
+average_engagements: mentions divided by authors.
+
+Each of the individual big number charts (i.e. Matches, Authors) uses the same query and will return all of the results above.
+
 ```json
 {
   "id": 17633606,
@@ -67,7 +101,7 @@ Append terms to filter your saved dive even further. Here we're filtering for me
   }
 }
 ```
-
+## Live Stream Volume
 The Live Stream Volume chart will return a data object for each filter presented in the chart. In this example we're just looking at the Nintendo filter. Within this object are the count of mentions for each time interval.
 
 Also included in this response is the total number of mentions and various other information to render this in the chart interface.
@@ -78,7 +112,7 @@ Also included in this response is the total number of mentions and various other
 
 Recent mentions, influential mentions, media, top links
 
-## Trending Terms
+## Terms
 
 Terms volume, top terms table
 

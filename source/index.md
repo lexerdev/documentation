@@ -24,9 +24,9 @@ Welcome to the Lexer API documentation.
 
 We currently offer the following APIs to our clients:
 
-- **Content**: read the data powering your live screens.
+- **Content**: read social and news content.
 
-- **Chatbot**: integrate a chatbot into your team.
+- **Chatbot**: integrate your chatbot into Engage.
 
 - **Activity**: read customer service team performance metrics (Coming Soon).
 
@@ -43,7 +43,7 @@ Refer to your project's terms of service for details on rate limiting, performan
 
 ## Support
 
-Our team are here to help you build an integration with any of our products, so please don't hesitate to reach out! Reach out via live chat within the Hub or [via email](mailto:support@lexer.io).
+Our team are here to help you build an integration with any of our products, so please don't hesitate to reach out! Get in contact via live chat within the Hub or [email](mailto:support@lexer.io).
 
 
 
