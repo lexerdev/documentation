@@ -136,6 +136,8 @@
 <li><p><code class="prettyprint">reach</code>: sum of the followers for each author.</p></li>
 <li><p><code class="prettyprint">average_engagements</code>: mentions divided by authors.</p></li>
 </ul>
+
+<h3 id="live-stream-volume">Live Stream Volume</h3>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">17633606</span><span class="p">,</span><span class="w">
   </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-22T03:14:51Z"</span><span class="p">,</span><span class="w">
@@ -164,16 +166,14 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<h3 id="live-stream-volume">Live Stream Volume</h3>
-
 <p>The Live Stream Volume chart will return a data object for each filter presented in the chart. In this example we&rsquo;re just looking at the Nintendo filter. Within this object are the count of mentions for each time interval.</p>
 
 <p>Also included in this response is the total number of mentions and various other information to render this in the chart interface.</p>
 
-<p>Our volume charts bucket counts into time intervals based on the period covered in the report. Here is a summary of the query ranges and corresponding time intervals returned.
-- <code class="prettyprint">&lt;2 days</code>: results are grouped into 1 hour intervals.</p>
+<p>Our volume charts bucket counts into time intervals based on the period covered in the report. Here is a summary of the query ranges and corresponding time intervals returned.</p>
 
 <ul>
+<li><p><code class="prettyprint">&lt;2 days</code>: results are grouped into 1 hour intervals.</p></li>
 <li><p><code class="prettyprint">2-3 days</code>: results are grouped into 3 hour intervals.</p></li>
 <li><p><code class="prettyprint">7 days</code>: results are grouped into 12 hour intervals.</p></li>
 <li><p><code class="prettyprint">8+ days</code>: results are grouped into 1 day intervals.</p></li>
@@ -182,10 +182,152 @@
 <p>Note: all of our volume over time charts are returned using unix time.</p>
 
 <h2 id="mentions">Mentions</h2>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ahead of #eTailWest, we’ve launched our 2018 Data Culture Study. This annual study benchmarks the opportunities in customer data and the actions you can take to capitalize on them: http://lexer.link/2CccBM0 ⚡ https://t.co/BG1n6IpJka"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"geography"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"accuracy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"guessed"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AU/VIC"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"point"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">-37.814107</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lon"</span><span class="p">:</span><span class="w"> </span><span class="mf">144.96328</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"mentions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"t.co/BG1n6IpJka"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lexer.link/2CccBM0"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"mentions"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"authors"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"author_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"terms"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"benchmarks"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"capitalize"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"opportunities"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ahead"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"culture"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"actions"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"#etailwest"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"customer"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"annual"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"study"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"data"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"launched"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"twitter.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"group"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">102</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"image"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"link"</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"author"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"twitter_219052087"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fullname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lexer"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lexer_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"camplexer"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://twitter.com/camplexer/"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"bio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Put data to work to genuinely understand and engage customers."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://pbs.twimg.com/profile_images/595397359808356352/ULzphDZ__normal.png"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"influence"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.506</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"reach"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"inbound"</span><span class="p">:</span><span class="w"> </span><span class="mi">1081</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"outbound"</span><span class="p">:</span><span class="w"> </span><span class="mi">942</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"engagements"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"comments"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"likes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"shares"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"engagement_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://twitter.com/camplexer/statuses/967621409668177920"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"original"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"967621409668177920"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"published"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-25T04:44:56Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"processed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-25T04:44:57Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"twitter_967621409668177920"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"original"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"entities"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"media"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">967621407310925824</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"id_str"</span><span class="p">:</span><span class="w"> </span><span class="s2">"967621407310925824"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"indices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="mi">207</span><span class="p">,</span><span class="w">
+            </span><span class="mi">230</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"media_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://pbs.twimg.com/media/DW2uixPU0AAuUnq.jpg"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"media_url_https"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://pbs.twimg.com/media/DW2uixPU0AAuUnq.jpg"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://t.co/BG1n6IpJka"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"display_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pic.twitter.com/BG1n6IpJka"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"expanded_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://twitter.com/camplexer/status/967621409668177920/photo/1"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"photo"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"sizes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"medium"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"w"</span><span class="p">:</span><span class="w"> </span><span class="mi">1200</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"h"</span><span class="p">:</span><span class="w"> </span><span class="mi">627</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"resize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fit"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"thumb"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"w"</span><span class="p">:</span><span class="w"> </span><span class="mi">150</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"h"</span><span class="p">:</span><span class="w"> </span><span class="mi">150</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"resize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"crop"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"small"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"w"</span><span class="p">:</span><span class="w"> </span><span class="mi">680</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"h"</span><span class="p">:</span><span class="w"> </span><span class="mi">355</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"resize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fit"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"large"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"w"</span><span class="p">:</span><span class="w"> </span><span class="mi">1200</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"h"</span><span class="p">:</span><span class="w"> </span><span class="mi">627</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"resize"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fit"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"urls"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://t.co/XR9qqiPC7a"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"expanded_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://twitter.com/i/web/status/967621409668177920"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"display_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"twitter.com/i/web/status/9…"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"indices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="mi">116</span><span class="p">,</span><span class="w">
+            </span><span class="mi">139</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://t.co/chjeD7N0Zd"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"expanded_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://lexer.link/2CccBM0"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"display_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lexer.link/2CccBM0"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"indices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="mi">181</span><span class="p">,</span><span class="w">
+            </span><span class="mi">204</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lexer"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"screen_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"camplexer"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"followers_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">942</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"profile_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://pbs.twimg.com/profile_images/595397359808356352/ULzphDZ__normal.png"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
 <p>Let&rsquo;s take a closer look at the mention objects that are displayed in the Recent Mentions, Influential Mentions, and Recent Media charts. Each of these charts returns the top 100 hits for the query, allowing you to recreate a display feed of content in your app.</p>
 
-<p><img alt="Tweet Example" src="images/example_tweet.png" /></p>
+<p><img alt="Tweet Example" src="images/mention_tweet.png" /></p>
 
 <p>Here we&rsquo;ll review a Tweet from the @camplexer account. All of the information that is displayed in our charts is found in the <em>data</em> section of the payload. Let&rsquo;s take a closer look in the table below.</p>
 
@@ -225,11 +367,11 @@
 </tr>
 <tr>
 <td>mentions.mentions</td>
-<td>Other objects mentioned i.e. a retweet.</td>
+<td>Objects mentioned i.e. a retweet.</td>
 </tr>
 <tr>
 <td>mentions.authors</td>
-<td>Other authors tagged in the content.</td>
+<td>Authors tagged in the content.</td>
 </tr>
 </tbody></table>
 
