@@ -125,7 +125,7 @@ Note: all of our volume over time charts are returned using unix time.
 
 Let's take a closer look at the mention objects that are displayed in the Recent Mentions, Influential Mentions, and Recent Media charts. Each of these charts returns the top 100 hits for the query, allowing you to recreate a display feed of content in your app.
 
-![Tweet Example](../images/content/mention_tweet.png)
+![Tweet Example](../images/content/mention_tweet_2.png)
 
 ```json
 {
