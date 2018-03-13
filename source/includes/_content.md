@@ -12,7 +12,7 @@ Read our [help article](https://learn.lexer.io/export-and-report/command/command
 
 ## Configuration
 
-Unlike traditional APIs, your requests for the Content API must be created from Command; our live dashboard feature. Your Command screen allows you to test and visualise the results before retrieving the API endpoint. Once you're happy with the results, simply click the link button on the chart and your request will be provided in the URL.
+Unlike traditional APIs, your requests for the Content API must be created from our live dashboard feature Command. Your Command screen allows you to test and visualise the results before retrieving the API endpoint. Once you're happy with the results, simply click the link button on the top right corner of the chart and your request will be provided in the URL.
 
 ### Endpoints
 ```text
@@ -24,11 +24,11 @@ All of your requests should match this format.
 
 
 ### Parameters
+Requests can be modified with two paramaters to adjust the date range or filter for specific terms.
+
 ```text
 ;date_ending=2018-02-21
 ```
-Requests can be modified with two paramaters to adjust the date range or filter for specific terms.
-
 Append date_ending to adjust the ending date of your query. This will adjust the time window of your chart to finish at this day or time.
 
 ```text
@@ -38,16 +38,12 @@ Append date_ending to adjust the ending date of your query. This will adjust the
 
 Append terms to filter your saved dive even further. Here we're filtering for mentions of *Lexer OR Data*. Tip: it's easier to define this from your saved dive within Listen!
 
-### Chart Categories
-
-We've organised the various charts and metrics you can access from Command into categories
-
 
 ## Summary Metrics
 
 Here we'll describe the summary bar and live stream volume charts.
 
-## Summary Bar
+### Summary Bar
 ```json
 {
   "id": 18041857,
@@ -65,10 +61,15 @@ Here we'll describe the summary bar and live stream volume charts.
 The summary bar displays the headline metrics for your saved dive.
 
 mentions: the total number of objects matching your query.
+
 sources: where the content has come from i.e. Twitter.
+
 authors: unique authors that have published this content.
+
 reach: sum of the followers for each author.
-influence: Lexer calculated influence score for this result (not displayed in chart).
+
+influence: Lexer calculated influence score for this result (not displayed in chart). Calculated using followers, following, count of posts and lists on Twitter.
+
 average_engagements: mentions divided by authors.
 
 Each of the individual big number charts (i.e. Matches, Authors) uses the same query and will return all of the results above.
@@ -101,7 +102,7 @@ Each of the individual big number charts (i.e. Matches, Authors) uses the same q
   }
 }
 ```
-## Live Stream Volume
+### Live Stream Volume
 The Live Stream Volume chart will return a data object for each filter presented in the chart. In this example we're just looking at the Nintendo filter. Within this object are the count of mentions for each time interval.
 
 Also included in this response is the total number of mentions and various other information to render this in the chart interface.
