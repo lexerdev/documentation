@@ -137,6 +137,8 @@
 <li><p><code class="prettyprint">average_engagements</code>: mentions divided by authors.</p></li>
 </ul>
 
+<p><img alt="Summary Bar" src="images/content/summary_bar.png" /></p>
+
 <h3 id="live-stream-volume">Live Stream Volume</h3>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">17633606</span><span class="p">,</span><span class="w">
@@ -181,7 +183,13 @@
 
 <p>Note: all of our volume over time charts are returned using unix time.</p>
 
+<p><img alt="Summary Bar" src="images/content/livestreamvolume_chart.png" /></p>
+
 <h2 id="mentions">Mentions</h2>
+
+<p>Let&rsquo;s take a closer look at the mention objects that are displayed in the Recent Mentions, Influential Mentions, and Recent Media charts. Each of these charts returns the top 100 hits for the query, allowing you to recreate a display feed of content in your app.</p>
+
+<p><img alt="Tweet Example" src="images/content/mention_tweet.png" /></p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -324,10 +332,6 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>Let&rsquo;s take a closer look at the mention objects that are displayed in the Recent Mentions, Influential Mentions, and Recent Media charts. Each of these charts returns the top 100 hits for the query, allowing you to recreate a display feed of content in your app.</p>
-
-<p><img alt="Tweet Example" src="images/mention_tweet.png" /></p>
-
 <p>Here we&rsquo;ll review a Tweet from the @camplexer account. Let&rsquo;s take a closer look in the table below.</p>
 
 <table><thead>
@@ -461,42 +465,6 @@
 <td>contains details about the links within the content.</td>
 </tr>
 </tbody></table>
-
-<h3 id="property-and-description">Property and description</h3>
-
-<ul>
-<li><code class="prettyprint">data.content</code>: Body of the message.</li>
-<li><code class="prettyprint">data.geography</code>: Location details about the message.</li>
-<li><code class="prettyprint">data.geography.accuracy</code>: Supplied if specifically provided with the content. Guessed if inferred from the data.account settings. Uknown if no location data is provided.</li>
-<li><code class="prettyprint">data.geography.code</code>: State and city code provided for this location.</li>
-<li><code class="prettyprint">data.geography.point</code>: Latitude and longitude points.</li>
-<li><code class="prettyprint">data.mentions</code>: Details on links or authors mentioned in the content.</li>
-<li><code class="prettyprint">data.mentions.links</code>: Array of links in the content.</li>
-<li><code class="prettyprint">data.mentions.mentions</code>: Objects mentioned i.e. a retweet.</li>
-<li><code class="prettyprint">data.mentions.authors</code>: Authors tagged in the content.</li>
-<li><code class="prettyprint">data.mentions.author_ids</code>: IDs of the authors tagged in the content.</li>
-<li><code class="prettyprint">data.terms</code>: Tokenized words extracted from the content (array).</li>
-<li><code class="prettyprint">data.source.name</code>: Domain name for the source.</li>
-<li><code class="prettyprint">data.source.group</code>: Facebook or Instagram account the content lives on. Empty for Twitter.</li>
-<li><code class="prettyprint">data.source.id</code>: Numeric ID associated with the source type.</li>
-<li><code class="prettyprint">data.source.type</code>: Image, video, link, text. Image and video are mutually exclusive. Text contains no links or data.media.</li>
-<li><code class="prettyprint">data.author</code>: Information about the author of the content.</li>
-<li><code class="prettyprint">data.author.id</code>: Author ID appended with the network prefix.</li>
-<li><code class="prettyprint">data.author.fullname</code>: Display name of the author.</li>
-<li><code class="prettyprint">data.author.username</code>: Username of the author i.e Twitter handle.</li>
-<li><code class="prettyprint">data.author.link</code>: URL to the author&rsquo;s account.</li>
-<li><code class="prettyprint">data.author.bio</code>: Bio description for the author.</li>
-<li><code class="prettyprint">data.author.avatar</code>: URL to the author&rsquo;s avatar image.</li>
-<li><code class="prettyprint">data.author.influence</code>: Lexer calculated influence score.</li>
-<li><code class="prettyprint">data.author.reach.inbound</code>: Count of users this account is following.</li>
-<li><code class="prettyprint">data.author.reach.outbound</code>: Count of followers.</li>
-<li><code class="prettyprint">data.engagements</code>: We do not collect engagement metrics. These counts will return zero.</li>
-<li><code class="prettyprint">data.link</code>: URL to the content.</li>
-<li><code class="prettyprint">data.published</code>: Date and time this content was created.</li>
-<li><code class="prettyprint">data.processed</code>: Date and time this content was processed in Lexer.</li>
-<li><code class="prettyprint">original.entities.media</code>: contains details about the media within the content.</li>
-<li><code class="prettyprint">original.entities.urls</code>: contains details about the links within the content.</li>
-</ul>
 
 <h2 id="terms">Terms</h2>
 
