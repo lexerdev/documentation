@@ -125,7 +125,11 @@ Note: all of our volume over time charts are returned using unix time.
 
 Let's take a closer look at the mention objects that are displayed in the Recent Mentions, Influential Mentions, and Recent Media charts. Each of these charts returns the top 100 hits for the query, allowing you to recreate a display feed of content in your app.
 
+### Recent & Influential Mentions
+
 ![Tweet Example](../images/content/mention_tweet_2.png)
+
+Here we'll review a Tweet from the @camplexer account. Let's take a closer look in the table below. Most of the data you need to recreate a mention is contained within the _data_ object. The _original_ object is what we receive from the source, and will give you access to the media content (image or video) attached to the object. We suggest referring to the Twitter, Facebook or Instagram API documentation for more on the structure of the results.
 
 ```json
 {
@@ -203,16 +207,12 @@ Let's take a closer look at the mention objects that are displayed in the Recent
 }
 ```
 
-Here we'll review a Tweet from the @camplexer account. Let's take a closer look in the table below. Most of the data you need to recreate a mention is contained within the _data_ object. The _original_ object will give you access to the media content (image or video) attached to the content. We suggest referring to the Twitter, Facebook or Instagram API documentation for more on the structure of the results.
-
 Property | Description |
 ---------|-------------|
 content  | Body of the message.
-geography | Location details about the message.
 geography.accuracy | Supplied if specifically provided with the content. Guessed if inferred from the account settings. Uknown if no location data is provided.
-geography.code | State and city code provided for this location.
+geography.code | Country code provided for this location.
 geography.point | Latitude and longitude points.
-mentions | Details on links or authors mentioned in the content.
 mentions.links | Array of links in the content.
 mentions.mentions | Objects mentioned i.e. a retweet.
 mentions.authors | Authors tagged in the content.
@@ -222,7 +222,6 @@ source.name | Domain name for the source.
 source.group | Facebook or Instagram account the content lives on. Empty for Twitter.
 source.id | Numeric ID associated with the source type.
 source.type | Image, video, link, text. Image and video are mutually exclusive. An object may be type video,link or image,link. Text indicates no media or links.
-author | Information about the author of the content.
 author.id | Author ID appended with the network prefix.
 author.fullname | Display name of the author.
 author.username | Username of the author i.e Twitter handle.
@@ -232,8 +231,8 @@ author.avatar | URL to the author's avatar image.
 author.influence | Lexer calculated influence score.
 author.reach.inbound | Count of users this account is following.
 author.reach.outbound | Count of followers.
-engagements | Unused.
-engagement_count | Unused.
+engagements | Unused. We do not collect engagement metrics on objects.
+engagement_count | Unused. We do not collect engagement metrics on objects.
 language | Language code in ISO 639-1 format.
 id | Unused.
 link | URL to the content.
@@ -243,8 +242,14 @@ _id | Unused.
 
 
 ## Terms
+Let's take a closer look at how we analyse trending keywords in the Terms Volume and Trending Terms charts. It's important to note that we remove stop words before tokenizing our objects.
 
-Terms volume, top terms table
+### Terms Volume
+
+
+### Trending Terms
+
+
 
 ## Sources
 
