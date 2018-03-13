@@ -43,6 +43,7 @@ Append terms to filter your saved dive even further. Here we're filtering for me
 
 Here we'll describe the summary bar and live stream volume charts.
 
+### Summary Bar
 ```json
 {
   "id": 18041857,
@@ -52,12 +53,10 @@ Here we'll describe the summary bar and live stream volume charts.
     "sources": 3,
     "authors": 46134,
     "reach": 284297204,
-    "influence": 13139,
     "average_engagements": 1.4674643430008236
   }
 }
 ```
-### Summary Bar
 
 The summary bar displays the headline metrics for your saved dive. Each of the individual big number charts (i.e. Matches, Authors) uses the same query and will return all of the results.
 
@@ -68,8 +67,6 @@ The summary bar displays the headline metrics for your saved dive. Each of the i
 - `authors`: unique authors that have published this content.
 
 - `reach`: sum of the followers for each author.
-
-- `influence`: Lexer calculated influence score for this result (not displayed in chart). Calculated using followers, following, count of posts and lists on Twitter.
 
 - `average_engagements`: mentions divided by authors.
 
@@ -110,16 +107,20 @@ Also included in this response is the total number of mentions and various other
 
 Our volume charts bucket counts into time intervals based on the period covered in the report. Here is a summary of the query ranges and corresponding time intervals returned.
 - `<2 days`: results are grouped into 1 hour intervals.
+
 - `2-3 days`: results are grouped into 3 hour intervals.
+
 - `7 days`: results are grouped into 12 hour intervals.
+
 - `8+ days`: results are grouped into 1 day intervals.
+
 
 Note: all of our volume over time charts are returned using unix time.
 
 ## Mentions
 Let's take a closer look at the mention objects that are displayed in the Recent Mentions, Influential Mentions, and Recent Media charts. Each of these charts returns the top 100 hits for the query, allowing you to recreate a display feed of content in your app.
 
-<%= image_tag 'example_tweet.png %>
+![Tweet Example](/documentation/source/images/example_tweet.png)
 
 Here we'll review a Tweet from the @camplexer account. All of the information that is displayed in our charts is found in the _data_ section of the payload. Let's take a closer look in the table below.
 
