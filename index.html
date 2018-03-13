@@ -53,8 +53,8 @@
 <p>We currently offer the following APIs to our clients:</p>
 
 <ul>
-<li><p><strong>Content</strong>: read the data powering your live screens.</p></li>
-<li><p><strong>Chatbot</strong>: integrate a chatbot into your team.</p></li>
+<li><p><strong>Content</strong>: read social and news content.</p></li>
+<li><p><strong>Chatbot</strong>: integrate your chatbot into Engage.</p></li>
 <li><p><strong>Activity</strong>: read customer service team performance metrics (Coming Soon).</p></li>
 <li><p><strong>Identity</strong>: read and write Identity data.</p></li>
 </ul>
@@ -69,7 +69,7 @@
 
 <h2 id="support">Support</h2>
 
-<p>Our team are here to help you build an integration with any of our products, so please don&rsquo;t hesitate to reach out! Reach out via live chat within the Hub or <a href="mailto:support@lexer.io">via email</a>.</p>
+<p>Our team are here to help you build an integration with any of our products, so please don&rsquo;t hesitate to reach out! Get in contact via live chat within the Hub or <a href="mailto:support@lexer.io">email</a>.</p>
 
           <h1 id="content">Content</h1>
 
@@ -81,7 +81,7 @@
 
 <ul>
 <li><strong>Listen</strong>: to create your saved dives that define your search.</li>
-<li><strong>Command</strong>: to create the charts using yoru saved dives.</li>
+<li><strong>Command</strong>: to create the charts using your saved dives.</li>
 </ul>
 
 <h2 id="configuration">Configuration</h2>
@@ -102,15 +102,46 @@
 
 <p>Requests can be modified with two paramaters to adjust the date range or filter for specific terms.</p>
 
-<p>Append date_ending to adjust the ending date of your query. This will adjust the time window of your chart to finish at this day or time.
-<code class="prettyprint">text
-;terms=lexer
+<p>Append date_ending to adjust the ending date of your query. This will adjust the time window of your chart to finish at this day or time.</p>
+<pre class="highlight plaintext"><code>;terms=lexer
 ;terms=lexer%20OR%20data
-</code></p>
+</code></pre>
 
 <p>Append terms to filter your saved dive even further. Here we&rsquo;re filtering for mentions of <em>Lexer OR Data</em>. Tip: it&rsquo;s easier to define this from your saved dive within Listen!</p>
 
+<h3 id="chart-categories">Chart Categories</h3>
+
+<p>We&rsquo;ve organised the various charts and metrics you can access from Command into categories</p>
+
 <h2 id="summary-metrics">Summary Metrics</h2>
+
+<p>Here we&rsquo;ll describe the summary bar and live stream volume charts.</p>
+
+<h2 id="summary-bar">Summary Bar</h2>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">18041857</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-13T02:04:04Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"mentions"</span><span class="p">:</span><span class="w"> </span><span class="mi">67700</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sources"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"authors"</span><span class="p">:</span><span class="w"> </span><span class="mi">46134</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"reach"</span><span class="p">:</span><span class="w"> </span><span class="mi">284297204</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"influence"</span><span class="p">:</span><span class="w"> </span><span class="mi">13139</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"average_engagements"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.4674643430008236</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>The summary bar displays the headline metrics for your saved dive.</p>
+
+<p>mentions: the total number of objects matching your query.
+sources: where the content has come from i.e. Twitter.
+authors: unique authors that have published this content.
+reach: sum of the followers for each author.
+influence: Lexer calculated influence score for this result (not displayed in chart).
+average_engagements: mentions divided by authors.</p>
+
+<p>Each of the individual big number charts (i.e. Matches, Authors) uses the same query and will return all of the results above.</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">17633606</span><span class="p">,</span><span class="w">
   </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-22T03:14:51Z"</span><span class="p">,</span><span class="w">
@@ -139,6 +170,8 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
+<h2 id="live-stream-volume">Live Stream Volume</h2>
+
 <p>The Live Stream Volume chart will return a data object for each filter presented in the chart. In this example we&rsquo;re just looking at the Nintendo filter. Within this object are the count of mentions for each time interval.</p>
 
 <p>Also included in this response is the total number of mentions and various other information to render this in the chart interface.</p>
@@ -147,7 +180,7 @@
 
 <p>Recent mentions, influential mentions, media, top links</p>
 
-<h2 id="trending-terms">Trending Terms</h2>
+<h2 id="terms">Terms</h2>
 
 <p>Terms volume, top terms table</p>
 
@@ -167,15 +200,15 @@
 
 <p>Classification counts</p>
 
-          <h1 id="chatbot-api">Chatbot API</h1>
+          <h1 id="chatbot">Chatbot</h1>
 
 <p>Coming soon&hellip;</p>
 
-          <h1 id="activity-api">Activity API</h1>
+          <h1 id="activity">Activity</h1>
 
 <p>Coming soon&hellip;</p>
 
-          <h1 id="identity-api">Identity API</h1>
+          <h1 id="identity">Identity</h1>
 
 <p>The Lexer Identity API allows clients and their partners to read and write Identity information to <a href="http://lexer.io">Lexer Identify</a>.</p>
 
