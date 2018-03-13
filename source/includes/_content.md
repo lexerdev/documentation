@@ -24,11 +24,11 @@ All of your requests should match this format.
 
 
 ### Parameters
-Requests can be modified with two paramaters to adjust the date range or filter for specific terms.
-
 ```text
 ;date_ending=2018-02-21
 ```
+Requests can be modified with two paramaters to adjust the date range or filter for specific terms.
+
 Append date_ending to adjust the ending date of your query. This will adjust the time window of your chart to finish at this day or time.
 
 ```text
@@ -43,7 +43,6 @@ Append terms to filter your saved dive even further. Here we're filtering for me
 
 Here we'll describe the summary bar and live stream volume charts.
 
-### Summary Bar
 ```json
 {
   "id": 18041857,
@@ -58,21 +57,23 @@ Here we'll describe the summary bar and live stream volume charts.
   }
 }
 ```
-The summary bar displays the headline metrics for your saved dive.
+### Summary Bar
 
-mentions: the total number of objects matching your query.
+The summary bar displays the headline metrics for your saved dive. Each of the individual big number charts (i.e. Matches, Authors) uses the same query and will return all of the results.
 
-sources: where the content has come from i.e. Twitter.
+- `mentions`: the total number of objects matching your query.
 
-authors: unique authors that have published this content.
+- `sources`: where the content has come from i.e. Twitter.
 
-reach: sum of the followers for each author.
+- `authors`: unique authors that have published this content.
 
-influence: Lexer calculated influence score for this result (not displayed in chart). Calculated using followers, following, count of posts and lists on Twitter.
+- `reach`: sum of the followers for each author.
 
-average_engagements: mentions divided by authors.
+- `influence`: Lexer calculated influence score for this result (not displayed in chart). Calculated using followers, following, count of posts and lists on Twitter.
 
-Each of the individual big number charts (i.e. Matches, Authors) uses the same query and will return all of the results above.
+- `average_engagements`: mentions divided by authors.
+
+
 
 ```json
 {
@@ -107,11 +108,33 @@ The Live Stream Volume chart will return a data object for each filter presented
 
 Also included in this response is the total number of mentions and various other information to render this in the chart interface.
 
+Our volume charts bucket counts into time intervals based on the period covered in the report. Here is a summary of the query ranges and corresponding time intervals returned.
+- `<2 days`: results are grouped into 1 hour intervals.
+- `2-3 days`: results are grouped into 3 hour intervals.
+- `7 days`: results are grouped into 12 hour intervals.
+- `8+ days`: results are grouped into 1 day intervals.
 
+Note: all of our volume over time charts are returned using unix time.
 
 ## Mentions
+Let's take a closer look at the mention objects that are displayed in the Recent Mentions, Influential Mentions, and Recent Media charts. Each of these charts returns the top 100 hits for the query, allowing you to recreate a display feed of content in your app.
 
-Recent mentions, influential mentions, media, top links
+<%= image_tag 'example_tweet.png %>
+
+Here we'll review a Tweet from the @camplexer account. All of the information that is displayed in our charts is found in the _data_ section of the payload. Let's take a closer look in the table below.
+
+Property | Description |
+---------|-------------|
+content  | Body of the message.
+geography | Location details about the message.
+geography.accuracy | Supplied if specifically provided with the content. Guessed if inferred from the account settings. Uknown if no location data is provided.
+geography.code | State and city code provided for this location.
+geography.point | Latitude and longitude points.
+mentions | Details on links or authors mentioned in the content.
+mentions.links | Array of links in the content.
+mentions.mentions | Other objects mentioned i.e. a retweet.
+mentions.authors | Other authors tagged in the content.
+
 
 ## Terms
 
