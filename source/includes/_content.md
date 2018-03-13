@@ -199,112 +199,47 @@ Let's take a closer look at the mention objects that are displayed in the Recent
     "processed": "2018-02-25T04:44:57Z",
     "_id": "twitter_967621409668177920"
   },
-  "original": {
-    "entities": {
-      "media": [
-        {
-          "id": 967621407310925824,
-          "id_str": "967621407310925824",
-          "indices": [
-            207,
-            230
-          ],
-          "media_url": "http://pbs.twimg.com/media/DW2uixPU0AAuUnq.jpg",
-          "media_url_https": "https://pbs.twimg.com/media/DW2uixPU0AAuUnq.jpg",
-          "url": "https://t.co/BG1n6IpJka",
-          "display_url": "pic.twitter.com/BG1n6IpJka",
-          "expanded_url": "https://twitter.com/camplexer/status/967621409668177920/photo/1",
-          "type": "photo",
-          "sizes": {
-            "medium": {
-              "w": 1200,
-              "h": 627,
-              "resize": "fit"
-            },
-            "thumb": {
-              "w": 150,
-              "h": 150,
-              "resize": "crop"
-            },
-            "small": {
-              "w": 680,
-              "h": 355,
-              "resize": "fit"
-            },
-            "large": {
-              "w": 1200,
-              "h": 627,
-              "resize": "fit"
-            }
-          }
-        }
-      ],
-      "urls": [
-        {
-          "url": "https://t.co/XR9qqiPC7a",
-          "expanded_url": "https://twitter.com/i/web/status/967621409668177920",
-          "display_url": "twitter.com/i/web/status/9…",
-          "indices": [
-            116,
-            139
-          ]
-        },
-        {
-          "url": "https://t.co/chjeD7N0Zd",
-          "expanded_url": "http://lexer.link/2CccBM0",
-          "display_url": "lexer.link/2CccBM0",
-          "indices": [
-            181,
-            204
-          ]
-        }
-      ]
-    },
-    "user": {
-      "name": "Lexer",
-      "screen_name": "camplexer",
-      "followers_count": 942,
-      "profile_image_url": "http://pbs.twimg.com/profile_images/595397359808356352/ULzphDZ__normal.png"
-    }
-  }
+  "original": [...]
 }
 ```
 
-Here we'll review a Tweet from the @camplexer account. Let's take a closer look in the table below.
+Here we'll review a Tweet from the @camplexer account. Let's take a closer look in the table below. Most of the data you need to recreate a mention is contained within the _data_ object. The _original_ object will give you access to the media content (image or video) attached to the content. We suggest referring to the Twitter, Facebook or Instagram API documentation for more on the structure of the results.
 
 Property | Description |
 ---------|-------------|
-data.content  | Body of the message.
-data.geography | Location details about the message.
-data.geography.accuracy | Supplied if specifically provided with the content. Guessed if inferred from the data.account settings. Uknown if no location data is provided.
-data.geography.code | State and city code provided for this location.
-data.geography.point | Latitude and longitude points.
-data.mentions | Details on links or authors mentioned in the content.
-data.mentions.links | Array of links in the content.
-data.mentions.mentions | Objects mentioned i.e. a retweet.
-data.mentions.authors | Authors tagged in the content.
-data.mentions.author_ids | IDs of the authors tagged in the content.
-data.terms | Tokenized words extracted from the content (array).
-data.source.name | Domain name for the source.
-data.source.group | Facebook or Instagram account the content lives on. Empty for Twitter.
-data.source.id | Numeric ID associated with the source type.
-data.source.type | Image, video, link, text. Image and video are mutually exclusive. Text contains no links or data.media.
-data.author | Information about the author of the content.
-data.author.id | Author ID appended with the network prefix.
-data.author.fullname | Display name of the author.
-data.author.username | Username of the author i.e Twitter handle.
-data.author.link | URL to the author's account.
-data.author.bio | Bio description for the author.
-data.author.avatar | URL to the author's avatar image.
-data.author.influence | Lexer calculated influence score.
-data.author.reach.inbound | Count of users this account is following.
-data.author.reach.outbound | Count of followers.
-data.engagements | We do not collect engagement metrics. These counts will return zero.
-data.link | URL to the content.
-data.published | Date and time this content was created.
-data.processed | Date and time this content was processed in Lexer.
-original.entities.media | contains details about the media within the content.
-original.entities.urls | contains details about the links within the content.
+content  | Body of the message.
+geography | Location details about the message.
+geography.accuracy | Supplied if specifically provided with the content. Guessed if inferred from the account settings. Uknown if no location data is provided.
+geography.code | State and city code provided for this location.
+geography.point | Latitude and longitude points.
+mentions | Details on links or authors mentioned in the content.
+mentions.links | Array of links in the content.
+mentions.mentions | Objects mentioned i.e. a retweet.
+mentions.authors | Authors tagged in the content.
+mentions.author_ids | IDs of the authors tagged in the content.
+terms | Tokenized words extracted from the content (array).
+source.name | Domain name for the source.
+source.group | Facebook or Instagram account the content lives on. Empty for Twitter.
+source.id | Numeric ID associated with the source type.
+source.type | Image, video, link, text. Image and video are mutually exclusive. An object may be type video,link or image,link. Text indicates no media or links.
+author | Information about the author of the content.
+author.id | Author ID appended with the network prefix.
+author.fullname | Display name of the author.
+author.username | Username of the author i.e Twitter handle.
+author.link | URL to the author's account.
+author.bio | Bio description for the author.
+author.avatar | URL to the author's avatar image.
+author.influence | Lexer calculated influence score.
+author.reach.inbound | Count of users this account is following.
+author.reach.outbound | Count of followers.
+engagements | Unused.
+engagement_count | Unused.
+language | Language code in ISO 639-1 format.
+id | Unused.
+link | URL to the content.
+published | Date and time this content was created.
+processed | Date and time this content was processed in Lexer.
+_id | Unused.
 
 
 ## Terms
