@@ -229,7 +229,6 @@
     </span><span class="s2">"author"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"twitter_219052087"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"fullname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lexer"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"lexer_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
       </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"camplexer"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://twitter.com/camplexer/"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"bio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Put data to work to genuinely understand and engage customers."</span><span class="p">,</span><span class="w">
@@ -329,7 +328,7 @@
 
 <p><img alt="Tweet Example" src="images/mention_tweet.png" /></p>
 
-<p>Here we&rsquo;ll review a Tweet from the @camplexer account. All of the information that is displayed in our charts is found in the <em>data</em> section of the payload. Let&rsquo;s take a closer look in the table below.</p>
+<p>Here we&rsquo;ll review a Tweet from the @camplexer account. Let&rsquo;s take a closer look in the table below.</p>
 
 <table><thead>
 <tr>
@@ -338,42 +337,166 @@
 </tr>
 </thead><tbody>
 <tr>
-<td>content</td>
+<td>data.content</td>
 <td>Body of the message.</td>
 </tr>
 <tr>
-<td>geography</td>
+<td>data.geography</td>
 <td>Location details about the message.</td>
 </tr>
 <tr>
-<td>geography.accuracy</td>
-<td>Supplied if specifically provided with the content. Guessed if inferred from the account settings. Uknown if no location data is provided.</td>
+<td>data.geography.accuracy</td>
+<td>Supplied if specifically provided with the content. Guessed if inferred from the data.account settings. Uknown if no location data is provided.</td>
 </tr>
 <tr>
-<td>geography.code</td>
+<td>data.geography.code</td>
 <td>State and city code provided for this location.</td>
 </tr>
 <tr>
-<td>geography.point</td>
+<td>data.geography.point</td>
 <td>Latitude and longitude points.</td>
 </tr>
 <tr>
-<td>mentions</td>
+<td>data.mentions</td>
 <td>Details on links or authors mentioned in the content.</td>
 </tr>
 <tr>
-<td>mentions.links</td>
+<td>data.mentions.links</td>
 <td>Array of links in the content.</td>
 </tr>
 <tr>
-<td>mentions.mentions</td>
+<td>data.mentions.mentions</td>
 <td>Objects mentioned i.e. a retweet.</td>
 </tr>
 <tr>
-<td>mentions.authors</td>
+<td>data.mentions.authors</td>
 <td>Authors tagged in the content.</td>
 </tr>
+<tr>
+<td>data.mentions.author_ids</td>
+<td>IDs of the authors tagged in the content.</td>
+</tr>
+<tr>
+<td>data.terms</td>
+<td>Tokenized words extracted from the content (array).</td>
+</tr>
+<tr>
+<td>data.source.name</td>
+<td>Domain name for the source.</td>
+</tr>
+<tr>
+<td>data.source.group</td>
+<td>Facebook or Instagram account the content lives on. Empty for Twitter.</td>
+</tr>
+<tr>
+<td>data.source.id</td>
+<td>Numeric ID associated with the source type.</td>
+</tr>
+<tr>
+<td>data.source.type</td>
+<td>Image, video, link, text. Image and video are mutually exclusive. Text contains no links or data.media.</td>
+</tr>
+<tr>
+<td>data.author</td>
+<td>Information about the author of the content.</td>
+</tr>
+<tr>
+<td>data.author.id</td>
+<td>Author ID appended with the network prefix.</td>
+</tr>
+<tr>
+<td>data.author.fullname</td>
+<td>Display name of the author.</td>
+</tr>
+<tr>
+<td>data.author.username</td>
+<td>Username of the author i.e Twitter handle.</td>
+</tr>
+<tr>
+<td>data.author.link</td>
+<td>URL to the author&rsquo;s account.</td>
+</tr>
+<tr>
+<td>data.author.bio</td>
+<td>Bio description for the author.</td>
+</tr>
+<tr>
+<td>data.author.avatar</td>
+<td>URL to the author&rsquo;s avatar image.</td>
+</tr>
+<tr>
+<td>data.author.influence</td>
+<td>Lexer calculated influence score.</td>
+</tr>
+<tr>
+<td>data.author.reach.inbound</td>
+<td>Count of users this account is following.</td>
+</tr>
+<tr>
+<td>data.author.reach.outbound</td>
+<td>Count of followers.</td>
+</tr>
+<tr>
+<td>data.engagements</td>
+<td>We do not collect engagement metrics. These counts will return zero.</td>
+</tr>
+<tr>
+<td>data.link</td>
+<td>URL to the content.</td>
+</tr>
+<tr>
+<td>data.published</td>
+<td>Date and time this content was created.</td>
+</tr>
+<tr>
+<td>data.processed</td>
+<td>Date and time this content was processed in Lexer.</td>
+</tr>
+<tr>
+<td>original.entities.media</td>
+<td>contains details about the media within the content.</td>
+</tr>
+<tr>
+<td>original.entities.urls</td>
+<td>contains details about the links within the content.</td>
+</tr>
 </tbody></table>
+
+<h3 id="property-and-description">Property and description</h3>
+
+<ul>
+<li><code class="prettyprint">data.content</code>: Body of the message.</li>
+<li><code class="prettyprint">data.geography</code>: Location details about the message.</li>
+<li><code class="prettyprint">data.geography.accuracy</code>: Supplied if specifically provided with the content. Guessed if inferred from the data.account settings. Uknown if no location data is provided.</li>
+<li><code class="prettyprint">data.geography.code</code>: State and city code provided for this location.</li>
+<li><code class="prettyprint">data.geography.point</code>: Latitude and longitude points.</li>
+<li><code class="prettyprint">data.mentions</code>: Details on links or authors mentioned in the content.</li>
+<li><code class="prettyprint">data.mentions.links</code>: Array of links in the content.</li>
+<li><code class="prettyprint">data.mentions.mentions</code>: Objects mentioned i.e. a retweet.</li>
+<li><code class="prettyprint">data.mentions.authors</code>: Authors tagged in the content.</li>
+<li><code class="prettyprint">data.mentions.author_ids</code>: IDs of the authors tagged in the content.</li>
+<li><code class="prettyprint">data.terms</code>: Tokenized words extracted from the content (array).</li>
+<li><code class="prettyprint">data.source.name</code>: Domain name for the source.</li>
+<li><code class="prettyprint">data.source.group</code>: Facebook or Instagram account the content lives on. Empty for Twitter.</li>
+<li><code class="prettyprint">data.source.id</code>: Numeric ID associated with the source type.</li>
+<li><code class="prettyprint">data.source.type</code>: Image, video, link, text. Image and video are mutually exclusive. Text contains no links or data.media.</li>
+<li><code class="prettyprint">data.author</code>: Information about the author of the content.</li>
+<li><code class="prettyprint">data.author.id</code>: Author ID appended with the network prefix.</li>
+<li><code class="prettyprint">data.author.fullname</code>: Display name of the author.</li>
+<li><code class="prettyprint">data.author.username</code>: Username of the author i.e Twitter handle.</li>
+<li><code class="prettyprint">data.author.link</code>: URL to the author&rsquo;s account.</li>
+<li><code class="prettyprint">data.author.bio</code>: Bio description for the author.</li>
+<li><code class="prettyprint">data.author.avatar</code>: URL to the author&rsquo;s avatar image.</li>
+<li><code class="prettyprint">data.author.influence</code>: Lexer calculated influence score.</li>
+<li><code class="prettyprint">data.author.reach.inbound</code>: Count of users this account is following.</li>
+<li><code class="prettyprint">data.author.reach.outbound</code>: Count of followers.</li>
+<li><code class="prettyprint">data.engagements</code>: We do not collect engagement metrics. These counts will return zero.</li>
+<li><code class="prettyprint">data.link</code>: URL to the content.</li>
+<li><code class="prettyprint">data.published</code>: Date and time this content was created.</li>
+<li><code class="prettyprint">data.processed</code>: Date and time this content was processed in Lexer.</li>
+<li><code class="prettyprint">original.entities.media</code>: contains details about the media within the content.</li>
+<li><code class="prettyprint">original.entities.urls</code>: contains details about the links within the content.</li>
+</ul>
 
 <h2 id="terms">Terms</h2>
 
