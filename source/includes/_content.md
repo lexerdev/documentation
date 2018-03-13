@@ -120,7 +120,7 @@ Note: all of our volume over time charts are returned using unix time.
 ## Mentions
 Let's take a closer look at the mention objects that are displayed in the Recent Mentions, Influential Mentions, and Recent Media charts. Each of these charts returns the top 100 hits for the query, allowing you to recreate a display feed of content in your app.
 
-![Tweet Example](/documentation/source/images/example_tweet.png)
+![Tweet Example](../images/example_tweet.png)
 
 Here we'll review a Tweet from the @camplexer account. All of the information that is displayed in our charts is found in the _data_ section of the payload. Let's take a closer look in the table below.
 
