@@ -243,21 +243,93 @@ _id | Unused.
 
 ### Paging Results
 
-In order to return more than 100 matches, you can page through the results using the timestamp of the last object returned. Simply add the date_ending parameter to your next call with the data.published (minus one second so as not to include the same object again) and you will return the next 100 matches.
+In order to return more than 100 matches, you can page through the results using the timestamp of the last object returned. Simply add the `date_ending` parameter to your next call using the `data.published` time (minus one second so as not to include the same object again) and you will return the next 100 matches.
 
-For example if the 100th object in our result has `"published": "2018-02-25T04:44:56Z",` then you would add `;date_ending=2018-02-25T04:44:5**5**Z` to the end of your request.
+For example if the 100th object in our result has `"published": "2018-02-25T04:30:00Z",` then you would add `;date_ending=2018-02-25T04:39:99Z` to the end of your request.
 
 
 ## Terms
-Let's take a closer look at how we analyse trending keywords in the Terms Volume and Trending Terms charts. It's important to note that we remove stop words before tokenizing our objects.
+Let's take a closer look at how we analyse trending keywords in the Trending Terms and Terms Volume charts. It's important to note that we remove stop words before tokenizing our mentions.
 
 ### Trending Terms
-
-![Terms Volume Chart](../images/content/terms_volume.png)
-
-### Terms Volume
+```json
+{
+  "id": 18119110,
+  "updated_at": "2018-03-14T05:24:35Z",
+  "data": [
+    {
+      "term": "nintendo",
+      "count": 61263
+    },
+    {
+      "term": "switch",
+      "count": 38017
+    },
+    {
+      "term": "#nintendo",
+      "count": 8104
+    },
+    {...}
+  ]
+}
+```
+Our trending terms table is the simplest way to return counts for terms appearing in your query. This endpoint will return the top 100 terms sorted by volume.
 
 ![Terms Volume Chart](../images/content/terms_table.png)
+
+### Terms Volume
+```json
+{
+  "id": 18119109,
+  "updated_at": "2018-03-14T16:17:58+11:00",
+  "data": {
+    "nintendo": {
+      "data": {
+        "1520859600000": 2131,
+        "1520863200000": 2536,
+        "1520866800000": 2562,
+        "1520870400000": 2626,
+        "1520874000000": 2568,
+        "1520877600000": 2234,
+        "1520881200000": 2768,
+        "1520884800000": 3109,
+        "1520888400000": 2720,
+        "1520892000000": 3466,
+        "1520895600000": 2643,
+        "1520899200000": 3000,
+        "1520902800000": 3790,
+        "1520906400000": 3148,
+        "1520910000000": 3200,
+        "1520913600000": 3092,
+        "1520917200000": 2457,
+        "1520920800000": 1919,
+        "1520924400000": 1931,
+        "1520928000000": 1598,
+        "1520931600000": 1799,
+        "1520935200000": 1921,
+        "1520938800000": 2057,
+        "1520942400000": 1988
+      },
+      "original": [...],
+      "summary": null
+    },
+    "switch": {...},
+    "#nintendo": {...},
+    "smash": {...},
+    "#nintendoswitch": {...},
+    "retweet": {...},
+    "enter": {...},
+    "giveaway": {...},
+    "super": {...},
+    "join": {...}
+  }
+}
+```
+Here we're returning an object for each of the top 10 terms for this query. Remember that our time intervals are determined by the range of our query, as mentioned in the Summary section above.
+
+Note that you can ignore the data in the original section.
+
+![Terms Volume Chart](../images/content/terms_volume.png)
 
 
 
