@@ -405,7 +405,7 @@
 
 <h2 id="terms">Terms</h2>
 
-<p>Let&rsquo;s take a closer look at how we analyse trending keywords in the Trending Terms and Terms Volume charts. It&rsquo;s important to note that we remove stop words before tokenizing our mentions.</p>
+<p>Let&rsquo;s take a closer look at how we analyse trending words used in the content matching our query. Here we have the Trending Terms and Terms Volume charts. It&rsquo;s important to note that we remove stop words before tokenizing content.</p>
 
 <h3 id="trending-terms">Trending Terms</h3>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
@@ -414,15 +414,15 @@
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nintendo"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">61263</span><span class="w">
+      </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">59123</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"switch"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">38017</span><span class="w">
+      </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">36034</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#nintendo"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">8104</span><span class="w">
+      </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">8014</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="err">...}</span><span class="w">
   </span><span class="p">]</span><span class="w">
@@ -489,11 +489,297 @@
 
 <h2 id="sources">Sources</h2>
 
-<p>Top sources, source types, source groups</p>
+<p>Sources are the social networks or websites the content has come from. We categorise this content in different ways to help you dig deeper. Let&rsquo;s take a closer look at the Top Sources, Sources Volume, Source Types and Source Groups charts.</p>
+
+<h3 id="top-sources">Top Sources</h3>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">18041879</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-14T05:45:18Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"twitter.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">61076</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"instagram.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">2356</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"facebook.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">357</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Our Top Sources chart provides you with a count of matches for each source. The <code class="prettyprint">term</code> field refers to the source name, and the <code class="prettyprint">count</code> field will provide the number of matches.</p>
+
+<p><img alt="Top Sources" src="images/content/source_top.png" /></p>
+
+<h3 id="sources-volume">Sources Volume</h3>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">18148227</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-14T05:45:18Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"twitter.com"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"1520920800000"</span><span class="p">:</span><span class="w"> </span><span class="mi">2287</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520924400000"</span><span class="p">:</span><span class="w"> </span><span class="mi">2269</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520928000000"</span><span class="p">:</span><span class="w"> </span><span class="mi">1919</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520931600000"</span><span class="p">:</span><span class="w"> </span><span class="mi">2094</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520935200000"</span><span class="p">:</span><span class="w"> </span><span class="mi">2385</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520938800000"</span><span class="p">:</span><span class="w"> </span><span class="mi">2416</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520942400000"</span><span class="p">:</span><span class="w"> </span><span class="mi">2366</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520946000000"</span><span class="p">:</span><span class="w"> </span><span class="mi">2820</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520949600000"</span><span class="p">:</span><span class="w"> </span><span class="mi">2727</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520953200000"</span><span class="p">:</span><span class="w"> </span><span class="mi">2977</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520956800000"</span><span class="p">:</span><span class="w"> </span><span class="mi">2886</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520960400000"</span><span class="p">:</span><span class="w"> </span><span class="mi">2598</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520964000000"</span><span class="p">:</span><span class="w"> </span><span class="mi">2804</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520967600000"</span><span class="p">:</span><span class="w"> </span><span class="mi">2932</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520971200000"</span><span class="p">:</span><span class="w"> </span><span class="mi">2693</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520974800000"</span><span class="p">:</span><span class="w"> </span><span class="mi">2543</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520978400000"</span><span class="p">:</span><span class="w"> </span><span class="mi">2439</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520982000000"</span><span class="p">:</span><span class="w"> </span><span class="mi">2085</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520985600000"</span><span class="p">:</span><span class="w"> </span><span class="mi">2987</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520989200000"</span><span class="p">:</span><span class="w"> </span><span class="mi">2346</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520992800000"</span><span class="p">:</span><span class="w"> </span><span class="mi">2230</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520996400000"</span><span class="p">:</span><span class="w"> </span><span class="mi">3160</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1521000000000"</span><span class="p">:</span><span class="w"> </span><span class="mi">3384</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1521003600000"</span><span class="p">:</span><span class="w"> </span><span class="mi">1729</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"original"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span><span class="w">
+      </span><span class="s2">"summary"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"instagram.com"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"1520920800000"</span><span class="p">:</span><span class="w"> </span><span class="mi">71</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520924400000"</span><span class="p">:</span><span class="w"> </span><span class="mi">77</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520928000000"</span><span class="p">:</span><span class="w"> </span><span class="mi">73</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520931600000"</span><span class="p">:</span><span class="w"> </span><span class="mi">73</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520935200000"</span><span class="p">:</span><span class="w"> </span><span class="mi">75</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520938800000"</span><span class="p">:</span><span class="w"> </span><span class="mi">92</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520942400000"</span><span class="p">:</span><span class="w"> </span><span class="mi">105</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520946000000"</span><span class="p">:</span><span class="w"> </span><span class="mi">127</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520949600000"</span><span class="p">:</span><span class="w"> </span><span class="mi">116</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520953200000"</span><span class="p">:</span><span class="w"> </span><span class="mi">124</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520956800000"</span><span class="p">:</span><span class="w"> </span><span class="mi">99</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520960400000"</span><span class="p">:</span><span class="w"> </span><span class="mi">115</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520964000000"</span><span class="p">:</span><span class="w"> </span><span class="mi">101</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520967600000"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520971200000"</span><span class="p">:</span><span class="w"> </span><span class="mi">105</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520974800000"</span><span class="p">:</span><span class="w"> </span><span class="mi">116</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520978400000"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520982000000"</span><span class="p">:</span><span class="w"> </span><span class="mi">112</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520985600000"</span><span class="p">:</span><span class="w"> </span><span class="mi">110</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520989200000"</span><span class="p">:</span><span class="w"> </span><span class="mi">105</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520992800000"</span><span class="p">:</span><span class="w"> </span><span class="mi">98</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520996400000"</span><span class="p">:</span><span class="w"> </span><span class="mi">110</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1521000000000"</span><span class="p">:</span><span class="w"> </span><span class="mi">84</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1521003600000"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"original"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span><span class="w">
+      </span><span class="s2">"summary"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"facebook.com"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"1520920800000"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520924400000"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520928000000"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520931600000"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520935200000"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520938800000"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520942400000"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520946000000"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520949600000"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520953200000"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520956800000"</span><span class="p">:</span><span class="w"> </span><span class="mi">23</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520960400000"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520964000000"</span><span class="p">:</span><span class="w"> </span><span class="mi">26</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520967600000"</span><span class="p">:</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520971200000"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520974800000"</span><span class="p">:</span><span class="w"> </span><span class="mi">34</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520978400000"</span><span class="p">:</span><span class="w"> </span><span class="mi">23</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520982000000"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520985600000"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520989200000"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520992800000"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520996400000"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1521000000000"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1521003600000"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"original"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span><span class="w">
+      </span><span class="s2">"summary"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>The Source Volume chart will return an object for each source in your result, and will break this into time intervals based on your query length. </p>
+
+<p><img alt="Source Volume" src="images/content/source_volume.png" /></p>
+
+<h3 id="source-types">Source Types</h3>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">18041880</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-14T05:45:18Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"term"</span><span class="p">:</span><span class="w"> </span><span class="mi">102</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">61076</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"term"</span><span class="p">:</span><span class="w"> </span><span class="mi">122</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">2080</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"term"</span><span class="p">:</span><span class="w"> </span><span class="mi">113</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">327</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"term"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">276</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"term"</span><span class="p">:</span><span class="w"> </span><span class="mi">112</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Source Types go further into breaking down the source results into their specific content type, for example posts vs comments vs private messages. </p>
+
+<p>You will notice that we return numeric IDs for each of the sources. Below is a table you should store as reference for each of the source types in our platform.</p>
+
+<table><thead>
+<tr>
+<th>ID</th>
+<th>Source Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>102</td>
+<td>Twitter Tweet</td>
+</tr>
+<tr>
+<td>103</td>
+<td>Twitter Direct Message</td>
+</tr>
+<tr>
+<td>112</td>
+<td>Facebook Post</td>
+</tr>
+<tr>
+<td>113</td>
+<td>Facebook Comment</td>
+</tr>
+<tr>
+<td>114</td>
+<td>Facebook Message</td>
+</tr>
+<tr>
+<td>115</td>
+<td>Facebook Dark Post</td>
+</tr>
+<tr>
+<td>116</td>
+<td>Facebook Dark Comment</td>
+</tr>
+<tr>
+<td>117</td>
+<td>Facebook Review</td>
+</tr>
+<tr>
+<td>118</td>
+<td>Facebook ReviewC omment</td>
+</tr>
+<tr>
+<td>122</td>
+<td>Instagram Post</td>
+</tr>
+<tr>
+<td>123</td>
+<td>Instagram Comment</td>
+</tr>
+<tr>
+<td>132</td>
+<td>News/Blog Post</td>
+</tr>
+</tbody></table>
+
+<p><img alt="Source Types" src="images/content/source_types.png" /></p>
+
+<h3 id="source-groups">Source Groups</h3>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">18041881</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-14T05:51:04Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nintendo"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">82</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ign"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">66</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rudy.splatoon2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">45</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UNILADGaming"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">38</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"anonymous_production_studio"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">19</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GameSpot"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"monsterhunter"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"donkey.kong.64"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"memeyourdream"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"News4Gamers"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Source groups are used for Facebook and Instagram to query or analyse content that exists on a specific page. For example, if we were to ask for all content on the source group &ldquo;camplexer&rdquo; we return all posts, comments and messages on this page.</p>
+
+<p>This endpoint will return the top 100 source groups for your query.</p>
+
+<p><img alt="Source Groups" src="images/content/source_groups.png" /></p>
 
 <h2 id="authors">Authors</h2>
 
-<p>Influential authors, engaged authors</p>
+<p>Authors are the creators of our content. </p>
+
+<h3 id="engaged-authors">Engaged Authors</h3>
+
+<p><img alt="Engaged Authors" src="images/content/authors_engaged.png" /></p>
+
+<h3 id="influential-authors">Influential Authors</h3>
+
+<p><img alt="Influential Authors" src="images/content/authors_influential.png" /></p>
+
+<h3 id="authors-volume">Authors Volume</h3>
+
+<p><img alt="Top Authors Volume" src="images/content/authors_volume.png" /></p>
 
 <h2 id="locations">Locations</h2>
 
