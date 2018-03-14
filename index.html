@@ -399,21 +399,93 @@
 
 <h3 id="paging-results">Paging Results</h3>
 
-<p>In order to return more than 100 matches, you can page through the results using the timestamp of the last object returned. Simply add the date_ending parameter to your next call with the data.published (minus one second so as not to include the same object again) and you will return the next 100 matches.</p>
+<p>In order to return more than 100 matches, you can page through the results using the timestamp of the last object returned. Simply add the <code class="prettyprint">date_ending</code> parameter to your next call using the <code class="prettyprint">data.published</code> time (minus one second so as not to include the same object again) and you will return the next 100 matches.</p>
 
-<p>For example if the 100th object in our result has <code class="prettyprint">&quot;published&quot;: &quot;2018-02-25T04:44:56Z&quot;,</code> then you would add <code class="prettyprint">;date_ending=2018-02-25T04:44:5**5**Z</code> to the end of your request.</p>
+<p>For example if the 100th object in our result has <code class="prettyprint">&quot;published&quot;: &quot;2018-02-25T04:30:00Z&quot;,</code> then you would add <code class="prettyprint">;date_ending=2018-02-25T04:39:99Z</code> to the end of your request.</p>
 
 <h2 id="terms">Terms</h2>
 
-<p>Let&rsquo;s take a closer look at how we analyse trending keywords in the Terms Volume and Trending Terms charts. It&rsquo;s important to note that we remove stop words before tokenizing our objects.</p>
+<p>Let&rsquo;s take a closer look at how we analyse trending keywords in the Trending Terms and Terms Volume charts. It&rsquo;s important to note that we remove stop words before tokenizing our mentions.</p>
 
 <h3 id="trending-terms">Trending Terms</h3>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">18119110</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-14T05:24:35Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nintendo"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">61263</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"switch"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">38017</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#nintendo"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">8104</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="err">...}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
-<p><img alt="Terms Volume Chart" src="images/content/terms_volume.png" /></p>
-
-<h3 id="terms-volume">Terms Volume</h3>
+<p>Our trending terms table is the simplest way to return counts for terms appearing in your query. This endpoint will return the top 100 terms sorted by volume.</p>
 
 <p><img alt="Terms Volume Chart" src="images/content/terms_table.png" /></p>
+
+<h3 id="terms-volume">Terms Volume</h3>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">18119109</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-14T16:17:58+11:00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"nintendo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"1520859600000"</span><span class="p">:</span><span class="w"> </span><span class="mi">2131</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520863200000"</span><span class="p">:</span><span class="w"> </span><span class="mi">2536</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520866800000"</span><span class="p">:</span><span class="w"> </span><span class="mi">2562</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520870400000"</span><span class="p">:</span><span class="w"> </span><span class="mi">2626</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520874000000"</span><span class="p">:</span><span class="w"> </span><span class="mi">2568</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520877600000"</span><span class="p">:</span><span class="w"> </span><span class="mi">2234</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520881200000"</span><span class="p">:</span><span class="w"> </span><span class="mi">2768</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520884800000"</span><span class="p">:</span><span class="w"> </span><span class="mi">3109</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520888400000"</span><span class="p">:</span><span class="w"> </span><span class="mi">2720</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520892000000"</span><span class="p">:</span><span class="w"> </span><span class="mi">3466</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520895600000"</span><span class="p">:</span><span class="w"> </span><span class="mi">2643</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520899200000"</span><span class="p">:</span><span class="w"> </span><span class="mi">3000</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520902800000"</span><span class="p">:</span><span class="w"> </span><span class="mi">3790</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520906400000"</span><span class="p">:</span><span class="w"> </span><span class="mi">3148</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520910000000"</span><span class="p">:</span><span class="w"> </span><span class="mi">3200</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520913600000"</span><span class="p">:</span><span class="w"> </span><span class="mi">3092</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520917200000"</span><span class="p">:</span><span class="w"> </span><span class="mi">2457</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520920800000"</span><span class="p">:</span><span class="w"> </span><span class="mi">1919</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520924400000"</span><span class="p">:</span><span class="w"> </span><span class="mi">1931</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520928000000"</span><span class="p">:</span><span class="w"> </span><span class="mi">1598</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520931600000"</span><span class="p">:</span><span class="w"> </span><span class="mi">1799</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520935200000"</span><span class="p">:</span><span class="w"> </span><span class="mi">1921</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520938800000"</span><span class="p">:</span><span class="w"> </span><span class="mi">2057</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"1520942400000"</span><span class="p">:</span><span class="w"> </span><span class="mi">1988</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"original"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span><span class="w">
+      </span><span class="s2">"summary"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"switch"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...}</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"#nintendo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...}</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"smash"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...}</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"#nintendoswitch"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...}</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"retweet"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...}</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"enter"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...}</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"giveaway"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...}</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"super"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...}</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"join"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Here we&rsquo;re returning an object for each of the top 10 terms for this query. Remember that our time intervals are determined by the range of our query, as mentioned in the Summary section above.</p>
+
+<p>Note that you can ignore the data in the original section.</p>
+
+<p><img alt="Terms Volume Chart" src="images/content/terms_volume.png" /></p>
 
 <h2 id="sources">Sources</h2>
 
