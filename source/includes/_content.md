@@ -49,11 +49,11 @@ Here we'll describe the summary bar and live stream volume charts.
   "id": 18041857,
   "updated_at": "2018-03-13T02:04:04Z",
   "data": {
-    "mentions": 67700,
+    "mentions": 71200,
     "sources": 3,
-    "authors": 46134,
-    "reach": 284297204,
-    "average_engagements": 1.4674643430008236
+    "authors": 47134,
+    "reach": 309297204,
+    "average_engagements": 1.5105868375
   }
 }
 ```
@@ -119,7 +119,7 @@ Our volume charts bucket counts into time intervals based on the period covered 
 
 Note: all of our volume over time charts are returned using unix time.
 
-![Summary Bar](../images/content/livestreamvolume_chart.png)
+![Live Stream Chart](../images/content/livestreamvolume_chart.png)
 
 ## Mentions
 
@@ -241,13 +241,23 @@ processed | Date and time this content was processed in Lexer.
 _id | Unused.
 
 
+### Paging Results
+
+In order to return more than 100 matches, you can page through the results using the timestamp of the last object returned. Simply add the date_ending parameter to your next call with the data.published (minus one second so as not to include the same object again) and you will return the next 100 matches.
+
+For example if the 100th object in our result has `"published": "2018-02-25T04:44:56Z",` then you would add `;date_ending=2018-02-25T04:44:5**5**Z` to the end of your request.
+
+
 ## Terms
 Let's take a closer look at how we analyse trending keywords in the Terms Volume and Trending Terms charts. It's important to note that we remove stop words before tokenizing our objects.
 
+### Trending Terms
+
+![Terms Volume Chart](../images/content/terms_volume.png)
+
 ### Terms Volume
 
-
-### Trending Terms
+![Terms Volume Chart](../images/content/terms_table.png)
 
 
 
