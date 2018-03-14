@@ -249,7 +249,7 @@ For example if the 100th object in our result has `"published": "2018-02-25T04:3
 
 
 ## Terms
-Let's take a closer look at how we analyse trending keywords in the Trending Terms and Terms Volume charts. It's important to note that we remove stop words before tokenizing our mentions.
+Let's take a closer look at how we analyse trending words used in the content matching our query. Here we have the Trending Terms and Terms Volume charts. It's important to note that we remove stop words before tokenizing content.
 
 ### Trending Terms
 ```json
@@ -259,15 +259,15 @@ Let's take a closer look at how we analyse trending keywords in the Trending Ter
   "data": [
     {
       "term": "nintendo",
-      "count": 61263
+      "count": 59123
     },
     {
       "term": "switch",
-      "count": 38017
+      "count": 36034
     },
     {
       "term": "#nintendo",
-      "count": 8104
+      "count": 8014
     },
     {...}
   ]
@@ -332,14 +332,257 @@ Note that you can ignore the data in the original section.
 ![Terms Volume Chart](../images/content/terms_volume.png)
 
 
-
 ## Sources
+Sources are the social networks or websites the content has come from. We categorise this content in different ways to help you dig deeper. Let's take a closer look at the Top Sources, Sources Volume, Source Types and Source Groups charts.
 
-Top sources, source types, source groups
+### Top Sources
+```json
+{
+  "id": 18041879,
+  "updated_at": "2018-03-14T05:45:18Z",
+  "data": [
+    {
+      "term": "twitter.com",
+      "count": 61076
+    },
+    {
+      "term": "instagram.com",
+      "count": 2356
+    },
+    {
+      "term": "facebook.com",
+      "count": 357
+    }
+  ]
+}
+```
+Our Top Sources chart provides you with a count of matches for each source. The `term` field refers to the source name, and the `count` field will provide the number of matches.
+
+![Top Sources](../images/content/source_top.png)
+
+### Sources Volume
+```json
+{
+  "id": 18148227,
+  "updated_at": "2018-03-14T05:45:18Z",
+  "data": {
+    "twitter.com": {
+      "data": {
+        "1520920800000": 2287,
+        "1520924400000": 2269,
+        "1520928000000": 1919,
+        "1520931600000": 2094,
+        "1520935200000": 2385,
+        "1520938800000": 2416,
+        "1520942400000": 2366,
+        "1520946000000": 2820,
+        "1520949600000": 2727,
+        "1520953200000": 2977,
+        "1520956800000": 2886,
+        "1520960400000": 2598,
+        "1520964000000": 2804,
+        "1520967600000": 2932,
+        "1520971200000": 2693,
+        "1520974800000": 2543,
+        "1520978400000": 2439,
+        "1520982000000": 2085,
+        "1520985600000": 2987,
+        "1520989200000": 2346,
+        "1520992800000": 2230,
+        "1520996400000": 3160,
+        "1521000000000": 3384,
+        "1521003600000": 1729
+      },
+      "original": [...],
+      "summary": null
+    },
+    "instagram.com": {
+      "data": {
+        "1520920800000": 71,
+        "1520924400000": 77,
+        "1520928000000": 73,
+        "1520931600000": 73,
+        "1520935200000": 75,
+        "1520938800000": 92,
+        "1520942400000": 105,
+        "1520946000000": 127,
+        "1520949600000": 116,
+        "1520953200000": 124,
+        "1520956800000": 99,
+        "1520960400000": 115,
+        "1520964000000": 101,
+        "1520967600000": 100,
+        "1520971200000": 105,
+        "1520974800000": 116,
+        "1520978400000": 118,
+        "1520982000000": 112,
+        "1520985600000": 110,
+        "1520989200000": 105,
+        "1520992800000": 98,
+        "1520996400000": 110,
+        "1521000000000": 84,
+        "1521003600000": 50
+      },
+      "original": [...],
+      "summary": null
+    },
+    "facebook.com": {
+      "data": {
+        "1520920800000": 10,
+        "1520924400000": 8,
+        "1520928000000": 7,
+        "1520931600000": 11,
+        "1520935200000": 12,
+        "1520938800000": 10,
+        "1520942400000": 11,
+        "1520946000000": 15,
+        "1520949600000": 11,
+        "1520953200000": 20,
+        "1520956800000": 23,
+        "1520960400000": 12,
+        "1520964000000": 26,
+        "1520967600000": 19,
+        "1520971200000": 40,
+        "1520974800000": 34,
+        "1520978400000": 23,
+        "1520982000000": 12,
+        "1520985600000": 11,
+        "1520989200000": 14,
+        "1520992800000": 11,
+        "1520996400000": 14,
+        "1521000000000": 3,
+        "1521003600000": 0
+      },
+      "original": [...],
+      "summary": null
+    }
+  }
+}
+```
+The Source Volume chart will return an object for each source in your result, and will break this into time intervals based on your query length. 
+
+![Source Volume](../images/content/source_volume.png)
+
+### Source Types
+```json
+{
+  "id": 18041880,
+  "updated_at": "2018-03-14T05:45:18Z",
+  "data": [
+    {
+      "term": 102,
+      "count": 61076
+    },
+    {
+      "term": 122,
+      "count": 2080
+    },
+    {
+      "term": 113,
+      "count": 327
+    },
+    {
+      "term": 123,
+      "count": 276
+    },
+    {
+      "term": 112,
+      "count": 30
+    }
+  ]
+}
+```
+Source Types go further into breaking down the source results into their specific content type, for example posts vs comments vs private messages. 
+
+You will notice that we return numeric IDs for each of the sources. Below is a table you should store as reference for each of the source types in our platform.
+
+ID | Source Type
+---------|-------------|
+    102 | Twitter Tweet
+    103 | Twitter Direct Message
+    112 | Facebook Post
+    113 | Facebook Comment
+    114 | Facebook Message
+    115 | Facebook Dark Post
+    116 | Facebook Dark Comment
+    117 | Facebook Review
+    118 | Facebook ReviewC omment
+    122 | Instagram Post
+    123 | Instagram Comment
+    132 | News/Blog Post
+
+![Source Types](../images/content/source_types.png)
+
+### Source Groups
+```json
+{
+  "id": 18041881,
+  "updated_at": "2018-03-14T05:51:04Z",
+  "data": [
+    {
+      "term": "Nintendo",
+      "count": 82
+    },
+    {
+      "term": "ign",
+      "count": 66
+    },
+    {
+      "term": "rudy.splatoon2",
+      "count": 45
+    },
+    {
+      "term": "UNILADGaming",
+      "count": 38
+    },
+    {
+      "term": "anonymous_production_studio",
+      "count": 19
+    },
+    {
+      "term": "GameSpot",
+      "count": 18
+    },
+    {
+      "term": "monsterhunter",
+      "count": 18
+    },
+    {
+      "term": "donkey.kong.64",
+      "count": 16
+    },
+    {
+      "term": "memeyourdream",
+      "count": 16
+    },
+    {
+      "term": "News4Gamers",
+      "count": 15
+    },
+  ]
+}
+```
+Source groups are used for Facebook and Instagram to query or analyse content that exists on a specific page. For example, if we were to ask for all content on the source group "camplexer" we return all posts, comments and messages on this page.
+
+This endpoint will return the top 100 source groups for your query.
+
+![Source Groups](../images/content/source_groups.png)
 
 ## Authors
+Authors are the creators of our content. 
 
-Influential authors, engaged authors
+### Engaged Authors
+
+![Engaged Authors](../images/content/authors_engaged.png)
+
+### Influential Authors
+
+![Influential Authors](../images/content/authors_influential.png)
+
+### Authors Volume
+
+![Top Authors Volume](../images/content/authors_volume.png)
+
 
 ## Locations
 
