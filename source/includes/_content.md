@@ -217,10 +217,10 @@ mentions.links | Array of links in the content.
 mentions.mentions | Objects mentioned i.e. a retweet.
 mentions.authors | Authors tagged in the content.
 mentions.author_ids | IDs of the authors tagged in the content.
-terms | Tokenized words extracted from the content (array).
+terms | Tokenized words extracted from the content.
 source.name | Domain name for the source.
 source.group | Facebook or Instagram account the content lives on. Empty for Twitter.
-source.id | Numeric ID associated with the source type.
+source.id | Numeric ID associated with the source type. See Sources > Source Types for more information.
 source.type | Image, video, link, text. Image and video are mutually exclusive. An object may be type video,link or image,link. Text indicates no media or links.
 author.id | Author ID appended with the network prefix.
 author.fullname | Display name of the author.
@@ -360,6 +360,11 @@ Our Top Sources chart provides you with a count of matches for each source. The 
 
 ![Top Sources](../images/content/source_top.png)
 
+
+
+<br/><br/><br/><br/><br/><br/>
+
+
 ### Sources Volume
 ```json
 {
@@ -396,63 +401,11 @@ Our Top Sources chart provides you with a count of matches for each source. The 
       "original": [...],
       "summary": null
     },
-    "instagram.com": {
-      "data": {
-        "1520920800000": 71,
-        "1520924400000": 77,
-        "1520928000000": 73,
-        "1520931600000": 73,
-        "1520935200000": 75,
-        "1520938800000": 92,
-        "1520942400000": 105,
-        "1520946000000": 127,
-        "1520949600000": 116,
-        "1520953200000": 124,
-        "1520956800000": 99,
-        "1520960400000": 115,
-        "1520964000000": 101,
-        "1520967600000": 100,
-        "1520971200000": 105,
-        "1520974800000": 116,
-        "1520978400000": 118,
-        "1520982000000": 112,
-        "1520985600000": 110,
-        "1520989200000": 105,
-        "1520992800000": 98,
-        "1520996400000": 110,
-        "1521000000000": 84,
-        "1521003600000": 50
-      },
+    "instagram.com": {...},
       "original": [...],
       "summary": null
     },
-    "facebook.com": {
-      "data": {
-        "1520920800000": 10,
-        "1520924400000": 8,
-        "1520928000000": 7,
-        "1520931600000": 11,
-        "1520935200000": 12,
-        "1520938800000": 10,
-        "1520942400000": 11,
-        "1520946000000": 15,
-        "1520949600000": 11,
-        "1520953200000": 20,
-        "1520956800000": 23,
-        "1520960400000": 12,
-        "1520964000000": 26,
-        "1520967600000": 19,
-        "1520971200000": 40,
-        "1520974800000": 34,
-        "1520978400000": 23,
-        "1520982000000": 12,
-        "1520985600000": 11,
-        "1520989200000": 14,
-        "1520992800000": 11,
-        "1520996400000": 14,
-        "1521000000000": 3,
-        "1521003600000": 0
-      },
+    "facebook.com": {...},
       "original": [...],
       "summary": null
     }
@@ -462,6 +415,13 @@ Our Top Sources chart provides you with a count of matches for each source. The 
 The Source Volume chart will return an object for each source in your result, and will break this into time intervals based on your query length. 
 
 ![Source Volume](../images/content/source_volume.png)
+
+
+
+
+<br/><br/><br/><br/><br/><br/>
+
+
 
 ### Source Types
 ```json
@@ -494,24 +454,25 @@ The Source Volume chart will return an object for each source in your result, an
 ```
 Source Types go further into breaking down the source results into their specific content type, for example posts vs comments vs private messages. 
 
+![Source Types](../images/content/source_types.png)
+
 You will notice that we return numeric IDs for each of the sources. Below is a table you should store as reference for each of the source types in our platform.
 
 ID | Source Type
 ---------|-------------|
-    102 | Twitter Tweet
-    103 | Twitter Direct Message
-    112 | Facebook Post
-    113 | Facebook Comment
-    114 | Facebook Message
-    115 | Facebook Dark Post
-    116 | Facebook Dark Comment
-    117 | Facebook Review
-    118 | Facebook ReviewC omment
-    122 | Instagram Post
-    123 | Instagram Comment
-    132 | News/Blog Post
+102 | Twitter Tweet
+103 | Twitter Direct Message
+112 | Facebook Post
+113 | Facebook Comment
+114 | Facebook Message
+115 | Facebook Dark Post
+116 | Facebook Dark Comment
+117 | Facebook Review
+118 | Facebook Review Comment
+122 | Instagram Post
+123 | Instagram Comment
+132 | News/Blog Post
 
-![Source Types](../images/content/source_types.png)
 
 ### Source Groups
 ```json
