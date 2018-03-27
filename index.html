@@ -73,6 +73,8 @@
 
           <h1 id="content">Content</h1>
 
+<p>Hello world,</p>
+
 <p>Our Content API allows you to access social and news content in a simple JSON format. Your queries are defined by saved dives within Listen, and your endpoints are retrieved from the Command charts they are connected to. Once you have a chart displaying in Command, simply click on the small link button in the top right corner.</p>
 
 <p>Read our <a href="https://learn.lexer.io/export-and-report/command/command-screens">help article</a> for details on building a Command screen or contact support via live chat or at <a href="mailto:support@lexer.io">support@lexer.io</a>.</p>
@@ -309,7 +311,7 @@
 </tr>
 <tr>
 <td>terms</td>
-<td>Tokenized words extracted from the content (array).</td>
+<td>Tokenized words extracted from the content.</td>
 </tr>
 <tr>
 <td>source.name</td>
@@ -321,7 +323,7 @@
 </tr>
 <tr>
 <td>source.id</td>
-<td>Numeric ID associated with the source type.</td>
+<td>Numeric ID associated with the source type. See Sources &gt; Source Types for more information.</td>
 </tr>
 <tr>
 <td>source.type</td>
@@ -516,6 +518,8 @@
 
 <p><img alt="Top Sources" src="images/content/source_top.png" /></p>
 
+<p><br/><br/><br/><br/><br/><br/></p>
+
 <h3 id="sources-volume">Sources Volume</h3>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">18148227</span><span class="p">,</span><span class="w">
@@ -551,73 +555,23 @@
       </span><span class="s2">"original"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span><span class="w">
       </span><span class="s2">"summary"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"instagram.com"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"1520920800000"</span><span class="p">:</span><span class="w"> </span><span class="mi">71</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1520924400000"</span><span class="p">:</span><span class="w"> </span><span class="mi">77</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1520928000000"</span><span class="p">:</span><span class="w"> </span><span class="mi">73</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1520931600000"</span><span class="p">:</span><span class="w"> </span><span class="mi">73</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1520935200000"</span><span class="p">:</span><span class="w"> </span><span class="mi">75</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1520938800000"</span><span class="p">:</span><span class="w"> </span><span class="mi">92</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1520942400000"</span><span class="p">:</span><span class="w"> </span><span class="mi">105</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1520946000000"</span><span class="p">:</span><span class="w"> </span><span class="mi">127</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1520949600000"</span><span class="p">:</span><span class="w"> </span><span class="mi">116</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1520953200000"</span><span class="p">:</span><span class="w"> </span><span class="mi">124</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1520956800000"</span><span class="p">:</span><span class="w"> </span><span class="mi">99</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1520960400000"</span><span class="p">:</span><span class="w"> </span><span class="mi">115</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1520964000000"</span><span class="p">:</span><span class="w"> </span><span class="mi">101</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1520967600000"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1520971200000"</span><span class="p">:</span><span class="w"> </span><span class="mi">105</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1520974800000"</span><span class="p">:</span><span class="w"> </span><span class="mi">116</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1520978400000"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1520982000000"</span><span class="p">:</span><span class="w"> </span><span class="mi">112</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1520985600000"</span><span class="p">:</span><span class="w"> </span><span class="mi">110</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1520989200000"</span><span class="p">:</span><span class="w"> </span><span class="mi">105</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1520992800000"</span><span class="p">:</span><span class="w"> </span><span class="mi">98</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1520996400000"</span><span class="p">:</span><span class="w"> </span><span class="mi">110</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1521000000000"</span><span class="p">:</span><span class="w"> </span><span class="mi">84</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1521003600000"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="w">
-      </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"instagram.com"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...}</span><span class="p">,</span><span class="w">
       </span><span class="s2">"original"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span><span class="w">
       </span><span class="s2">"summary"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"facebook.com"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"1520920800000"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1520924400000"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1520928000000"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1520931600000"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1520935200000"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1520938800000"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1520942400000"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1520946000000"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1520949600000"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1520953200000"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1520956800000"</span><span class="p">:</span><span class="w"> </span><span class="mi">23</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1520960400000"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1520964000000"</span><span class="p">:</span><span class="w"> </span><span class="mi">26</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1520967600000"</span><span class="p">:</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1520971200000"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1520974800000"</span><span class="p">:</span><span class="w"> </span><span class="mi">34</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1520978400000"</span><span class="p">:</span><span class="w"> </span><span class="mi">23</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1520982000000"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1520985600000"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1520989200000"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1520992800000"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1520996400000"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1521000000000"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1521003600000"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
-      </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"facebook.com"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...}</span><span class="p">,</span><span class="w">
       </span><span class="s2">"original"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span><span class="w">
       </span><span class="s2">"summary"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
+  </span><span class="err">}</span><span class="w">
+</span><span class="err">}</span><span class="w">
 </span></code></pre>
 
 <p>The Source Volume chart will return an object for each source in your result, and will break this into time intervals based on your query length. </p>
 
 <p><img alt="Source Volume" src="images/content/source_volume.png" /></p>
+
+<p><br/><br/><br/><br/><br/><br/></p>
 
 <h3 id="source-types">Source Types</h3>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
@@ -649,6 +603,8 @@
 </span></code></pre>
 
 <p>Source Types go further into breaking down the source results into their specific content type, for example posts vs comments vs private messages. </p>
+
+<p><img alt="Source Types" src="images/content/source_types.png" /></p>
 
 <p>You will notice that we return numeric IDs for each of the sources. Below is a table you should store as reference for each of the source types in our platform.</p>
 
@@ -692,7 +648,7 @@
 </tr>
 <tr>
 <td>118</td>
-<td>Facebook ReviewC omment</td>
+<td>Facebook Review Comment</td>
 </tr>
 <tr>
 <td>122</td>
@@ -707,8 +663,6 @@
 <td>News/Blog Post</td>
 </tr>
 </tbody></table>
-
-<p><img alt="Source Types" src="images/content/source_types.png" /></p>
 
 <h3 id="source-groups">Source Groups</h3>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
