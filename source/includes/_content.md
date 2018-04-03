@@ -1,4 +1,4 @@
-# Content
+ma# Content
 
 Hello world,
 
@@ -421,7 +421,7 @@ The Source Volume chart will return an object for each source in your result, an
 
 
 
-<br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
 
 
@@ -536,11 +536,11 @@ Authors are the creators of our content.
 
 ### Engaged Authors
 
-![Engaged Authors](../images/content/authors_engaged.png)
+![Engaged Authors](../images/content/authors_engaged_2.png)
 
 ### Influential Authors
 
-![Influential Authors](../images/content/authors_influential.png)
+![Influential Authors](../images/content/authors_influential_2.png)
 
 ### Authors Volume
 
