@@ -290,24 +290,6 @@ Our trending terms table is the simplest way to return counts for terms appearin
         "1520866800000": 2562,
         "1520870400000": 2626,
         "1520874000000": 2568,
-        "1520877600000": 2234,
-        "1520881200000": 2768,
-        "1520884800000": 3109,
-        "1520888400000": 2720,
-        "1520892000000": 3466,
-        "1520895600000": 2643,
-        "1520899200000": 3000,
-        "1520902800000": 3790,
-        "1520906400000": 3148,
-        "1520910000000": 3200,
-        "1520913600000": 3092,
-        "1520917200000": 2457,
-        "1520920800000": 1919,
-        "1520924400000": 1931,
-        "1520928000000": 1598,
-        "1520931600000": 1799,
-        "1520935200000": 1921,
-        "1520938800000": 2057,
         "1520942400000": 1988
       },
       "original": [...],
@@ -546,11 +528,6 @@ Authors are the creators of the content matching your query. You can return thes
 
 
 ## Locations
-
-Top locations
-
-![Top Locations](../images/content/locations.png)
-
 ```json
 {
   "id": 18042000,
@@ -571,19 +548,13 @@ Top locations
   ]
 }
 ```
+Top locations
+
+![Top Locations](../images/content/locations.png)
+
+
 
 ## Classifications
-
-Classifications are custom tags that can be applied to content by your team. You can then report on the volumes for each classification that match your query. Here we're simply returning the counts for each classification that matches your saved dive.
-
-Field | Definition
----------|-------------|
-id | Unique id for this classification
-term | Name of the classification
-count | Count of objects that have this classification applied
-
-![Top Locations](../images/content/classifications.png)
-
 ```json
 {
   "id": 18041988,
@@ -608,3 +579,12 @@ count | Count of objects that have this classification applied
   ]
 }
 ```
+Classifications are custom tags that your team can apply to content. These are typically included in the customer service workflow within Engage. You can then report on the volumes for each classification that match your query. Here we're simply returning the counts for each classification that matches your saved dive.
+
+Field | Definition
+---------|-------------|
+id | Unique id for this classification
+term | Name of the classification
+count | Count of objects that have this classification applied
+
+![Top Locations](../images/content/classifications.png)
