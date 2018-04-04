@@ -1,6 +1,4 @@
-ma# Content
-
-Hello world,
+# Content
 
 Our Content API allows you to access social and news content in a simple JSON format. Your queries are defined by saved dives within Listen, and your endpoints are retrieved from the Command charts they are connected to. Once you have a chart displaying in Command, simply click on the small link button in the top right corner.
 
@@ -532,7 +530,7 @@ This endpoint will return the top 100 source groups for your query.
 ![Source Groups](../images/content/source_groups.png)
 
 ## Authors
-Authors are the creators of our content. 
+Authors are the creators of the content matching your query. You can return these authors sorted by influence (follower count) or by engagement (count of objects). We also include the ability to return the top engaged authors in a time series format.
 
 ### Engaged Authors
 
@@ -551,7 +549,62 @@ Authors are the creators of our content.
 
 Top locations
 
+![Top Locations](../images/content/locations.png)
+
+```json
+{
+  "id": 18042000,
+  "updated_at": "2018-04-04T00:01:45Z",
+  "data": [
+    {
+      "term": "US/CA",
+      "count": 4950
+    },
+    {
+      "term": "US/VA",
+      "count": 1618
+    },
+    {
+      "term": "JP",
+      "count": 1507
+    },
+  ]
+}
+```
+
 ## Classifications
 
-Classification counts
+Classifications are custom tags that can be applied to content by your team. You can then report on the volumes for each classification that match your query. Here we're simply returning the counts for each classification that matches your saved dive.
 
+Field | Definition
+---------|-------------|
+id | Unique id for this classification
+term | Name of the classification
+count | Count of objects that have this classification applied
+
+![Top Locations](../images/content/classifications.png)
+
+```json
+{
+  "id": 18041988,
+  "updated_at": "2018-04-03T23:56:09Z",
+  "data": [
+    {
+      "id": 2392,
+      "term": "customer service",
+      "count": 2004
+    },
+    {
+      "id": 2390,
+      "term": "negative sentiment",
+      "count": 2001
+    },
+    {
+      "id": 465,
+      "term": "product related",
+      "count": 2000
+    },
+    }
+  ]
+}
+```
