@@ -71,9 +71,7 @@
 
 <p>Our team are here to help you build an integration with any of our products, so please don&rsquo;t hesitate to reach out! Get in contact via live chat within the Hub or <a href="mailto:support@lexer.io">email</a>.</p>
 
-          <p>ma# Content</p>
-
-<p>Hello world,</p>
+          <h1 id="content">Content</h1>
 
 <p>Our Content API allows you to access social and news content in a simple JSON format. Your queries are defined by saved dives within Listen, and your endpoints are retrieved from the Command charts they are connected to. Once you have a chart displaying in Command, simply click on the small link button in the top right corner.</p>
 
@@ -721,7 +719,7 @@
 
 <h2 id="authors">Authors</h2>
 
-<p>Authors are the creators of our content. </p>
+<p>Authors are the creators of the content matching your query. You can return these authors sorted by influence (follower count) or by engagement (count of objects). We also include the ability to return the top engaged authors in a time series format.</p>
 
 <h3 id="engaged-authors">Engaged Authors</h3>
 
@@ -739,9 +737,75 @@
 
 <p>Top locations</p>
 
+<p><img alt="Top Locations" src="images/content/locations.png" /></p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">18042000</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-04T00:01:45Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US/CA"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">4950</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US/VA"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1618</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JP"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1507</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
 <h2 id="classifications">Classifications</h2>
 
-<p>Classification counts</p>
+<p>Classifications are custom tags that can be applied to content by your team. You can then report on the volumes for each classification that match your query. Here we&rsquo;re simply returning the counts for each classification that matches your saved dive.</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Definition</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>Unique id for this classification</td>
+</tr>
+<tr>
+<td>term</td>
+<td>Name of the classification</td>
+</tr>
+<tr>
+<td>count</td>
+<td>Count of objects that have this classification applied</td>
+</tr>
+</tbody></table>
+
+<p><img alt="Top Locations" src="images/content/classifications.png" /></p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">18041988</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-03T23:56:09Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2392</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"customer service"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">2004</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2390</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"negative sentiment"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">2001</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">465</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"product related"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">2000</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
           <h1 id="chatbot">Chatbot</h1>
 
