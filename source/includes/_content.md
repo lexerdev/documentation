@@ -504,7 +504,8 @@ This endpoint will return the top 100 source groups for your query.
 ## Authors
 Authors are the creators of the content matching your query. You can return these authors sorted by influence (follower count) or by engagement (count of objects). We also include the ability to return the top engaged authors in a time series format.
 
-Both of the tables below will return the top 100 authors based on the sorting that is being applied. Each author returned will provide the following details. 
+Both of the tables below will return the top 100 authors based on the sorting that is being applied. Each author returned will provide the following details.
+
 ```json
 {
       "data": {
@@ -528,6 +529,7 @@ Both of the tables below will return the top 100 authors based on the sorting th
       }
     },
 ```
+
 Property | Description |
 ---------|-------------|
 data.term  | Lexer internal author id
