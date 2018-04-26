@@ -713,44 +713,85 @@
 
 <p>Authors are the creators of the content matching your query. You can return these authors sorted by influence (follower count) or by engagement (count of objects). We also include the ability to return the top engaged authors in a time series format.</p>
 
-<p>Both of the tables below will return the top 100 authors based on the sorting that is being applied. Each author returned will provide the following details. 
-<code class="prettyprint">json
-{
-      &quot;data&quot;: {
-        &quot;term&quot;: &quot;twitter_1317671&quot;,
-        &quot;count&quot;: 17,
-        &quot;total&quot;: 447828.0
-      },
-      &quot;original&quot;: {
-        &quot;id&quot;: &quot;twitter_1317671&quot;,
-        &quot;fullname&quot;: &quot;My Nintendo News&quot;,
-        &quot;lexer_id&quot;: &quot;&quot;,
-        &quot;username&quot;: &quot;MyNintendoNews&quot;,
-        &quot;link&quot;: &quot;https://twitter.com/MyNintendoNews/&quot;,
-        &quot;bio&quot;: &quot;The most popular Nintendo news Twitter account. Tracking the hottest Nintendo news 24/7 #NintendoSwitch&quot;,
-        &quot;avatar&quot;: &quot;https://pbs.twimg.com/profile_images/976439872117510144/p2eEG3Ts_normal.jpg&quot;,
-        &quot;influence&quot;: 1.266,
-        &quot;reach&quot;: {
-          &quot;inbound&quot;: 536,
-          &quot;outbound&quot;: 447818
-        }
-      }
-    },
-</code>
-Property | Description |
-&mdash;&mdash;&mdash;|&mdash;&mdash;&mdash;&mdash;-|
-data.term  | Lexer internal author id
-data.count | Volume of objects created by this author
-data.total  | Total number of followers
-original.id | Lexer internal author id
-original.fullname | Display name for this author
-original.username | Username or handle of the author
-original.link | URL to the author&rsquo;s bio
-original.bio | Description from the author&rsquo;s account
-original.avatar | URL to the author&rsquo;s bio
-original.influence | Lexer internal influence score
-original.inbound | Count of following 
-original.outbound | Count of followers</p>
+<p>Both of the tables below will return the top 100 authors based on the sorting that is being applied. Each author returned will provide the following details.</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+      </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"twitter_1317671"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mf">447828.0</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"original"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"twitter_1317671"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fullname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Nintendo News"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lexer_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MyNintendoNews"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://twitter.com/MyNintendoNews/"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"bio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The most popular Nintendo news Twitter account. Tracking the hottest Nintendo news 24/7 #NintendoSwitch"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://pbs.twimg.com/profile_images/976439872117510144/p2eEG3Ts_normal.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"influence"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.266</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"reach"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"inbound"</span><span class="p">:</span><span class="w"> </span><span class="mi">536</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"outbound"</span><span class="p">:</span><span class="w"> </span><span class="mi">447818</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="err">,</span><span class="w">
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>data.term</td>
+<td>Lexer internal author id</td>
+</tr>
+<tr>
+<td>data.count</td>
+<td>Volume of objects created by this author</td>
+</tr>
+<tr>
+<td>data.total</td>
+<td>Total number of followers</td>
+</tr>
+<tr>
+<td>original.id</td>
+<td>Lexer internal author id</td>
+</tr>
+<tr>
+<td>original.fullname</td>
+<td>Display name for this author</td>
+</tr>
+<tr>
+<td>original.username</td>
+<td>Username or handle of the author</td>
+</tr>
+<tr>
+<td>original.link</td>
+<td>URL to the author&rsquo;s bio</td>
+</tr>
+<tr>
+<td>original.bio</td>
+<td>Description from the author&rsquo;s account</td>
+</tr>
+<tr>
+<td>original.avatar</td>
+<td>URL to the author&rsquo;s bio</td>
+</tr>
+<tr>
+<td>original.influence</td>
+<td>Lexer internal influence score</td>
+</tr>
+<tr>
+<td>original.inbound</td>
+<td>Count of following</td>
+</tr>
+<tr>
+<td>original.outbound</td>
+<td>Count of followers</td>
+</tr>
+</tbody></table>
 
 <h3 id="engaged-authors">Engaged Authors</h3>
 
