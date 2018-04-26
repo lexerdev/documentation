@@ -385,7 +385,7 @@ In the chart above your result would return an object for twitter.com, instagram
 The original and summary values can be ignored for these results.
 
 
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
 
 
@@ -467,30 +467,6 @@ ID | Source Type
     {
       "term": "UNILADGaming",
       "count": 38
-    },
-    {
-      "term": "anonymous_production_studio",
-      "count": 19
-    },
-    {
-      "term": "GameSpot",
-      "count": 18
-    },
-    {
-      "term": "monsterhunter",
-      "count": 18
-    },
-    {
-      "term": "donkey.kong.64",
-      "count": 16
-    },
-    {
-      "term": "memeyourdream",
-      "count": 16
-    },
-    {
-      "term": "News4Gamers",
-      "count": 15
     },
   ]
 }
@@ -591,6 +567,7 @@ original.outbound | Count of followers
       "author_name": "MyNintendoNews"
     },
 ```
+
 You can also return the top authors in a time series format. Here we return a data object for the top 10 authors based on their volume of content matching your query. Similar to other timeseries results, there is a key pair value for the time and count of mentions.
 
 
@@ -651,6 +628,7 @@ In this result the term is referring to the location code.
   ]
 }
 ```
+
 Classifications are custom tags that your team can apply to content. These are typically included in the customer service workflow within Engage. You can then report on the volumes for each classification that match your query. Here we're simply returning the counts for each classification that matches your saved dive.
 
 
