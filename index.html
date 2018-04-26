@@ -512,24 +512,6 @@
         </span><span class="s2">"1520928000000"</span><span class="p">:</span><span class="w"> </span><span class="mi">1919</span><span class="p">,</span><span class="w">
         </span><span class="s2">"1520931600000"</span><span class="p">:</span><span class="w"> </span><span class="mi">2094</span><span class="p">,</span><span class="w">
         </span><span class="s2">"1520935200000"</span><span class="p">:</span><span class="w"> </span><span class="mi">2385</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1520938800000"</span><span class="p">:</span><span class="w"> </span><span class="mi">2416</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1520942400000"</span><span class="p">:</span><span class="w"> </span><span class="mi">2366</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1520946000000"</span><span class="p">:</span><span class="w"> </span><span class="mi">2820</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1520949600000"</span><span class="p">:</span><span class="w"> </span><span class="mi">2727</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1520953200000"</span><span class="p">:</span><span class="w"> </span><span class="mi">2977</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1520956800000"</span><span class="p">:</span><span class="w"> </span><span class="mi">2886</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1520960400000"</span><span class="p">:</span><span class="w"> </span><span class="mi">2598</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1520964000000"</span><span class="p">:</span><span class="w"> </span><span class="mi">2804</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1520967600000"</span><span class="p">:</span><span class="w"> </span><span class="mi">2932</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1520971200000"</span><span class="p">:</span><span class="w"> </span><span class="mi">2693</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1520974800000"</span><span class="p">:</span><span class="w"> </span><span class="mi">2543</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1520978400000"</span><span class="p">:</span><span class="w"> </span><span class="mi">2439</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1520982000000"</span><span class="p">:</span><span class="w"> </span><span class="mi">2085</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1520985600000"</span><span class="p">:</span><span class="w"> </span><span class="mi">2987</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1520989200000"</span><span class="p">:</span><span class="w"> </span><span class="mi">2346</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1520992800000"</span><span class="p">:</span><span class="w"> </span><span class="mi">2230</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1520996400000"</span><span class="p">:</span><span class="w"> </span><span class="mi">3160</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"1521000000000"</span><span class="p">:</span><span class="w"> </span><span class="mi">3384</span><span class="p">,</span><span class="w">
         </span><span class="s2">"1521003600000"</span><span class="p">:</span><span class="w"> </span><span class="mi">1729</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"original"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span><span class="w">
@@ -550,6 +532,10 @@
 <p>The Source Volume chart will return an object for each source in your result, and will break this into time intervals based on your query length. </p>
 
 <p><img alt="Source Volume" src="images/content/source_volume.png" /></p>
+
+<p>In the chart above your result would return an object for twitter.com, instagram.com and facebook.com. These objects contain a key pair value for each date value and the corresponding volume.</p>
+
+<p>The original and summary values can be ignored for these results.</p>
 
 <p><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></p>
 
@@ -640,7 +626,31 @@
 </tr>
 <tr>
 <td>132</td>
-<td>News/Blog Post</td>
+<td>News/Blog Post (deprecated)</td>
+</tr>
+<tr>
+<td>152</td>
+<td>News Article</td>
+</tr>
+<tr>
+<td>153</td>
+<td>News comment</td>
+</tr>
+<tr>
+<td>154</td>
+<td>Blog Post</td>
+</tr>
+<tr>
+<td>155</td>
+<td>Blog Comment</td>
+</tr>
+<tr>
+<td>156</td>
+<td>Forum Post</td>
+</tr>
+<tr>
+<td>157</td>
+<td>Forum Comment</td>
 </tr>
 </tbody></table>
 
@@ -703,6 +713,45 @@
 
 <p>Authors are the creators of the content matching your query. You can return these authors sorted by influence (follower count) or by engagement (count of objects). We also include the ability to return the top engaged authors in a time series format.</p>
 
+<p>Both of the tables below will return the top 100 authors based on the sorting that is being applied. Each author returned will provide the following details. 
+<code class="prettyprint">json
+{
+      &quot;data&quot;: {
+        &quot;term&quot;: &quot;twitter_1317671&quot;,
+        &quot;count&quot;: 17,
+        &quot;total&quot;: 447828.0
+      },
+      &quot;original&quot;: {
+        &quot;id&quot;: &quot;twitter_1317671&quot;,
+        &quot;fullname&quot;: &quot;My Nintendo News&quot;,
+        &quot;lexer_id&quot;: &quot;&quot;,
+        &quot;username&quot;: &quot;MyNintendoNews&quot;,
+        &quot;link&quot;: &quot;https://twitter.com/MyNintendoNews/&quot;,
+        &quot;bio&quot;: &quot;The most popular Nintendo news Twitter account. Tracking the hottest Nintendo news 24/7 #NintendoSwitch&quot;,
+        &quot;avatar&quot;: &quot;https://pbs.twimg.com/profile_images/976439872117510144/p2eEG3Ts_normal.jpg&quot;,
+        &quot;influence&quot;: 1.266,
+        &quot;reach&quot;: {
+          &quot;inbound&quot;: 536,
+          &quot;outbound&quot;: 447818
+        }
+      }
+    },
+</code>
+Property | Description |
+&mdash;&mdash;&mdash;|&mdash;&mdash;&mdash;&mdash;-|
+data.term  | Lexer internal author id
+data.count | Volume of objects created by this author
+data.total  | Total number of followers
+original.id | Lexer internal author id
+original.fullname | Display name for this author
+original.username | Username or handle of the author
+original.link | URL to the author&rsquo;s bio
+original.bio | Description from the author&rsquo;s account
+original.avatar | URL to the author&rsquo;s bio
+original.influence | Lexer internal influence score
+original.inbound | Count of following 
+original.outbound | Count of followers</p>
+
 <h3 id="engaged-authors">Engaged Authors</h3>
 
 <p><img alt="Engaged Authors" src="images/content/authors_engaged_2.png" /></p>
@@ -713,7 +762,45 @@
 
 <h3 id="authors-volume">Authors Volume</h3>
 
-<p><img alt="Top Authors Volume" src="images/content/authors_volume.png" /></p>
+<p>You can also return the top authors in a time series format. Here we return a data object for the top 10 authors based on their volume of content matching your query. Similar to other timeseries results, there is a key pair value for the time and count of mentions.
+<code class="prettyprint">json
+{
+  &quot;id&quot;: 18148228,
+  &quot;updated_at&quot;: &quot;2018-04-26T03:46:23Z&quot;,
+  &quot;data&quot;: {
+    &quot;MyNintendoNews&quot;: {
+      &quot;data&quot;: {
+        &quot;1524628800000&quot;: 0,
+        &quot;1524632400000&quot;: 71,
+        &quot;1524636000000&quot;: 0,
+        &quot;1524639600000&quot;: 0,
+        &quot;1524643200000&quot;: 0,
+        &quot;1524646800000&quot;: 0,
+        &quot;1524650400000&quot;: 0,
+        &quot;1524654000000&quot;: 74,
+        &quot;1524657600000&quot;: 0,
+        &quot;1524661200000&quot;: 0,
+        &quot;1524664800000&quot;: 0,
+        &quot;1524668400000&quot;: 0,
+        &quot;1524672000000&quot;: 67,
+        &quot;1524675600000&quot;: 0,
+        &quot;1524679200000&quot;: 0,
+        &quot;1524682800000&quot;: 0,
+        &quot;1524686400000&quot;: 0,
+        &quot;1524690000000&quot;: 68,
+        &quot;1524693600000&quot;: 0,
+        &quot;1524697200000&quot;: 0,
+        &quot;1524700800000&quot;: 0,
+        &quot;1524704400000&quot;: 0,
+        &quot;1524708000000&quot;: 0,
+        &quot;1524711600000&quot;: 0
+      },
+      &quot;original&quot;: [...],
+      &quot;summary&quot;: null,
+      &quot;author_name&quot;: &quot;MyNintendoNews&quot;
+    },
+</code>
+<img alt="Top Authors Volume" src="images/content/authors_volume.png" /></p>
 
 <h2 id="locations">Locations</h2>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
@@ -741,31 +828,32 @@
 <p><img alt="Top Locations" src="images/content/locations.png" /></p>
 
 <h2 id="classifications">Classifications</h2>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">18041988</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-03T23:56:09Z"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2392</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"customer service"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">2004</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2390</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"negative sentiment"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">2001</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">465</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"product related"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">2000</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="err">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
 
-<p>Classifications are custom tags that your team can apply to content. These are typically included in the customer service workflow within Engage. You can then report on the volumes for each classification that match your query. Here we&rsquo;re simply returning the counts for each classification that matches your saved dive.</p>
+<p>Classifications are custom tags that your team can apply to content. These are typically included in the customer service workflow within Engage. You can then report on the volumes for each classification that match your query. Here we&rsquo;re simply returning the counts for each classification that matches your saved dive.
+<code class="prettyprint">json
+{
+  &quot;id&quot;: 18041988,
+  &quot;updated_at&quot;: &quot;2018-04-03T23:56:09Z&quot;,
+  &quot;data&quot;: [
+    {
+      &quot;id&quot;: 2392,
+      &quot;term&quot;: &quot;customer service&quot;,
+      &quot;count&quot;: 2004
+    },
+    {
+      &quot;id&quot;: 2390,
+      &quot;term&quot;: &quot;negative sentiment&quot;,
+      &quot;count&quot;: 2001
+    },
+    {
+      &quot;id&quot;: 465,
+      &quot;term&quot;: &quot;product related&quot;,
+      &quot;count&quot;: 2000
+    },
+    }
+  ]
+}
+</code></p>
 
 <table><thead>
 <tr>
