@@ -521,10 +521,6 @@ original.influence | Lexer internal influence score
 original.inbound | Count of following 
 original.outbound | Count of followers
 
-### Engaged Authors
-
-![Engaged Authors](../images/content/authors_engaged_2.png)
-
 ### Influential Authors
 
 ![Influential Authors](../images/content/authors_influential_2.png)
