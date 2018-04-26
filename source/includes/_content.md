@@ -554,7 +554,6 @@ original.outbound | Count of followers
 ![Influential Authors](../images/content/authors_influential_2.png)
 
 ### Authors Volume
-You can also return the top authors in a time series format. Here we return a data object for the top 10 authors based on their volume of content matching your query. Similar to other timeseries results, there is a key pair value for the time and count of mentions.
 ```json
 {
   "id": 18148228,
@@ -592,6 +591,9 @@ You can also return the top authors in a time series format. Here we return a da
       "author_name": "MyNintendoNews"
     },
 ```
+You can also return the top authors in a time series format. Here we return a data object for the top 10 authors based on their volume of content matching your query. Similar to other timeseries results, there is a key pair value for the time and count of mentions.
+
+
 ![Top Authors Volume](../images/content/authors_volume.png)
 
 
@@ -616,14 +618,15 @@ You can also return the top authors in a time series format. Here we return a da
   ]
 }
 ```
-Top locations
+Many authors of the content matching your query will have associated location information. Here we're analysing (when available) the author location for your search. These locations may be at either the state or country level, depending on the location and source of data.
+
+In this result the term is referring to the location code.
 
 ![Top Locations](../images/content/locations.png)
 
 
 
 ## Classifications
-Classifications are custom tags that your team can apply to content. These are typically included in the customer service workflow within Engage. You can then report on the volumes for each classification that match your query. Here we're simply returning the counts for each classification that matches your saved dive.
 ```json
 {
   "id": 18041988,
@@ -648,6 +651,8 @@ Classifications are custom tags that your team can apply to content. These are t
   ]
 }
 ```
+Classifications are custom tags that your team can apply to content. These are typically included in the customer service workflow within Engage. You can then report on the volumes for each classification that match your query. Here we're simply returning the counts for each classification that matches your saved dive.
+
 
 Field | Definition
 ---------|-------------|
@@ -655,4 +660,4 @@ id | Unique id for this classification
 term | Name of the classification
 count | Count of objects that have this classification applied
 
-![Top Locations](../images/content/classifications.png)
+![Top Classifications](../images/content/classifications.png)
