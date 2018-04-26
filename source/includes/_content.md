@@ -360,24 +360,6 @@ Our Top Sources chart provides you with a count of matches for each source. The 
         "1520928000000": 1919,
         "1520931600000": 2094,
         "1520935200000": 2385,
-        "1520938800000": 2416,
-        "1520942400000": 2366,
-        "1520946000000": 2820,
-        "1520949600000": 2727,
-        "1520953200000": 2977,
-        "1520956800000": 2886,
-        "1520960400000": 2598,
-        "1520964000000": 2804,
-        "1520967600000": 2932,
-        "1520971200000": 2693,
-        "1520974800000": 2543,
-        "1520978400000": 2439,
-        "1520982000000": 2085,
-        "1520985600000": 2987,
-        "1520989200000": 2346,
-        "1520992800000": 2230,
-        "1520996400000": 3160,
-        "1521000000000": 3384,
         "1521003600000": 1729
       },
       "original": [...],
@@ -398,7 +380,9 @@ The Source Volume chart will return an object for each source in your result, an
 
 ![Source Volume](../images/content/source_volume.png)
 
+In the chart above your result would return an object for twitter.com, instagram.com and facebook.com. These objects contain a key pair value for each date value and the corresponding volume.
 
+The original and summary values can be ignored for these results.
 
 
 <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
@@ -453,7 +437,13 @@ ID | Source Type
 118 | Facebook Review Comment
 122 | Instagram Post
 123 | Instagram Comment
-132 | News/Blog Post
+132 | News/Blog Post (deprecated)
+152 | News Article
+153 | News comment
+154 | Blog Post
+155 | Blog Comment
+156 | Forum Post
+157 | Forum Comment
 
 
 ### Source Groups
@@ -514,6 +504,45 @@ This endpoint will return the top 100 source groups for your query.
 ## Authors
 Authors are the creators of the content matching your query. You can return these authors sorted by influence (follower count) or by engagement (count of objects). We also include the ability to return the top engaged authors in a time series format.
 
+Both of the tables below will return the top 100 authors based on the sorting that is being applied. Each author returned will provide the following details. 
+```json
+{
+      "data": {
+        "term": "twitter_1317671",
+        "count": 17,
+        "total": 447828.0
+      },
+      "original": {
+        "id": "twitter_1317671",
+        "fullname": "My Nintendo News",
+        "lexer_id": "",
+        "username": "MyNintendoNews",
+        "link": "https://twitter.com/MyNintendoNews/",
+        "bio": "The most popular Nintendo news Twitter account. Tracking the hottest Nintendo news 24/7 #NintendoSwitch",
+        "avatar": "https://pbs.twimg.com/profile_images/976439872117510144/p2eEG3Ts_normal.jpg",
+        "influence": 1.266,
+        "reach": {
+          "inbound": 536,
+          "outbound": 447818
+        }
+      }
+    },
+```
+Property | Description |
+---------|-------------|
+data.term  | Lexer internal author id
+data.count | Volume of objects created by this author
+data.total  | Total number of followers
+original.id | Lexer internal author id
+original.fullname | Display name for this author
+original.username | Username or handle of the author
+original.link | URL to the author's bio
+original.bio | Description from the author's account
+original.avatar | URL to the author's bio
+original.influence | Lexer internal influence score
+original.inbound | Count of following 
+original.outbound | Count of followers
+
 ### Engaged Authors
 
 ![Engaged Authors](../images/content/authors_engaged_2.png)
@@ -523,7 +552,44 @@ Authors are the creators of the content matching your query. You can return thes
 ![Influential Authors](../images/content/authors_influential_2.png)
 
 ### Authors Volume
-
+You can also return the top authors in a time series format. Here we return a data object for the top 10 authors based on their volume of content matching your query. Similar to other timeseries results, there is a key pair value for the time and count of mentions.
+```json
+{
+  "id": 18148228,
+  "updated_at": "2018-04-26T03:46:23Z",
+  "data": {
+    "MyNintendoNews": {
+      "data": {
+        "1524628800000": 0,
+        "1524632400000": 71,
+        "1524636000000": 0,
+        "1524639600000": 0,
+        "1524643200000": 0,
+        "1524646800000": 0,
+        "1524650400000": 0,
+        "1524654000000": 74,
+        "1524657600000": 0,
+        "1524661200000": 0,
+        "1524664800000": 0,
+        "1524668400000": 0,
+        "1524672000000": 67,
+        "1524675600000": 0,
+        "1524679200000": 0,
+        "1524682800000": 0,
+        "1524686400000": 0,
+        "1524690000000": 68,
+        "1524693600000": 0,
+        "1524697200000": 0,
+        "1524700800000": 0,
+        "1524704400000": 0,
+        "1524708000000": 0,
+        "1524711600000": 0
+      },
+      "original": [...],
+      "summary": null,
+      "author_name": "MyNintendoNews"
+    },
+```
 ![Top Authors Volume](../images/content/authors_volume.png)
 
 
@@ -555,6 +621,7 @@ Top locations
 
 
 ## Classifications
+Classifications are custom tags that your team can apply to content. These are typically included in the customer service workflow within Engage. You can then report on the volumes for each classification that match your query. Here we're simply returning the counts for each classification that matches your saved dive.
 ```json
 {
   "id": 18041988,
@@ -579,7 +646,6 @@ Top locations
   ]
 }
 ```
-Classifications are custom tags that your team can apply to content. These are typically included in the customer service workflow within Engage. You can then report on the volumes for each classification that match your query. Here we're simply returning the counts for each classification that matches your saved dive.
 
 Field | Definition
 ---------|-------------|
