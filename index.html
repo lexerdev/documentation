@@ -897,7 +897,83 @@
 
           <h1 id="activity">Activity</h1>
 
-<p>Coming soon&hellip;</p>
+<p>Using the Activity API, you can retrieve performance metrics on your team operating within Lexer Engage. Access insightful metrics such as the number of closed cases, average response time, or your overall NPS score for last month. We’ve made your Activity data accessible so you can run bespoke reports or add them to your custom applications.</p>
+
+<p>Our API is organised into two sections; Get and Post requests. Get requests allow you to access the user, groups and forms information related to your team. These are useful for filtering your reports. Post requests are queries that comprise of particular report types and filter parameters. Reports may be filtered by users, groups, forms or time.</p>
+
+<h2 id="api-tokens">API Tokens</h2>
+
+<p>You will need an API token to access your Activity data. Tokens are managed within the Settings area of the Hub, and require Manager permissions to access and manage. All requests require an API token to authenticate you.</p>
+
+<h2 id="get-users">GET Users</h2>
+
+<p>Request: https://api.lexer.io/v1/users</p>
+
+<h2 id="get-groups">GET Groups</h2>
+
+<p>Request: https://api.lexer.io/v1/groups</p>
+
+<h2 id="get-forms">GET Forms</h2>
+
+<p>Request: https://api.lexer.io/v1/forms</p>
+
+<h2 id="summary">Summary</h2>
+
+<p><strong>Summary Metrics</strong>
+Description: count of objects handled, count of objects responded to, average response time, longest response time, count of objects that exceeded the SLA period.
+Request: summary</p>
+
+<p><strong>Summary Volume</strong>
+Description: daily volume of objects in each workflow state.
+Request: states_volume</p>
+
+<p><strong>Classifications (Objects)</strong>
+Description: classifications and their associated count of objects.
+Request: classifications</p>
+
+<p><strong>Response Time</strong>
+Description: daily average response time.
+Request: response_volume</p>
+
+<h2 id="team">Team</h2>
+
+<p><strong>Agent Volume</strong>
+Description: count of states for objects currently assigned to individual agents.
+Request: user_volume</p>
+
+<p><strong>Agent Summary</strong>
+Description: count of states for objects currently assigned to individual agents.
+Request: user_summary</p>
+
+<h2 id="cases">Cases</h2>
+
+<p><strong>Case Summary</strong>
+Description: 
+Request: </p>
+
+<p><strong>Case Volume</strong>
+Description: 
+Request: </p>
+
+<p><strong>Case Classifications</strong>
+Description: 
+Request: </p>
+
+<h2 id="nps">NPS</h2>
+
+<p><strong>NPS Summary</strong>
+Description: 
+Request: </p>
+
+<p><strong>NPS Volume</strong>
+Description: 
+Request: </p>
+
+<h2 id="errors">Errors</h2>
+
+<p><strong>Error Responses</strong></p>
+
+<p><strong>Rate Limiting</strong></p>
 
           <h1 id="identity">Identity</h1>
 
