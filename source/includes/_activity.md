@@ -1,6 +1,6 @@
 # Activity
 
-Using the Activity API, you can retrieve performance metrics on your team operating within Lexer Engage. Access insightful metrics such as the number of closed cases, average response time, or your overall NPS score for last month. We’ve made your Activity data accessible so you can run bespoke reports or add them to your custom applications.
+Using the Activity API, you can retrieve performance data on your team operating within Lexer Engage. Access insightful metrics such as the number of closed cases, average response time, or your overall NPS score for last month. We’ve made your Activity data accessible so you can run bespoke reports or add them to your custom applications.
 
 Our API is organised into two sections; Get and Post requests. Get requests allow you to access the user, groups and forms information related to your team. These are useful for filtering your reports. Post requests are queries that comprise of particular report types and filter parameters. Reports may be filtered by users, groups, forms or time.
 
@@ -12,11 +12,11 @@ You will need an API token to access your Activity data. Tokens are managed with
 
 Retrieve a list of users that have access to your Lexer account. You can use these user details to filter any of the Activity queries for agent specific metrics. Here we'll describe how you request and interpret this information.
 
-**Request**
-```text
+**Endpoint**
+```json
 curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-1234-123456789" -X GET https://api.lexer.io/v1/users
 ```
-Simply call this endpoint `https://api.lexer.io/v1/users` using your API token and you will retrieve a list of active users in your team.
+https://api.lexer.io/v1/users 
 
 ```json
 [
@@ -38,7 +38,6 @@ Simply call this endpoint `https://api.lexer.io/v1/users` using your API token a
   }
 ```
 
-**Response**
 
 Property | Description | Type |
 ---------|-------------|------|
@@ -49,9 +48,9 @@ last_name  | last name of the user | string
 timezone | timezone location of user | string
 gmtoffset | timezone offset of user | integer
 sign_in_count | count of logins | integer
-last_sign_in_at | date time of the users last login | string
+last_sign_in_at | date of users last login | string
 archived | archived flag for user | boolean
-groups | group id's the user is a member of | array
+groups | groups the user is in | array
 
 
 ## GET Groups
