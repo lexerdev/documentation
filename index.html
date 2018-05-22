@@ -904,11 +904,10 @@
 <h2 id="get-users">GET Users</h2>
 
 <p>Retrieve a list of users that have access to your Lexer account. You can use these user details to filter any of the Activity queries for agent specific metrics. Here we&rsquo;ll describe how you request and interpret this information.</p>
+<pre class="highlight plaintext"><code>curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-1234-123456789" -X GET https://api.lexer.io/v1/users
+</code></pre>
 
 <p><strong>Endpoint</strong>
-<code class="prettyprint">json
-curl -H &quot;Content-Type: application/json&quot; -H &quot;Auth-Api-Token: 12345678-1234-1234-1234-123456789&quot; -X GET https://api.lexer.io/v1/users
-</code>
 https://api.lexer.io/v1/users </p>
 <pre class="highlight json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
