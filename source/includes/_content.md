@@ -102,7 +102,7 @@ The summary bar displays the headline metrics for your saved dive. Each of the i
   }
 }
 ```
-The Live Stream Volume chart will return a data object for each filter presented in the chart. In this example we're just looking at the Nintendo filter. Within this object are the count of mentions for each time interval.
+The Live Stream Volume chart will return a data object for each filter presented in the chart. In this example we're just looking at the Nintendo filter. This object contains the corresponding count of mentions for each time interval.
 
 Also included in this response is the total number of mentions and various other information to render this in the chart interface.
 

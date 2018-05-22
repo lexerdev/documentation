@@ -11,8 +11,8 @@ toc_footers:
 
 includes:
   - content
+  - activity  
   - chatbot
-  - activity
   - identities
 
 search: true
@@ -26,9 +26,9 @@ We currently offer the following APIs to our clients:
 
 - **Content**: read social and news content.
 
-- **Chatbot**: integrate your chatbot into Engage.
+- **Activity**: read customer service team performance metrics.
 
-- **Activity**: read customer service team performance metrics (Coming Soon).
+- **Chatbot**: integrate your chatbot into Engage.
 
 - **Identity**: read and write Identity data.
 

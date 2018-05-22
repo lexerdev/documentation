@@ -9,67 +9,133 @@ Our API is organised into two sections; Get and Post requests. Get requests allo
 You will need an API token to access your Activity data. Tokens are managed within the Settings area of the Hub, and require Manager permissions to access and manage. All requests require an API token to authenticate you.
 
 ## GET Users
-Request: https://api.lexer.io/v1/users
+
+Retrieve a list of users that have access to your Lexer account. You can use these user details to filter any of the Activity queries for agent specific metrics. Here we'll describe how you request and interpret this information.
+
+**Request**
+```text
+curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-1234-123456789" -X GET https://api.lexer.io/v1/users
+```
+Simply call this endpoint `https://api.lexer.io/v1/users` using your API token and you will retrieve a list of active users in your team.
+
+```json
+[
+  {
+    "id": 12345,
+    "email": "jane@business.io",
+    "first_name": "Jane",
+    "last_name": "Remington",
+    "timezone": "Australia/Sydney",
+    "gmtoffset": 10,
+    "sign_in_count": 76,
+    "last_sign_in_at": "2018-03-21T06:09:01Z",
+    "archived": false,
+    "groups": [
+      123,
+      456,
+      789,
+    ]
+  }
+```
+
+**Response**
+
+Property | Description | Type |
+---------|-------------|------|
+id  | user id | integer
+email  | email account used to login | string
+first_name  | first name of the user | string
+last_name  | last name of the user | string
+timezone | timezone location of user | string
+gmtoffset | timezone offset of user | integer
+sign_in_count | count of logins | integer
+last_sign_in_at | date time of the users last login | string
+archived | archived flag for user | boolean
+groups | group id's the user is a member of | array
 
 
 ## GET Groups
+
 Request: https://api.lexer.io/v1/groups
 
 
 ## GET Forms
+
 Request: https://api.lexer.io/v1/forms
 
 
 ## Summary
 
 **Summary Metrics**
+
 Description: count of objects handled, count of objects responded to, average response time, longest response time, count of objects that exceeded the SLA period.
+
 Request: summary
 
 **Summary Volume**
+
 Description: daily volume of objects in each workflow state.
+
 Request: states_volume
 
 **Classifications (Objects)**
+
 Description: classifications and their associated count of objects.
+
 Request: classifications
 
 **Response Time**
+
 Description: daily average response time.
+
 Request: response_volume
 
 ## Team 
 
 **Agent Volume**
+
 Description: count of states for objects currently assigned to individual agents.
+
 Request: user_volume
 
 **Agent Summary**
+
 Description: count of states for objects currently assigned to individual agents.
+
 Request: user_summary
 
 ## Cases
 
 **Case Summary**
+
 Description: 
+
 Request: 
 
 **Case Volume**
+
 Description: 
+
 Request: 
 
 **Case Classifications**
+
 Description: 
+
 Request: 
 
 ## NPS
 
 **NPS Summary**
+
 Description: 
+
 Request: 
 
 **NPS Volume**
+
 Description: 
+
 Request: 
 
 
