@@ -12,10 +12,11 @@ You will need an API token to access your Activity data. Tokens are managed with
 
 Retrieve a list of users that have access to your Lexer account. You can use these user details to filter any of the Activity queries for agent specific metrics. Here we'll describe how you request and interpret this information.
 
-**Endpoint**
-```json
+```text
 curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-1234-123456789" -X GET https://api.lexer.io/v1/users
 ```
+
+**Endpoint**
 https://api.lexer.io/v1/users 
 
 ```json
