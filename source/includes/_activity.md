@@ -165,53 +165,120 @@ curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-
 
 Description: daily volume of objects in each workflow state.
 
-Request: states_volume
+```json
+curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-1234-123456789" https://api.lexer.io/v1/activity/reports -d '
+{
+  "type": "states_volume",
+  "date_from": "2018-04-01T00:00:00+11:00",
+  "date_to": "2018-04-30T23:59:59+11:00"
+}'
+```
+**Type:** states_volume
+
+
 
 **Classifications (Objects)**
 
 Description: classifications and their associated count of objects.
 
-Request: classifications
+```json
+curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-1234-123456789" https://api.lexer.io/v1/activity/reports -d '
+{
+  "type": "classifications",
+  "date_from": "2018-04-01T00:00:00+11:00",
+  "date_to": "2018-04-30T23:59:59+11:00"
+}'
+```
+**Type:** classifications
+
+
 
 **Response Time**
 
-Description: daily average response time.
+```json
+curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-1234-123456789" https://api.lexer.io/v1/activity/reports -d '
+{
+  "type": "response_volume",
+  "date_from": "2018-04-01T00:00:00+11:00",
+  "date_to": "2018-04-30T23:59:59+11:00"
+}'
+```
+**Type:** response_volume
 
-Request: response_volume
+
 
 ## Team 
 
 **Agent Volume**
 
-Description: count of states for objects currently assigned to individual agents.
-
-Request: user_volume
+```json
+curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-1234-123456789" https://api.lexer.io/v1/activity/reports -d '
+{
+  "type": "user_volume",
+  "date_from": "2018-04-01T00:00:00+11:00",
+  "date_to": "2018-04-30T23:59:59+11:00"
+}'
+```
+**Type:** user_volume
 
 **Agent Summary**
 
-Description: count of states for objects currently assigned to individual agents.
+```json
+curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-1234-123456789" https://api.lexer.io/v1/activity/reports -d '
+{
+  "type": "user_summary",
+  "date_from": "2018-04-01T00:00:00+11:00",
+  "date_to": "2018-04-30T23:59:59+11:00"
+}'
+```
+**Type:** user_summary
 
-Request: user_summary
+
 
 ## Cases
 
 **Case Summary**
 
-Description: 
+```json
+curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-1234-123456789" https://api.lexer.io/v1/activity/reports -d '
+{
+  "type": "case_summary",
+  "date_from": "2018-04-01T00:00:00+11:00",
+  "date_to": "2018-04-30T23:59:59+11:00"
+}'
+```
+**Type:** case_summary
 
-Request: 
+
 
 **Case Volume**
 
-Description: 
+```json
+curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-1234-123456789" https://api.lexer.io/v1/activity/reports -d '
+{
+  "type": "case_volume",
+  "date_from": "2018-04-01T00:00:00+11:00",
+  "date_to": "2018-04-30T23:59:59+11:00"
+}'
+```
+**Type:** case_volume
 
-Request: 
+
 
 **Case Classifications**
 
-Description: 
+```json
+curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-1234-123456789" https://api.lexer.io/v1/activity/reports -d '
+{
+  "type": "case_classifications",
+  "date_from": "2018-04-01T00:00:00+11:00",
+  "date_to": "2018-04-30T23:59:59+11:00"
+}'
+```
+**Type:** case_classifications
 
-Request: 
+
+
 
 ## NPS
 
