@@ -128,9 +128,7 @@ form_url | URL to view this form | string
 
 Access the summary metrics that are used to power the big number metrics you can see in Activity. This includes the number of objects handled, response count, average response time, agent handle time and a few others.
 
-**
 
-Request: summary
 
 ```text
 curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-1234-123456789" https://api.lexer.io/v1/activity/reports -d '
@@ -158,6 +156,19 @@ curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-
   "avg_action_response_time_min": 8.48896145080035
 }
 ```
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
 
 
 
@@ -175,6 +186,20 @@ curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-
 ```
 **Type:** states_volume
 
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+
 
 
 **Classifications (Objects)**
@@ -191,6 +216,19 @@ curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-
 ```
 **Type:** classifications
 
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
 
 
 **Response Time**
@@ -205,6 +243,19 @@ curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-
 ```
 **Type:** response_volume
 
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
 
 
 ## Team 
@@ -221,6 +272,20 @@ curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-
 ```
 **Type:** user_volume
 
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+
 **Agent Summary**
 
 ```text
@@ -232,6 +297,20 @@ curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-
 }'
 ```
 **Type:** user_summary
+
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
 
 
 
@@ -249,6 +328,19 @@ curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-
 ```
 **Type:** case_summary
 
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
 
 
 **Case Volume**
@@ -262,6 +354,20 @@ curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-
 }'
 ```
 **Type:** case_volume
+
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
 
 
 
@@ -277,6 +383,19 @@ curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-
 ```
 **Type:** case_classifications
 
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
 
 
 
