@@ -70,7 +70,7 @@ curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-
     "id": 123,
     "name": "Social Customer Care",
     "comment": "Social customer care team members"
-  },
+  }
 ```
 
 
@@ -198,6 +198,10 @@ Request:
 
 ## Errors
 
-**Error Responses**
+## Rate Limiting
 
-**Rate Limiting**
+The API may rate limit requests made by your application. Our rate limits are managed by an allowed number of requests per time window. A single request could be to retrieve a list of users, or query a particular chart endpoint. 
+
+The rate limit is *100 requests per 5 minutes per API Token.*
+
+In the case you are rate limited a "429 Rate limited exceeded" response will be returned.

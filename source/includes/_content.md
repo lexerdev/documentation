@@ -620,7 +620,6 @@ In this result the term is referring to the location code.
       "term": "product related",
       "count": 2000
     },
-    }
   ]
 }
 ```
