@@ -1133,54 +1133,98 @@
 <p><strong>Summary Volume</strong></p>
 
 <p>Description: daily volume of objects in each workflow state.</p>
+<pre class="highlight json"><code><span class="err">curl</span><span class="w"> </span><span class="err">-H</span><span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="err">-H</span><span class="w"> </span><span class="s2">"Auth-Api-Token: 12345678-1234-1234-1234-123456789"</span><span class="w"> </span><span class="err">https://api.lexer.io/v</span><span class="mi">1</span><span class="err">/activity/reports</span><span class="w"> </span><span class="err">-d</span><span class="w"> </span><span class="err">'</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"states_volume"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"date_from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-01T00:00:00+11:00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"date_to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-30T23:59:59+11:00"</span><span class="w">
+</span><span class="p">}</span><span class="err">'</span><span class="w">
+</span></code></pre>
 
-<p>Request: states_volume</p>
+<p><strong>Type:</strong> states_volume</p>
 
 <p><strong>Classifications (Objects)</strong></p>
 
 <p>Description: classifications and their associated count of objects.</p>
+<pre class="highlight json"><code><span class="err">curl</span><span class="w"> </span><span class="err">-H</span><span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="err">-H</span><span class="w"> </span><span class="s2">"Auth-Api-Token: 12345678-1234-1234-1234-123456789"</span><span class="w"> </span><span class="err">https://api.lexer.io/v</span><span class="mi">1</span><span class="err">/activity/reports</span><span class="w"> </span><span class="err">-d</span><span class="w"> </span><span class="err">'</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"classifications"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"date_from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-01T00:00:00+11:00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"date_to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-30T23:59:59+11:00"</span><span class="w">
+</span><span class="p">}</span><span class="err">'</span><span class="w">
+</span></code></pre>
 
-<p>Request: classifications</p>
+<p><strong>Type:</strong> classifications</p>
 
 <p><strong>Response Time</strong></p>
+<pre class="highlight json"><code><span class="err">curl</span><span class="w"> </span><span class="err">-H</span><span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="err">-H</span><span class="w"> </span><span class="s2">"Auth-Api-Token: 12345678-1234-1234-1234-123456789"</span><span class="w"> </span><span class="err">https://api.lexer.io/v</span><span class="mi">1</span><span class="err">/activity/reports</span><span class="w"> </span><span class="err">-d</span><span class="w"> </span><span class="err">'</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"response_volume"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"date_from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-01T00:00:00+11:00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"date_to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-30T23:59:59+11:00"</span><span class="w">
+</span><span class="p">}</span><span class="err">'</span><span class="w">
+</span></code></pre>
 
-<p>Description: daily average response time.</p>
-
-<p>Request: response_volume</p>
+<p><strong>Type:</strong> response_volume</p>
 
 <h2 id="team">Team</h2>
 
 <p><strong>Agent Volume</strong></p>
+<pre class="highlight json"><code><span class="err">curl</span><span class="w"> </span><span class="err">-H</span><span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="err">-H</span><span class="w"> </span><span class="s2">"Auth-Api-Token: 12345678-1234-1234-1234-123456789"</span><span class="w"> </span><span class="err">https://api.lexer.io/v</span><span class="mi">1</span><span class="err">/activity/reports</span><span class="w"> </span><span class="err">-d</span><span class="w"> </span><span class="err">'</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user_volume"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"date_from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-01T00:00:00+11:00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"date_to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-30T23:59:59+11:00"</span><span class="w">
+</span><span class="p">}</span><span class="err">'</span><span class="w">
+</span></code></pre>
 
-<p>Description: count of states for objects currently assigned to individual agents.</p>
-
-<p>Request: user_volume</p>
+<p><strong>Type:</strong> user_volume</p>
 
 <p><strong>Agent Summary</strong></p>
+<pre class="highlight json"><code><span class="err">curl</span><span class="w"> </span><span class="err">-H</span><span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="err">-H</span><span class="w"> </span><span class="s2">"Auth-Api-Token: 12345678-1234-1234-1234-123456789"</span><span class="w"> </span><span class="err">https://api.lexer.io/v</span><span class="mi">1</span><span class="err">/activity/reports</span><span class="w"> </span><span class="err">-d</span><span class="w"> </span><span class="err">'</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user_summary"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"date_from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-01T00:00:00+11:00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"date_to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-30T23:59:59+11:00"</span><span class="w">
+</span><span class="p">}</span><span class="err">'</span><span class="w">
+</span></code></pre>
 
-<p>Description: count of states for objects currently assigned to individual agents.</p>
-
-<p>Request: user_summary</p>
+<p><strong>Type:</strong> user_summary</p>
 
 <h2 id="cases">Cases</h2>
 
 <p><strong>Case Summary</strong></p>
+<pre class="highlight json"><code><span class="err">curl</span><span class="w"> </span><span class="err">-H</span><span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="err">-H</span><span class="w"> </span><span class="s2">"Auth-Api-Token: 12345678-1234-1234-1234-123456789"</span><span class="w"> </span><span class="err">https://api.lexer.io/v</span><span class="mi">1</span><span class="err">/activity/reports</span><span class="w"> </span><span class="err">-d</span><span class="w"> </span><span class="err">'</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"case_summary"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"date_from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-01T00:00:00+11:00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"date_to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-30T23:59:59+11:00"</span><span class="w">
+</span><span class="p">}</span><span class="err">'</span><span class="w">
+</span></code></pre>
 
-<p>Description: </p>
-
-<p>Request: </p>
+<p><strong>Type:</strong> case_summary</p>
 
 <p><strong>Case Volume</strong></p>
+<pre class="highlight json"><code><span class="err">curl</span><span class="w"> </span><span class="err">-H</span><span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="err">-H</span><span class="w"> </span><span class="s2">"Auth-Api-Token: 12345678-1234-1234-1234-123456789"</span><span class="w"> </span><span class="err">https://api.lexer.io/v</span><span class="mi">1</span><span class="err">/activity/reports</span><span class="w"> </span><span class="err">-d</span><span class="w"> </span><span class="err">'</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"case_volume"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"date_from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-01T00:00:00+11:00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"date_to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-30T23:59:59+11:00"</span><span class="w">
+</span><span class="p">}</span><span class="err">'</span><span class="w">
+</span></code></pre>
 
-<p>Description: </p>
-
-<p>Request: </p>
+<p><strong>Type:</strong> case_volume</p>
 
 <p><strong>Case Classifications</strong></p>
+<pre class="highlight json"><code><span class="err">curl</span><span class="w"> </span><span class="err">-H</span><span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="err">-H</span><span class="w"> </span><span class="s2">"Auth-Api-Token: 12345678-1234-1234-1234-123456789"</span><span class="w"> </span><span class="err">https://api.lexer.io/v</span><span class="mi">1</span><span class="err">/activity/reports</span><span class="w"> </span><span class="err">-d</span><span class="w"> </span><span class="err">'</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"case_classifications"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"date_from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-01T00:00:00+11:00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"date_to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-30T23:59:59+11:00"</span><span class="w">
+</span><span class="p">}</span><span class="err">'</span><span class="w">
+</span></code></pre>
 
-<p>Description: </p>
-
-<p>Request: </p>
+<p><strong>Type:</strong> case_classifications</p>
 
 <h2 id="nps">NPS</h2>
 
