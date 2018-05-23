@@ -204,4 +204,4 @@ The API may rate limit requests made by your application. Our rate limits are ma
 
 The rate limit is *100 requests per 5 minutes per API Token.*
 
-In the case you are rate limited a "429 Rate limited exceeded" response will be returned.
+In the case you are rate limited a "429 Rate limited exceeded" response will be returned. We suggest waiting a few minutes and trying again.
