@@ -123,11 +123,43 @@ form_url | URL to view this form | string
 
 ## Summary
 
+
 **Summary Metrics**
 
-Description: count of objects handled, count of objects responded to, average response time, longest response time, count of objects that exceeded the SLA period.
+Access the summary metrics that are used to power the big number metrics you can see in Activity. This includes the number of objects handled, response count, average response time, agent handle time and a few others.
+
+**
 
 Request: summary
+
+```json
+curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-1234-123456789" https://api.lexer.io/v1/activity/reports -d '
+{
+  "type": "summary",
+  "date_from": "2018-04-01T00:00:00+11:00",
+  "date_to": "2018-04-30T23:59:59+11:00"
+}'
+```
+**Type:** summary
+
+```json
+{
+  "total_volume": 7526,
+  "avg_response_time": 1315.27098046203,
+  "min_response_time": 50.702796,
+  "max_response_time": 200663.392234,
+  "avg_action_response_time": 509.337687048021,
+  "min_action_response_time": 4.908278,
+  "max_action_response_time": 199826.523834,
+  "total_responded_to": 3582,
+  "broke_sla": 166,
+  "broke_action_sla": 45,
+  "avg_response_time_min": 21.9211830077005,
+  "avg_action_response_time_min": 8.48896145080035
+}
+```
+
+
 
 **Summary Volume**
 
@@ -202,6 +234,6 @@ Request:
 
 The API may rate limit requests made by your application. Our rate limits are managed by an allowed number of requests per time window. A single request could be to retrieve a list of users, or query a particular chart endpoint. 
 
-The rate limit is *100 requests per 5 minutes per API Token.*
+The rate limit is **100 requests per 5 minutes per API Token.**
 
-In the case you are rate limited a "429 Rate limited exceeded" response will be returned. We suggest waiting a few minutes and trying again.
+In the case you are rate limited a "429 Rate limited exceeded" response will be returned.
