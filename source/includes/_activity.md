@@ -156,10 +156,19 @@ curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-
   "avg_action_response_time_min": 8.48896145080035
 }
 ```
-
-
-
-
+Property | Description | Type |
+---------|-------------|------|
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
 
 
 
@@ -177,9 +186,19 @@ curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-
 ```
 **Type:** states_volume
 
-
-
-
+Property | Description | Type |
+---------|-------------|------|
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
 
 
 
@@ -198,9 +217,19 @@ curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-
 ```
 **Type:** classifications
 
-
-
-
+Property | Description | Type |
+---------|-------------|------|
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
 
 
 
@@ -216,7 +245,19 @@ curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-
 ```
 **Type:** response_volume
 
-
+Property | Description | Type |
+---------|-------------|------|
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
 
 
 
@@ -236,7 +277,19 @@ curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-
 ```
 **Type:** user_volume
 
-
+Property | Description | Type |
+---------|-------------|------|
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
 
 
 
@@ -253,7 +306,19 @@ curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-
 ```
 **Type:** user_summary
 
-
+Property | Description | Type |
+---------|-------------|------|
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
 
 
 
@@ -274,7 +339,19 @@ curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-
 ```
 **Type:** case_summary
 
-
+Property | Description | Type |
+---------|-------------|------|
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
 
 
 
@@ -293,7 +370,19 @@ curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-
 **Type:** case_volume
 
 
-
+Property | Description | Type |
+---------|-------------|------|
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
 
 
 
@@ -311,9 +400,19 @@ curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-
 ```
 **Type:** case_classifications
 
-
-
-
+Property | Description | Type |
+---------|-------------|------|
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
+field  | description | type
 
 
 
