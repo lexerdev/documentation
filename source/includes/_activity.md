@@ -156,19 +156,10 @@ curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-
   "avg_action_response_time_min": 8.48896145080035
 }
 ```
--
--
--
--
--
--
--
--
--
--
--
--
--
+
+
+
+
 
 
 
@@ -186,19 +177,10 @@ curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-
 ```
 **Type:** states_volume
 
--
--
--
--
--
--
--
--
--
--
--
--
--
+
+
+
+
 
 
 
@@ -216,19 +198,10 @@ curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-
 ```
 **Type:** classifications
 
--
--
--
--
--
--
--
--
--
--
--
--
--
+
+
+
+
 
 
 **Response Time**
@@ -243,19 +216,10 @@ curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-
 ```
 **Type:** response_volume
 
--
--
--
--
--
--
--
--
--
--
--
--
--
+
+
+
+
 
 
 ## Team 
@@ -272,19 +236,10 @@ curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-
 ```
 **Type:** user_volume
 
--
--
--
--
--
--
--
--
--
--
--
--
--
+
+
+
+
 
 **Agent Summary**
 
@@ -298,19 +253,10 @@ curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-
 ```
 **Type:** user_summary
 
--
--
--
--
--
--
--
--
--
--
--
--
--
+
+
+
+
 
 
 
@@ -328,19 +274,10 @@ curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-
 ```
 **Type:** case_summary
 
--
--
--
--
--
--
--
--
--
--
--
--
--
+
+
+
+
 
 
 **Case Volume**
@@ -355,19 +292,10 @@ curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-
 ```
 **Type:** case_volume
 
--
--
--
--
--
--
--
--
--
--
--
--
--
+
+
+
+
 
 
 
@@ -383,19 +311,10 @@ curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-
 ```
 **Type:** case_classifications
 
--
--
--
--
--
--
--
--
--
--
--
--
--
+
+
+
+
 
 
 
