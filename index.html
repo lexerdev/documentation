@@ -1100,9 +1100,35 @@
 
 <p><strong>Summary Metrics</strong></p>
 
-<p>Description: count of objects handled, count of objects responded to, average response time, longest response time, count of objects that exceeded the SLA period.</p>
+<p>Access the summary metrics that are used to power the big number metrics you can see in Activity. This includes the number of objects handled, response count, average response time, agent handle time and a few others.</p>
+
+<p>**</p>
 
 <p>Request: summary</p>
+<pre class="highlight json"><code><span class="err">curl</span><span class="w"> </span><span class="err">-H</span><span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="err">-H</span><span class="w"> </span><span class="s2">"Auth-Api-Token: 12345678-1234-1234-1234-123456789"</span><span class="w"> </span><span class="err">https://api.lexer.io/v</span><span class="mi">1</span><span class="err">/activity/reports</span><span class="w"> </span><span class="err">-d</span><span class="w"> </span><span class="err">'</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"summary"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"date_from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-01T00:00:00+11:00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"date_to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-30T23:59:59+11:00"</span><span class="w">
+</span><span class="p">}</span><span class="err">'</span><span class="w">
+</span></code></pre>
+
+<p><strong>Type:</strong> summary</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"total_volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">7526</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"avg_response_time"</span><span class="p">:</span><span class="w"> </span><span class="mf">1315.27098046203</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"min_response_time"</span><span class="p">:</span><span class="w"> </span><span class="mf">50.702796</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"max_response_time"</span><span class="p">:</span><span class="w"> </span><span class="mf">200663.392234</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"avg_action_response_time"</span><span class="p">:</span><span class="w"> </span><span class="mf">509.337687048021</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"min_action_response_time"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.908278</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"max_action_response_time"</span><span class="p">:</span><span class="w"> </span><span class="mf">199826.523834</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"total_responded_to"</span><span class="p">:</span><span class="w"> </span><span class="mi">3582</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"broke_sla"</span><span class="p">:</span><span class="w"> </span><span class="mi">166</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"broke_action_sla"</span><span class="p">:</span><span class="w"> </span><span class="mi">45</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"avg_response_time_min"</span><span class="p">:</span><span class="w"> </span><span class="mf">21.9211830077005</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"avg_action_response_time_min"</span><span class="p">:</span><span class="w"> </span><span class="mf">8.48896145080035</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
 <p><strong>Summary Volume</strong></p>
 
@@ -1176,9 +1202,9 @@
 
 <p>The API may rate limit requests made by your application. Our rate limits are managed by an allowed number of requests per time window. A single request could be to retrieve a list of users, or query a particular chart endpoint. </p>
 
-<p>The rate limit is <em>100 requests per 5 minutes per API Token.</em></p>
+<p>The rate limit is <strong>100 requests per 5 minutes per API Token.</strong></p>
 
-<p>In the case you are rate limited a &ldquo;429 Rate limited exceeded&rdquo; response will be returned. We suggest waiting a few minutes and trying again.</p>
+<p>In the case you are rate limited a &ldquo;429 Rate limited exceeded&rdquo; response will be returned.</p>
 
           <h1 id="chatbot">Chatbot</h1>
 
