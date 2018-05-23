@@ -423,13 +423,13 @@ field  | description | type
 
 Description: 
 
-Request: 
+**Type:** nps_summary
 
 **NPS Volume**
 
 Description: 
 
-Request: 
+**Type:** nps_volume
 
 
 ## Errors
