@@ -899,7 +899,7 @@
 
 <h2 id="api-tokens">API Tokens</h2>
 
-<p>You will need an API token to access your Activity data. Tokens are managed within the Settings area of the Hub, and require Manager permissions to access and manage. All requests require an API token to authenticate you.</p>
+<p>You will need an API token to access your Activity data. Tokens are managed within the Settings area of the Hub, and require Manager permissions to access. All endpoints require an API token to authenticate your requests.</p>
 
 <h2 id="get-users">GET Users</h2>
 
@@ -908,9 +908,8 @@
 </code></pre>
 
 <p><strong>Endpoint</strong>
-https://api.lexer.io/v1/users </p>
-<pre class="highlight json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
+<code class="prettyprint">https://api.lexer.io/v1/users</code></p>
+<pre class="highlight json"><code><span class="w">  </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
     </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jane@business.io"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jane"</span><span class="p">,</span><span class="w">
@@ -989,11 +988,114 @@ https://api.lexer.io/v1/users </p>
 
 <h2 id="get-groups">GET Groups</h2>
 
-<p>Request: https://api.lexer.io/v1/groups</p>
+<p>Retrieve a list of groups that exist in your Lexer account. You can use these group details to filter any of the Activity queries for team specific metrics. Here we&rsquo;ll describe how you request and interpret this information.</p>
+<pre class="highlight plaintext"><code>curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-1234-123456789" -X GET https://api.lexer.io/v1/groups
+</code></pre>
+
+<p><strong>Endpoint</strong>
+<code class="prettyprint">https://api.lexer.io/v1/groups</code></p>
+<pre class="highlight json"><code><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Social Customer Care"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Social customer care team members"</span><span class="w">
+  </span><span class="p">}</span><span class="err">,</span><span class="w">
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Description</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>group id</td>
+<td>integer</td>
+</tr>
+<tr>
+<td>name</td>
+<td>name of the group</td>
+<td>string</td>
+</tr>
+<tr>
+<td>comment</td>
+<td>description of the group</td>
+<td>string</td>
+</tr>
+</tbody></table>
 
 <h2 id="get-forms">GET Forms</h2>
 
-<p>Request: https://api.lexer.io/v1/forms</p>
+<p>Retrieve a list of forms/surveys that exist in your Lexer account. These include NPS surveys, authentication forms, and competition surveys. You need to specifiy the NPS Survey id when requesting the NPS Summary or NPS Volume data. Here we&rsquo;ll describe how you request and interpret this information.</p>
+<pre class="highlight plaintext"><code>curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-1234-123456789" -X GET https://api.lexer.io/v1/forms
+</code></pre>
+
+<p><strong>Endpoint</strong>
+<code class="prettyprint">https://api.lexer.io/v1/forms</code></p>
+<pre class="highlight json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">55</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NPS Survey"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lexer NPS Survey"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-26T21:54:19Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="mi">123</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"nps"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"form_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d1z1wrkt4y2iqm.cloudfront.net/123455678899876543/1/form"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Description</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>group id</td>
+<td>integer</td>
+</tr>
+<tr>
+<td>name</td>
+<td>name of the form</td>
+<td>string</td>
+</tr>
+<tr>
+<td>title</td>
+<td>title of the form</td>
+<td>string</td>
+</tr>
+<tr>
+<td>archived</td>
+<td>archived flag</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>date this form was created</td>
+<td>string</td>
+</tr>
+<tr>
+<td>groups</td>
+<td>groups that have access to this form</td>
+<td>array</td>
+</tr>
+<tr>
+<td>nps</td>
+<td>is this form an NPS survey?</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td>form_url</td>
+<td>URL to view this form</td>
+<td>string</td>
+</tr>
+</tbody></table>
 
 <h2 id="summary">Summary</h2>
 
