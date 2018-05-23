@@ -174,7 +174,7 @@ field  | description | type
 
 **Summary Volume**
 
-Description: daily volume of objects in each workflow state.
+Description: daily volume of objects in each workflow state. Your response will contain an array for each state, and within that state an object for each period (i.e. each day).
 
 ```text
 curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-1234-123456789" https://api.lexer.io/v1/activity/reports -d '
@@ -186,20 +186,51 @@ curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-
 ```
 **Type:** states_volume
 
+
+```json
+{
+  "closed": [
+    {
+      "state": "closed",
+      "value": 174,
+      "date_range": {
+        "date_from": "2018-04-27 00:00"
+      }
+    },
+    {
+      "state": "closed",
+      "value": 234,
+      "date_range": {
+        "date_from": "2018-04-28 00:00"
+      }
+    },
+    {
+      "state": "closed",
+      "value": 255,
+      "date_range": {
+        "date_from": "2018-04-29 00:00"
+      }
+    },
+    {
+      "state": "closed",
+      "value": 108,
+      "date_range": {
+        "date_from": "2018-04-30 00:00"
+      }
+    }
+  ]
+}
+```
+
 Property | Description | Type |
 ---------|-------------|------|
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
+state  | workflow state | string
+value  | number of objects in this state | integer
+date_range  | date for value | string
 
+**Notes:**
+> Most results will be found in the 'closed' state. We suggest using this volume to map total volume over time.
+> If your query range is less than 4 days the time intervals will be reduced from days to hours.
 
 
 
