@@ -6,7 +6,7 @@ Our API is organised into two sections; Get and Post requests. Get requests allo
 
 ## API Tokens
 
-You will need an API token to access your Activity data. Tokens are managed within the Settings area of the Hub, and require Manager permissions to access and manage. All requests require an API token to authenticate you.
+You will need an API token to access your Activity data. Tokens are managed within the Settings area of the Hub, and require Manager permissions to access. All endpoints require an API token to authenticate your requests.
 
 ## GET Users
 
@@ -17,10 +17,9 @@ curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-
 ```
 
 **Endpoint**
-https://api.lexer.io/v1/users 
+`https://api.lexer.io/v1/users`
 
 ```json
-[
   {
     "id": 12345,
     "email": "jane@business.io",
@@ -56,12 +55,70 @@ groups | groups the user is in | array
 
 ## GET Groups
 
-Request: https://api.lexer.io/v1/groups
+Retrieve a list of groups that exist in your Lexer account. You can use these group details to filter any of the Activity queries for team specific metrics. Here we'll describe how you request and interpret this information.
+
+```text
+curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-1234-123456789" -X GET https://api.lexer.io/v1/groups
+```
+
+**Endpoint**
+`https://api.lexer.io/v1/groups`
+
+```json
+
+  {
+    "id": 123,
+    "name": "Social Customer Care",
+    "comment": "Social customer care team members"
+  },
+```
+
+
+Property | Description | Type |
+---------|-------------|------|
+id  | group id | integer
+name  | name of the group | string
+comment  | description of the group | string
+
 
 
 ## GET Forms
 
-Request: https://api.lexer.io/v1/forms
+Retrieve a list of forms/surveys that exist in your Lexer account. These include NPS surveys, authentication forms, and competition surveys. You need to specifiy the NPS Survey id when requesting the NPS Summary or NPS Volume data. Here we'll describe how you request and interpret this information.
+
+```text
+curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-1234-123456789" -X GET https://api.lexer.io/v1/forms
+```
+
+**Endpoint**
+`https://api.lexer.io/v1/forms`
+
+```json
+  {
+    "id": 55,
+    "name": "NPS Survey",
+    "title": "Lexer NPS Survey",
+    "archived": false,
+    "created_at": "2018-05-26T21:54:19Z",
+    "groups": [
+      123
+    ],
+    "nps": false,
+    "form_url": "https://d1z1wrkt4y2iqm.cloudfront.net/123455678899876543/1/form"
+  }
+```
+
+
+Property | Description | Type |
+---------|-------------|------|
+id  | group id | integer
+name  | name of the form | string
+title  | title of the form | string
+archived  | archived flag | boolean
+created_at | date this form was created | string
+groups | groups that have access to this form | array
+nps | is this form an NPS survey? | boolean
+form_url | URL to view this form | string
 
 
 ## Summary
