@@ -1109,6 +1109,9 @@
 }'
 </code></pre>
 
+<p><strong>Endpoint</strong>
+<code class="prettyprint">https://api.lexer.io/v1/activity/reports</code></p>
+
 <p><strong>Type:</strong> summary</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"total_volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">7526</span><span class="p">,</span><span class="w">
@@ -1134,59 +1137,64 @@
 </tr>
 </thead><tbody>
 <tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
+<td>total_volume</td>
+<td>total objects handled</td>
+<td>number</td>
 </tr>
 <tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
+<td>avg_response_time</td>
+<td>average customer to reponse time in seconds</td>
+<td>number</td>
 </tr>
 <tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
+<td>min_response_time</td>
+<td>min customer to reponse time in seconds</td>
+<td>number</td>
 </tr>
 <tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
+<td>max_response_time</td>
+<td>max customer to reponse time in seconds</td>
+<td>number</td>
 </tr>
 <tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
+<td>avg_action_response_time</td>
+<td>average assign to response time in seconds</td>
+<td>number</td>
 </tr>
 <tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
+<td>min_action_response_time</td>
+<td>min assign to response time in seconds</td>
+<td>number</td>
 </tr>
 <tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
+<td>max_action_response_time</td>
+<td>max assign to response time in seconds</td>
+<td>number</td>
 </tr>
 <tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
+<td>total_responded_to</td>
+<td>objects responded to</td>
+<td>number</td>
 </tr>
 <tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
+<td>broke_sla</td>
+<td>number of objects that exceeded customer SLA time</td>
+<td>number</td>
 </tr>
 <tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
+<td>broke_action_sla</td>
+<td>number of objects that exceeded agent handle SLA time</td>
+<td>number</td>
 </tr>
 <tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
+<td>avg_response_time_min</td>
+<td>average customer response time in minutes</td>
+<td>number</td>
+</tr>
+<tr>
+<td>avg_action_response_time_min</td>
+<td>average agent handle time in minutes</td>
+<td>number</td>
 </tr>
 </tbody></table>
 
@@ -1200,6 +1208,9 @@
   "date_to": "2018-04-30T23:59:59+11:00"
 }'
 </code></pre>
+
+<p><strong>Endpoint</strong>
+<code class="prettyprint">https://api.lexer.io/v1/activity/reports</code></p>
 
 <p><strong>Type:</strong> states_volume</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
@@ -1276,6 +1287,9 @@
 }'
 </code></pre>
 
+<p><strong>Endpoint</strong>
+<code class="prettyprint">https://api.lexer.io/v1/activity/reports</code></p>
+
 <p><strong>Type:</strong> classifications</p>
 
 <table><thead>
@@ -1350,6 +1364,9 @@
   "date_to": "2018-04-30T23:59:59+11:00"
 }'
 </code></pre>
+
+<p><strong>Endpoint</strong>
+<code class="prettyprint">https://api.lexer.io/v1/activity/reports</code></p>
 
 <p><strong>Type:</strong> response_volume</p>
 
@@ -1428,6 +1445,9 @@
 }'
 </code></pre>
 
+<p><strong>Endpoint</strong>
+<code class="prettyprint">https://api.lexer.io/v1/activity/reports</code></p>
+
 <p><strong>Type:</strong> user_volume</p>
 
 <table><thead>
@@ -1502,6 +1522,9 @@
   "date_to": "2018-04-30T23:59:59+11:00"
 }'
 </code></pre>
+
+<p><strong>Endpoint</strong>
+<code class="prettyprint">https://api.lexer.io/v1/activity/reports</code></p>
 
 <p><strong>Type:</strong> user_summary</p>
 
@@ -1580,6 +1603,9 @@
 }'
 </code></pre>
 
+<p><strong>Endpoint</strong>
+<code class="prettyprint">https://api.lexer.io/v1/activity/reports</code></p>
+
 <p><strong>Type:</strong> case_summary</p>
 
 <table><thead>
@@ -1654,6 +1680,9 @@
   "date_to": "2018-04-30T23:59:59+11:00"
 }'
 </code></pre>
+
+<p><strong>Endpoint</strong>
+<code class="prettyprint">https://api.lexer.io/v1/activity/reports</code></p>
 
 <p><strong>Type:</strong> case_volume</p>
 
@@ -1730,6 +1759,9 @@
 }'
 </code></pre>
 
+<p><strong>Endpoint</strong>
+<code class="prettyprint">https://api.lexer.io/v1/activity/reports</code></p>
+
 <p><strong>Type:</strong> case_classifications</p>
 
 <table><thead>
@@ -1802,11 +1834,17 @@
 
 <p>Description: </p>
 
+<p><strong>Endpoint</strong>
+<code class="prettyprint">https://api.lexer.io/v1/activity/reports</code></p>
+
 <p><strong>Type:</strong> nps_summary</p>
 
 <p><strong>NPS Volume</strong></p>
 
 <p>Description: </p>
+
+<p><strong>Endpoint</strong>
+<code class="prettyprint">https://api.lexer.io/v1/activity/reports</code></p>
 
 <p><strong>Type:</strong> nps_volume</p>
 
