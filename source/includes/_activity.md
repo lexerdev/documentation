@@ -248,7 +248,7 @@ date_range  | date for value | string
   If your query range is less than 4 days the time intervals will be reduced from days to hours.
 
 
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
 
 **Classifications (Objects)**
@@ -316,7 +316,7 @@ classification |  name | string
 state |  workflow state | string
 volume |  count of classifications | number
 
-
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
 **Response Time**
 
@@ -342,10 +342,7 @@ field  | description | type
 field  | description | type
 field  | description | type
 field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
+
 
 
 
