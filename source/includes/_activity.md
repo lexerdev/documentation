@@ -1,8 +1,8 @@
 # Activity
 
-Using the Activity API, you can retrieve performance data on your team operating within Lexer Engage. Access insightful metrics such as the number of closed cases, average response time, or your overall NPS score for last month. We’ve made your Activity data accessible so you can run bespoke reports or add them to your custom applications.
+Using the Activity API, you can retrieve performance data on your team operating within Lexer Engage. Access insightful metrics such as the number of closed cases, average response time, or your overall NPS score for last month. We’ve made your Activity data accessible so you can run bespoke reports or add them to your applications.
 
-Our API is organised into two sections; Get and Post requests. Get requests allow you to access the user, groups and forms information related to your team. These are useful for filtering your reports. Post requests are queries that comprise of particular report types and filter parameters. Reports may be filtered by users, groups, forms or time.
+Our API is organised into two sections; Get and Post requests. Get requests allow you to access the user, groups and forms information related to your team. These are useful for filtering your reports. Post requests are queries that comprise of particular report types and filter parameters. Reports may be filtered by users, groups, forms and time.
 
 ## API Tokens
 
@@ -229,8 +229,9 @@ value  | number of objects in this state | integer
 date_range  | date for value | string
 
 **Notes:**
-> Most results will be found in the 'closed' state. We suggest using this volume to map total volume over time.
-> If your query range is less than 4 days the time intervals will be reduced from days to hours.
+  Most results will be found in the 'closed' state. We suggest using this volume to map total volume over time.
+
+  If your query range is less than 4 days the time intervals will be reduced from days to hours.
 
 
 
