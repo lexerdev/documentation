@@ -936,7 +936,7 @@
 <tr>
 <td>id</td>
 <td>user id</td>
-<td>integer</td>
+<td>number</td>
 </tr>
 <tr>
 <td>email</td>
@@ -961,12 +961,12 @@
 <tr>
 <td>gmtoffset</td>
 <td>timezone offset of user</td>
-<td>integer</td>
+<td>number</td>
 </tr>
 <tr>
 <td>sign_in_count</td>
 <td>count of logins</td>
-<td>integer</td>
+<td>number</td>
 </tr>
 <tr>
 <td>last_sign_in_at</td>
@@ -1011,7 +1011,7 @@
 <tr>
 <td>id</td>
 <td>group id</td>
-<td>integer</td>
+<td>number</td>
 </tr>
 <tr>
 <td>name</td>
@@ -1057,7 +1057,7 @@
 <tr>
 <td>id</td>
 <td>group id</td>
-<td>integer</td>
+<td>number</td>
 </tr>
 <tr>
 <td>name</td>
@@ -1097,6 +1097,10 @@
 </tbody></table>
 
 <h2 id="summary">Summary</h2>
+
+<p>Access your teams high level performance metrics - including total objects handled, response times, and classifications on these objects.</p>
+
+<p><img alt="Source Volume" src="images/activity/activity_summary.png" /></p>
 
 <p><strong>Summary Metrics</strong></p>
 
@@ -1262,7 +1266,7 @@
 <tr>
 <td>value</td>
 <td>number of objects in this state</td>
-<td>integer</td>
+<td>number</td>
 </tr>
 <tr>
 <td>date_range</td>
@@ -1436,6 +1440,10 @@
 
 <h2 id="team">Team</h2>
 
+<p>Access your teams individual performance data - including objects handled per agent, response times, and more.</p>
+
+<p><img alt="Source Volume" src="images/activity/activity_team.png" /></p>
+
 <p><strong>Agent Volume</strong></p>
 <pre class="highlight plaintext"><code>curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-1234-123456789" https://api.lexer.io/v1/activity/reports -d '
 {
@@ -1593,6 +1601,10 @@
 </tbody></table>
 
 <h2 id="cases">Cases</h2>
+
+<p>Access performance metrics on the conversations your team are having, which we call cases. This includes total case volume, first response times, resolution times, and case classifications.</p>
+
+<p><img alt="Source Volume" src="images/activity/activity_cases.png" /></p>
 
 <p><strong>Case Summary</strong></p>
 <pre class="highlight plaintext"><code>curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-1234-123456789" https://api.lexer.io/v1/activity/reports -d '
@@ -1829,6 +1841,10 @@
 </tbody></table>
 
 <h2 id="nps">NPS</h2>
+
+<p>Access your teams NPS performance metrics - including overall score, count of detractors, promoters, passives, and your average response rate.</p>
+
+<p><img alt="Source Volume" src="images/activity/activity_nps.png" /></p>
 
 <p><strong>NPS Summary</strong></p>
 
