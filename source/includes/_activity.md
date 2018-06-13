@@ -138,6 +138,10 @@ curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-
   "date_to": "2018-04-30T23:59:59+11:00"
 }'
 ```
+
+**Endpoint**
+`https://api.lexer.io/v1/activity/reports`
+
 **Type:** summary
 
 ```json
@@ -158,17 +162,18 @@ curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-
 ```
 Property | Description | Type |
 ---------|-------------|------|
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
+total_volume | total objects handled | number
+avg_response_time | average customer to reponse time in seconds | number
+min_response_time | min customer to reponse time in seconds | number
+max_response_time | max customer to reponse time in seconds | number
+avg_action_response_time | average assign to response time in seconds | number
+min_action_response_time | min assign to response time in seconds | number
+max_action_response_time | max assign to response time in seconds | number
+total_responded_to | objects responded to | number
+broke_sla | number of objects that exceeded customer SLA time | number
+broke_action_sla | number of objects that exceeded agent handle SLA time   | number
+avg_response_time_min | average customer response time in minutes | number
+avg_action_response_time_min | average agent handle time in minutes | number
 
 
 
@@ -184,6 +189,9 @@ curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-
   "date_to": "2018-04-30T23:59:59+11:00"
 }'
 ```
+**Endpoint**
+`https://api.lexer.io/v1/activity/reports`
+
 **Type:** states_volume
 
 
@@ -247,6 +255,9 @@ curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-
   "date_to": "2018-04-30T23:59:59+11:00"
 }'
 ```
+**Endpoint**
+`https://api.lexer.io/v1/activity/reports`
+
 **Type:** classifications
 
 Property | Description | Type |
@@ -275,6 +286,9 @@ curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-
   "date_to": "2018-04-30T23:59:59+11:00"
 }'
 ```
+**Endpoint**
+`https://api.lexer.io/v1/activity/reports`
+
 **Type:** response_volume
 
 Property | Description | Type |
@@ -307,6 +321,9 @@ curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-
   "date_to": "2018-04-30T23:59:59+11:00"
 }'
 ```
+**Endpoint**
+`https://api.lexer.io/v1/activity/reports`
+
 **Type:** user_volume
 
 Property | Description | Type |
@@ -336,6 +353,9 @@ curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-
   "date_to": "2018-04-30T23:59:59+11:00"
 }'
 ```
+**Endpoint**
+`https://api.lexer.io/v1/activity/reports`
+
 **Type:** user_summary
 
 Property | Description | Type |
@@ -369,6 +389,9 @@ curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-
   "date_to": "2018-04-30T23:59:59+11:00"
 }'
 ```
+**Endpoint**
+`https://api.lexer.io/v1/activity/reports`
+
 **Type:** case_summary
 
 Property | Description | Type |
@@ -399,6 +422,9 @@ curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-
   "date_to": "2018-04-30T23:59:59+11:00"
 }'
 ```
+**Endpoint**
+`https://api.lexer.io/v1/activity/reports`
+
 **Type:** case_volume
 
 
@@ -430,6 +456,9 @@ curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-
   "date_to": "2018-04-30T23:59:59+11:00"
 }'
 ```
+**Endpoint**
+`https://api.lexer.io/v1/activity/reports`
+
 **Type:** case_classifications
 
 Property | Description | Type |
@@ -455,11 +484,17 @@ field  | description | type
 
 Description: 
 
+**Endpoint**
+`https://api.lexer.io/v1/activity/reports`
+
 **Type:** nps_summary
 
 **NPS Volume**
 
 Description: 
+
+**Endpoint**
+`https://api.lexer.io/v1/activity/reports`
 
 **Type:** nps_volume
 
