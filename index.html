@@ -1202,9 +1202,11 @@
 </tr>
 </tbody></table>
 
+<p><br/><br/><br/><br/><br/><br/></p>
+
 <p><strong>Summary Volume</strong></p>
 
-<p>Description: daily volume of objects in each workflow state. Your response will contain an array for each state, and within that state an object for each period (i.e. each day).</p>
+<p>Daily volume of objects in each workflow state. Your response will contain an array for each state, and within that state an object for each period (i.e. each day).</p>
 <pre class="highlight plaintext"><code>curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-1234-123456789" https://api.lexer.io/v1/activity/reports -d '
 {
   "type": "states_volume",
@@ -1280,9 +1282,11 @@
 
 <p>If your query range is less than 4 days the time intervals will be reduced from days to hours.</p>
 
+<p><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></p>
+
 <p><strong>Classifications (Objects)</strong></p>
 
-<p>Description: classifications and their associated count of objects.</p>
+<p>Classifications and the number of objects in each workflow state. You can get the total count for each classification using the &#39;all_states&rsquo; value.</p>
 <pre class="highlight plaintext"><code>curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-1234-123456789" https://api.lexer.io/v1/activity/reports -d '
 {
   "type": "classifications",
@@ -1295,6 +1299,45 @@
 <code class="prettyprint">https://api.lexer.io/v1/activity/reports</code></p>
 
 <p><strong>Type:</strong> classifications</p>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"classification_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amusing"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"assigned"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"classification_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amusing"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all_states"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"classification_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amusing"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"closed"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"classification_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amusing"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"responded"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"classification_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">143</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"customer service"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"responded"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"classification_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">143</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"customer service"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all_states"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
 
 <table><thead>
 <tr>
@@ -1304,59 +1347,24 @@
 </tr>
 </thead><tbody>
 <tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
+<td>classification_id</td>
+<td>unique id</td>
+<td>number</td>
 </tr>
 <tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
+<td>classification</td>
+<td>name</td>
+<td>string</td>
 </tr>
 <tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
+<td>state</td>
+<td>workflow state</td>
+<td>string</td>
 </tr>
 <tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
-</tr>
-<tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
-</tr>
-<tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
-</tr>
-<tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
-</tr>
-<tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
-</tr>
-<tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
-</tr>
-<tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
-</tr>
-<tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
+<td>volume</td>
+<td>count of classifications</td>
+<td>number</td>
 </tr>
 </tbody></table>
 
