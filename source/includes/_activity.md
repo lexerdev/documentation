@@ -180,10 +180,12 @@ avg_response_time_min | average customer response time in minutes | number
 avg_action_response_time_min | average agent handle time in minutes | number
 
 
+<br/><br/><br/><br/><br/><br/>
+
 
 **Summary Volume**
 
-Description: daily volume of objects in each workflow state. Your response will contain an array for each state, and within that state an object for each period (i.e. each day).
+Daily volume of objects in each workflow state. Your response will contain an array for each state, and within that state an object for each period (i.e. each day).
 
 ```text
 curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-1234-123456789" https://api.lexer.io/v1/activity/reports -d '
@@ -246,10 +248,12 @@ date_range  | date for value | string
   If your query range is less than 4 days the time intervals will be reduced from days to hours.
 
 
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
 
 **Classifications (Objects)**
 
-Description: classifications and their associated count of objects.
+Classifications and the number of objects in each workflow state. You can get the total count for each classification using the 'all_states' value.
 
 ```text
 curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-1234-123456789" https://api.lexer.io/v1/activity/reports -d '
@@ -264,19 +268,53 @@ curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-
 
 **Type:** classifications
 
+```json
+[
+  {
+    "classification_id": 123,
+    "classification": "amusing",
+    "state": "assigned",
+    "volume": 1
+  },
+  {
+    "classification_id": 123,
+    "classification": "amusing",
+    "state": "all_states",
+    "volume": 3
+  },
+  {
+    "classification_id": 123,
+    "classification": "amusing",
+    "state": "closed",
+    "volume": 1
+  },
+  {
+    "classification_id": 123,
+    "classification": "amusing",
+    "state": "responded",
+    "volume": 1
+  },
+  {
+    "classification_id": 143,
+    "classification": "customer service",
+    "state": "responded",
+    "volume": 1
+  },
+  {
+    "classification_id": 143,
+    "classification": "customer service",
+    "state": "all_states",
+    "volume": 1
+  }
+]
+```
+
 Property | Description | Type |
 ---------|-------------|------|
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
+classification_id |  unique id | number
+classification |  name | string
+state |  workflow state | string
+volume |  count of classifications | number
 
 
 
