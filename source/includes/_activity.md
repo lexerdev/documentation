@@ -312,7 +312,11 @@ volume |  count of classifications | number
 
 <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
+
+
 **Response Time**
+
+Returns the daily average response time for all objects handled by your team. Here we're looking at the same data that powers the SLA Performance line chat in Activity. Note that if your query range is 3 days or less, the intervals will be reduced to hourly.
 
 ```text
 curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-1234-123456789" https://api.lexer.io/v1/activity/reports -d '
@@ -327,15 +331,43 @@ curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-
 
 **Type:** response_volume
 
+```json
+{
+  "avg_response_time": [
+    
+    {
+      "value": 317691.388907962,
+      "date_range": {
+        "date_from": "2018-06-05 00:00"
+      }
+    },
+    {
+      "value": 31159.3797606667,
+      "date_range": {
+        "date_from": "2018-06-06 00:00"
+      }
+    },
+    {
+      "value": 69850.8753626667,
+      "date_range": {
+        "date_from": "2018-06-07 00:00"
+      }
+    },
+    {
+      "value": 10661.255474,
+      "date_range": {
+        "date_from": "2018-06-08 00:00"
+      }
+    }
+  ]
+}
+```
+
 Property | Description | Type |
 ---------|-------------|------|
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
+value | average response time in minutes | number
+date_range | date interval  | string
+
 
 
 
