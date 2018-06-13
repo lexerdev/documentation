@@ -41,13 +41,13 @@ curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-
 
 Property | Description | Type |
 ---------|-------------|------|
-id  | user id | integer
+id  | user id | number
 email  | email account used to login | string
 first_name  | first name of the user | string
 last_name  | last name of the user | string
 timezone | timezone location of user | string
-gmtoffset | timezone offset of user | integer
-sign_in_count | count of logins | integer
+gmtoffset | timezone offset of user | number
+sign_in_count | count of logins | number
 last_sign_in_at | date of users last login | string
 archived | archived flag for user | boolean
 groups | groups the user is in | array
@@ -76,7 +76,7 @@ curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-
 
 Property | Description | Type |
 ---------|-------------|------|
-id  | group id | integer
+id  | group id | number
 name  | name of the group | string
 comment  | description of the group | string
 
@@ -111,7 +111,7 @@ curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-
 
 Property | Description | Type |
 ---------|-------------|------|
-id  | group id | integer
+id  | group id | number
 name  | name of the form | string
 title  | title of the form | string
 archived  | archived flag | boolean
@@ -122,6 +122,10 @@ form_url | URL to view this form | string
 
 
 ## Summary
+
+Access your teams high level performance metrics - including total objects handled, response times, and classifications on these objects.
+
+![Source Volume](../images/activity/activity_summary.png)
 
 
 **Summary Metrics**
@@ -233,7 +237,7 @@ curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-
 Property | Description | Type |
 ---------|-------------|------|
 state  | workflow state | string
-value  | number of objects in this state | integer
+value  | number of objects in this state | number
 date_range  | date for value | string
 
 **Notes:**
@@ -311,6 +315,11 @@ field  | description | type
 
 ## Team 
 
+Access your teams individual performance data - including objects handled per agent, response times, and more.
+
+![Source Volume](../images/activity/activity_team.png)
+
+
 **Agent Volume**
 
 ```text
@@ -378,6 +387,12 @@ field  | description | type
 
 
 ## Cases
+
+
+Access performance metrics on the conversations your team are having, which we call cases. This includes total case volume, first response times, resolution times, and case classifications.
+
+![Source Volume](../images/activity/activity_cases.png)
+
 
 **Case Summary**
 
@@ -479,6 +494,11 @@ field  | description | type
 
 
 ## NPS
+
+Access your teams NPS performance metrics - including overall score, count of detractors, promoters, passives, and your average response rate.
+
+![Source Volume](../images/activity/activity_nps.png)
+
 
 **NPS Summary**
 
