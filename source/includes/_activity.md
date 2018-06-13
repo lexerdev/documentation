@@ -274,7 +274,7 @@ curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-
     "classification_id": 123,
     "classification": "amusing",
     "state": "assigned",
-    "volume": 1
+    "volume": 2
   },
   {
     "classification_id": 123,
@@ -286,12 +286,6 @@ curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-
     "classification_id": 123,
     "classification": "amusing",
     "state": "closed",
-    "volume": 1
-  },
-  {
-    "classification_id": 123,
-    "classification": "amusing",
-    "state": "responded",
     "volume": 1
   },
   {
@@ -316,7 +310,7 @@ classification |  name | string
 state |  workflow state | string
 volume |  count of classifications | number
 
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
 **Response Time**
 
