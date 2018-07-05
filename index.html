@@ -1505,7 +1505,7 @@
 
 <p><strong>Agent Summary</strong></p>
 
-<p>Description&hellip;</p>
+<p>Return the performance metrics for each agent in your team. The data you access in this request is used to populate the &#39;Team&rsquo; chart in Activity.</p>
 <pre class="highlight plaintext"><code>curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-1234-123456789" https://api.lexer.io/v1/activity/reports -d '
 {
   "type": "user_summary",
@@ -1682,9 +1682,11 @@
 </tr>
 </tbody></table>
 
+<p><br/><br/><br/><br/><br/></p>
+
 <p><strong>Agent Volume</strong></p>
 
-<p>Retrieve the count of objects currently assigned to each agent in your team. For each team member, this will also breakdown the objects by their current workflow state.</p>
+<p>Return the count of objects currently assigned to each agent in your team. For each team member, this will also breakdown the objects by their current workflow state.</p>
 <pre class="highlight plaintext"><code>curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-1234-123456789" https://api.lexer.io/v1/activity/reports -d '
 {
   "type": "user_volume",
@@ -1779,6 +1781,8 @@
 <p><br/><br/></p>
 
 <p><strong>Case Summary</strong></p>
+
+<p>Return the summary metrics for the cases your team have handled. Cases are only created when an agent responds to a customer.</p>
 <pre class="highlight plaintext"><code>curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-1234-123456789" https://api.lexer.io/v1/activity/reports -d '
 {
   "type": "case_summary",
@@ -1791,6 +1795,14 @@
 <code class="prettyprint">https://api.lexer.io/v1/activity/reports</code></p>
 
 <p><strong>Type:</strong> case_summary</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"total_cases"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"first_reply_time"</span><span class="p">:</span><span class="w"> </span><span class="mf">1907.187351</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"resolution_time"</span><span class="p">:</span><span class="w"> </span><span class="mf">1907.187351</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"agent_interactions"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"agents_involved"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
 <table><thead>
 <tr>
@@ -1800,63 +1812,35 @@
 </tr>
 </thead><tbody>
 <tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
+<td>total_cases</td>
+<td>count of cases closed in this period</td>
+<td>number</td>
 </tr>
 <tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
+<td>first_reply_time</td>
+<td>average case first reply time</td>
+<td>number</td>
 </tr>
 <tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
+<td>resolution_time</td>
+<td>average case resolution time</td>
+<td>number</td>
 </tr>
 <tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
+<td>agent_interactions</td>
+<td>average number of agent replies per case</td>
+<td>number</td>
 </tr>
 <tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
-</tr>
-<tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
-</tr>
-<tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
-</tr>
-<tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
-</tr>
-<tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
-</tr>
-<tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
-</tr>
-<tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
+<td>agents_involved</td>
+<td>average number of agents responding per case</td>
+<td>number</td>
 </tr>
 </tbody></table>
 
 <p><strong>Case Volume</strong></p>
+
+<p>Return the count of open cases for each day. Cases are tracked from the first customer query to the last agent response. Cases are closed 24 hours of inactivity from either the customer or the agent, provided all customer messages are in a closed state.</p>
 <pre class="highlight plaintext"><code>curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-1234-123456789" https://api.lexer.io/v1/activity/reports -d '
 {
   "type": "case_volume",
@@ -1869,6 +1853,53 @@
 <code class="prettyprint">https://api.lexer.io/v1/activity/reports</code></p>
 
 <p><strong>Type:</strong> case_volume</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"open"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"date_range"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"date_from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-01 00:00"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"date_range"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"date_from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-02 00:00"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"date_range"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"date_from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-03 00:00"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"date_range"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"date_from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-04 00:00"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"date_range"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"date_from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-05 00:00"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"date_range"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"date_from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-06 00:00"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"date_range"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"date_from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-07 00:00"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
 <table><thead>
 <tr>
@@ -1878,63 +1909,20 @@
 </tr>
 </thead><tbody>
 <tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
+<td>value</td>
+<td>count of active cases</td>
+<td>number</td>
 </tr>
 <tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
-</tr>
-<tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
-</tr>
-<tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
-</tr>
-<tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
-</tr>
-<tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
-</tr>
-<tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
-</tr>
-<tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
-</tr>
-<tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
-</tr>
-<tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
-</tr>
-<tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
+<td>date_from</td>
+<td>date interval</td>
+<td>string</td>
 </tr>
 </tbody></table>
 
 <p><strong>Case Classifications</strong></p>
+
+<p>Return the count of classifications applied to the cases in this time period. Classifications are only counted once per case, helping you understand the number of conversations about each topic.</p>
 <pre class="highlight plaintext"><code>curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-1234-123456789" https://api.lexer.io/v1/activity/reports -d '
 {
   "type": "case_classifications",
@@ -1947,6 +1935,44 @@
 <code class="prettyprint">https://api.lexer.io/v1/activity/reports</code></p>
 
 <p><strong>Type:</strong> case_classifications</p>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"classification_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">466</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"positive"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"classification_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">526</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"social nps"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"classification_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">528</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"feedback"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"classification_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1246</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amusing"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"classification_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1465</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"classification_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1467</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"loyalty"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"classification_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1472</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"classification"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bot"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
 
 <table><thead>
 <tr>
@@ -1956,59 +1982,19 @@
 </tr>
 </thead><tbody>
 <tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
+<td>classification_id</td>
+<td>unique id for each classification</td>
+<td>number</td>
 </tr>
 <tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
+<td>classification</td>
+<td>name for each classification</td>
+<td>string</td>
 </tr>
 <tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
-</tr>
-<tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
-</tr>
-<tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
-</tr>
-<tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
-</tr>
-<tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
-</tr>
-<tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
-</tr>
-<tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
-</tr>
-<tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
-</tr>
-<tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
+<td>volume</td>
+<td>count of classifications</td>
+<td>number</td>
 </tr>
 </tbody></table>
 
