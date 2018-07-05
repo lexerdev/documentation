@@ -438,11 +438,11 @@ Access your teams individual performance data - including objects handled per ag
 
 ![Source Volume](../images/activity/activity_team.png)
 
-<br/><br/><br/><br/>
+<br/><br/>
 
 **Agent Summary**
 
-Retrieve the count of objects currently assigned to each agent in your team. For each team member, this will also breakdown the objects by their current workflow state.
+Description...
 
 ```text
 curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-1234-123456789" https://api.lexer.io/v1/activity/reports -d '
@@ -456,6 +456,100 @@ curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-
 `https://api.lexer.io/v1/activity/reports`
 
 **Type:** user_summary
+
+```json
+[
+  {
+    "first_name": "Jane",
+    "last_name": "Pear",
+    "mentions_assigned": 12,
+    "user_id": "123",
+    "responded_to": 9,
+    "responded_to_in_private": 6,
+    "avg_response_time": 17053.3492157778,
+    "min_response_time": 56.983366,
+    "max_response_time": 84664.420214,
+    "avg_action_response_time": 278.770835555556,
+    "min_action_response_time": 7.767898,
+    "max_action_response_time": 2261.353394,
+    "total_responded_to": 9,
+    "broke_sla": 3,
+    "broke_action_sla": 0,
+    "avg_response_time_min": 284.22248692962995,
+    "avg_action_response_time_min": 4.6461805925926,
+    "fraction_responded_to": 0.75,
+    "fraction_responded_to_in_private": 0.6666666666666666,
+    "fraction_broke_sla": 0.3333333333333333,
+    "fraction_broke_action_sla": 0.0
+  },
+  {
+    "first_name": "Barry",
+    "last_name": "Banana",
+    "mentions_assigned": 7,
+    "user_id": "789",
+    "responded_to": 1,
+    "responded_to_in_private": 1,
+    "avg_response_time": 352842.64921,
+    "min_response_time": 352842.64921,
+    "max_response_time": 352842.64921,
+    "avg_action_response_time": 134.51357,
+    "min_action_response_time": 134.51357,
+    "max_action_response_time": 134.51357,
+    "total_responded_to": 1,
+    "broke_sla": 1,
+    "broke_action_sla": 0,
+    "avg_response_time_min": 5880.710820166667,
+    "avg_action_response_time_min": 2.241892833333333,
+    "fraction_responded_to": 0.14285714285714285,
+    "fraction_responded_to_in_private": 1.0,
+    "fraction_broke_sla": 1.0,
+    "fraction_broke_action_sla": 0.0
+  }
+]
+```
+
+Property | Description | Type |
+---------|-------------|------|
+first_name | first name of agent | string
+last_name | last name of agent | string
+mentions_assigned | count of object assigned to agent | number
+user_id | unique id of agent | string
+responded_to | count of objects responded to | number
+responded_to_in_private | count of objects responded to that are private messages | number
+avg_response_time | average customer to reponse time in seconds  | number
+min_response_time | average customer to reponse time in seconds  | number
+max_response_time |   max customer to reponse time in seconds | number
+avg_action_response_time | average assign to response time in seconds | type
+min_action_response_time | min assign to response time in seconds | type
+max_action_response_time | max assign to response time in seconds | type
+total_responded_to | count of objects responded to | number
+broke_sla | number of objects that exceeded customer SLA time | number
+broke_action_sla |  number of objects that exceeded agent handle SLA time | number
+avg_response_time_min | average customer response time in minutes | number
+avg_action_response_time_min | average agent handle time in minutes | type
+fraction_responded_to | responded_to divided by mentions_assigned | number
+fraction_responded_to_in_private | responded_to_in_private divided by mentions_assigned | number
+fraction_broke_sla | broke_sla divided by responded_to  | number
+fraction_broke_action_sla | broke_action_sla divided by responded_to | number
+
+
+
+**Agent Volume**
+
+Retrieve the count of objects currently assigned to each agent in your team. For each team member, this will also breakdown the objects by their current workflow state.
+
+```text
+curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-1234-123456789" https://api.lexer.io/v1/activity/reports -d '
+{
+  "type": "user_volume",
+  "date_from": "2018-04-01T00:00:00+11:00",
+  "date_to": "2018-04-30T23:59:59+11:00"
+}'
+```
+**Endpoint**
+`https://api.lexer.io/v1/activity/reports`
+
+**Type:** user_volume
 
 ```json
 [
@@ -475,25 +569,6 @@ curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-
       "irrelevant": 0,
       "duplicate": 0,
       "closed": 110,
-      "no_response_required": 0
-    }
-  },
-  {
-    "user_id": 456,
-    "first_name": "Chris",
-    "last_name": "Pineapple",
-    "states": {
-      "all_states": 25,
-      "all_closed_states": 10,
-      "new": 0,
-      "assigned": 8,
-      "in_progress": 0,
-      "responded": 7,
-      "awaiting_approval": 0,
-      "redirected": 0,
-      "irrelevant": 0,
-      "duplicate": 0,
-      "closed": 10,
       "no_response_required": 0
     }
   },
@@ -522,8 +597,8 @@ curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-
 Property | Description | Type |
 ---------|-------------|------|
 user_id  | unique id for agent | number
-first_name  | first name | string
-last_name  | last name | string
+first_name  | first name of agent | string
+last_name  | last name of agent | string
 states  | count of each state owned by agent | array
 
 
@@ -543,7 +618,7 @@ Access performance metrics on the conversations your team are having, which we c
 
 ![Source Volume](../images/activity/activity_cases.png)
 
-<br/><br/><br/><br/>
+<br/><br/>
 
 **Case Summary**
 
@@ -650,6 +725,7 @@ Access your teams NPS performance metrics - including overall score, count of de
 
 ![Source Volume](../images/activity/activity_nps.png)
 
+<br/><br/>
 
 **NPS Summary**
 
