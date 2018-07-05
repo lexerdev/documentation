@@ -1500,6 +1500,8 @@
 <p><img alt="Source Volume" src="images/activity/activity_team.png" /></p>
 
 <p><strong>Agent Summary</strong></p>
+
+<p>Retrieve the count of objects currently assigned to each agent in your team. For each team member, this will also breakdown the objects by their current workflow state.</p>
 <pre class="highlight plaintext"><code>curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-1234-123456789" https://api.lexer.io/v1/activity/reports -d '
 {
   "type": "user_summary",
@@ -1512,6 +1514,66 @@
 <code class="prettyprint">https://api.lexer.io/v1/activity/reports</code></p>
 
 <p><strong>Type:</strong> user_summary</p>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jane"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pear"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"states"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"all_states"</span><span class="p">:</span><span class="w"> </span><span class="mi">166</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"all_closed_states"</span><span class="p">:</span><span class="w"> </span><span class="mi">110</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"new"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"assigned"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"in_progress"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"responded"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"awaiting_approval"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"redirected"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"irrelevant"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"duplicate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"closed"</span><span class="p">:</span><span class="w"> </span><span class="mi">110</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"no_response_required"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">456</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chris"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pineapple"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"states"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"all_states"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"all_closed_states"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"new"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"assigned"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"in_progress"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"responded"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"awaiting_approval"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"redirected"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"irrelevant"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"duplicate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"closed"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"no_response_required"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">789</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Barry"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Banana"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"states"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"all_states"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"all_closed_states"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"new"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"assigned"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"in_progress"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"responded"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"awaiting_approval"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"redirected"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"irrelevant"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"duplicate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"closed"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"no_response_required"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
 
 <table><thead>
 <tr>
@@ -1521,61 +1583,28 @@
 </tr>
 </thead><tbody>
 <tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
+<td>user_id</td>
+<td>unique id for agent</td>
+<td>number</td>
 </tr>
 <tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
+<td>first_name</td>
+<td>first name</td>
+<td>string</td>
 </tr>
 <tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
+<td>last_name</td>
+<td>last name</td>
+<td>string</td>
 </tr>
 <tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
-</tr>
-<tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
-</tr>
-<tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
-</tr>
-<tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
-</tr>
-<tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
-</tr>
-<tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
-</tr>
-<tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
-</tr>
-<tr>
-<td>field</td>
-<td>description</td>
-<td>type</td>
+<td>states</td>
+<td>count of each state owned by agent</td>
+<td>array</td>
 </tr>
 </tbody></table>
+
+<p><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></p>
 
 <h2 id="cases">Cases</h2>
 
