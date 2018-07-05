@@ -660,7 +660,7 @@ agent_interactions  | average number of agent replies per case | number
 agents_involved  | average number of agents responding per case | number
 
 
-
+<br/><br/><br/><br/><br/>
 
 
 **Case Volume**
@@ -736,7 +736,7 @@ value  | count of active cases | number
 date_from  | date interval | string
 
 
-
+<br/><br/><br/><br/><br/>
 
 
 **Case Classifications**
@@ -806,7 +806,7 @@ volume  | count of classifications | number
 
 ## NPS
 
-Access your teams NPS performance metrics - including overall score, count of detractors, promoters, passives, and your average response rate.
+Access your teams NPS performance metrics - including overall score, count of detractors, promoters, passives, and your average response rate. Reminder to retrieve your forms (see GET Forms above) to retrieve a list of the NPS Surveys your team are using. The ID for your form will be used to generate the following queries.
 
 ![Source Volume](../images/activity/activity_nps.png)
 
@@ -814,21 +814,169 @@ Access your teams NPS performance metrics - including overall score, count of de
 
 **NPS Summary**
 
-Description: 
+Return the summary metrics for the specified NPS Survey.
+
+```text
+curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-1234-123456789" https://api.lexer.io/v1/activity/reports -d '
+{
+  "type": "nps_summary",
+  "date_from": "2018-04-01T00:00:00+11:00",
+  "date_to": "2018-04-30T23:59:59+11:00",
+  "form": 123,
+  "nps_category": "all"
+}'
+```
 
 **Endpoint**
 `https://api.lexer.io/v1/activity/reports`
 
 **Type:** nps_summary
 
+```json
+{
+  "total_sent": 16,
+  "total_received": 12,
+  "total_promoters": 9,
+  "total_passives": 1,
+  "total_detractors": 2,
+  "nps_score": 58.333333333333336
+}
+```
+
+Property | Description | Type |
+---------|-------------|------|
+total_sent | count of surveys sent | number
+total_received | count of responses received | number
+total_promoters | count of 9-10 score responses | number
+total_passives | count of 7-8 score responses | number
+total_detractors | count of <7 score responses | number
+nps_score | average nps score | number
+
+
+
+
+<br/><br/>
+
 **NPS Volume**
 
-Description: 
+Return the daily volume of NPS scores and responses for each day in your query range.
+
+```text
+curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-1234-123456789" https://api.lexer.io/v1/activity/reports -d '
+{
+  "type": "nps_volume",
+  "date_from": "2018-04-01T00:00:00+11:00",
+  "date_to": "2018-04-30T23:59:59+11:00",
+  "form": 123,
+  "nps_category": "all"
+}'
+```
 
 **Endpoint**
 `https://api.lexer.io/v1/activity/reports`
 
 **Type:** nps_volume
+
+```json
+[
+  {
+    "date": "2018-04-01T13:00:00+00:00",
+    "timestamp": 1522587600,
+    "data": {
+      "total_sent": 0,
+      "total_received": 0,
+      "total_promoters": 0,
+      "total_passives": 0,
+      "total_detractors": 0,
+      "nps_score": 0.0
+    }
+  },
+  {
+    "date": "2018-04-02T13:00:00+00:00",
+    "timestamp": 1522674000,
+    "data": {
+      "total_sent": 0,
+      "total_received": 0,
+      "total_promoters": 0,
+      "total_passives": 0,
+      "total_detractors": 0,
+      "nps_score": 0.0
+    }
+  },
+  {
+    "date": "2018-04-03T13:00:00+00:00",
+    "timestamp": 1522760400,
+    "data": {
+      "total_sent": 0,
+      "total_received": 0,
+      "total_promoters": 0,
+      "total_passives": 0,
+      "total_detractors": 0,
+      "nps_score": 0.0
+    }
+  },
+  {
+    "date": "2018-04-04T13:00:00+00:00",
+    "timestamp": 1522846800,
+    "data": {
+      "total_sent": 0,
+      "total_received": 0,
+      "total_promoters": 0,
+      "total_passives": 0,
+      "total_detractors": 0,
+      "nps_score": 0.0
+    }
+  },
+  {
+    "date": "2018-04-05T13:00:00+00:00",
+    "timestamp": 1522933200,
+    "data": {
+      "total_sent": 0,
+      "total_received": 0,
+      "total_promoters": 0,
+      "total_passives": 0,
+      "total_detractors": 0,
+      "nps_score": 0.0
+    }
+  },
+  {
+    "date": "2018-04-06T13:00:00+00:00",
+    "timestamp": 1523019600,
+    "data": {
+      "total_sent": 0,
+      "total_received": 0,
+      "total_promoters": 0,
+      "total_passives": 0,
+      "total_detractors": 0,
+      "nps_score": 0.0
+    }
+  },
+  {
+    "date": "2018-04-07T13:00:00+00:00",
+    "timestamp": 1523106000,
+    "data": {
+      "total_sent": 0,
+      "total_received": 0,
+      "total_promoters": 0,
+      "total_passives": 0,
+      "total_detractors": 0,
+      "nps_score": 0.0
+    }
+  }
+]
+```
+
+Property | Description | Type |
+---------|-------------|------|
+date | date time in UTC | string
+timestamp | date time in Epoch time | number
+total_sent | count of surveys sent | number
+total_received | count of responses received | number
+total_promoters | count of 9-10 score responses | number
+total_passives | count of 7-8 score responses | number
+total_detractors | count of <7 score responses | number
+nps_score | average nps score | number
+
 
 
 ## Errors
