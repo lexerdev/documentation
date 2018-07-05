@@ -441,6 +441,8 @@ Access your teams individual performance data - including objects handled per ag
 
 **Agent Summary**
 
+Retrieve the count of objects currently assigned to each agent in your team. For each team member, this will also breakdown the objects by their current workflow state.
+
 ```text
 curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-1234-123456789" https://api.lexer.io/v1/activity/reports -d '
 {
@@ -454,19 +456,79 @@ curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-
 
 **Type:** user_summary
 
+```json
+[
+  {
+    "user_id": 123,
+    "first_name": "Jane",
+    "last_name": "Pear",
+    "states": {
+      "all_states": 166,
+      "all_closed_states": 110,
+      "new": 0,
+      "assigned": 15,
+      "in_progress": 14,
+      "responded": 27,
+      "awaiting_approval": 0,
+      "redirected": 0,
+      "irrelevant": 0,
+      "duplicate": 0,
+      "closed": 110,
+      "no_response_required": 0
+    }
+  },
+  {
+    "user_id": 456,
+    "first_name": "Chris",
+    "last_name": "Pineapple",
+    "states": {
+      "all_states": 25,
+      "all_closed_states": 10,
+      "new": 0,
+      "assigned": 8,
+      "in_progress": 0,
+      "responded": 7,
+      "awaiting_approval": 0,
+      "redirected": 0,
+      "irrelevant": 0,
+      "duplicate": 0,
+      "closed": 10,
+      "no_response_required": 0
+    }
+  },
+  {
+    "user_id": 789,
+    "first_name": "Barry",
+    "last_name": "Banana",
+    "states": {
+      "all_states": 4,
+      "all_closed_states": 1,
+      "new": 0,
+      "assigned": 1,
+      "in_progress": 1,
+      "responded": 1,
+      "awaiting_approval": 0,
+      "redirected": 0,
+      "irrelevant": 0,
+      "duplicate": 0,
+      "closed": 1,
+      "no_response_required": 0
+    }
+  }
+]
+```
+
 Property | Description | Type |
 ---------|-------------|------|
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
+user_id  | unique id for agent | number
+first_name  | first name | string
+last_name  | last name | string
+states  | count of each state owned by agent | array
+
+
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+
 
 
 
