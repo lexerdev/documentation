@@ -251,6 +251,63 @@ date_range  | date for value | string
 <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
 
+**States**
+
+Total volume of objects in each of the workflow states. 
+
+```text
+curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-1234-123456789" https://api.lexer.io/v1/activity/reports -d '
+{
+  "type": "user_volume",
+  "date_from": "2018-04-01T00:00:00+11:00",
+  "date_to": "2018-04-30T23:59:59+11:00"
+}'
+```
+**Endpoint**
+`https://api.lexer.io/v1/activity/reports`
+
+**Type:** user_volume
+
+
+```json
+[
+  {
+    "state": "closed",
+    "volume": 92
+  },
+  {
+    "state": "responded",
+    "volume": 49
+  },
+  {
+    "state": "assigned",
+    "volume": 26
+  },
+  {
+    "state": "in_progress",
+    "volume": 13
+  },
+  {
+    "state": "duplicate",
+    "volume": 4
+  },
+  {
+    "state": "awaiting_approval",
+    "volume": 1
+  }
+]
+```
+
+Property | Description | Type |
+---------|-------------|------|
+state  | workflow state | string
+volume  | count of objects | number
+
+
+
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+
 **Classifications (Objects)**
 
 Classifications and the number of objects in each workflow state. You can get the total count for each classification using the 'all_states' value.
@@ -379,37 +436,6 @@ date_range | date interval  | string
 Access your teams individual performance data - including objects handled per agent, response times, and more.
 
 ![Source Volume](../images/activity/activity_team.png)
-
-
-**Agent Volume**
-
-```text
-curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-1234-123456789" https://api.lexer.io/v1/activity/reports -d '
-{
-  "type": "user_volume",
-  "date_from": "2018-04-01T00:00:00+11:00",
-  "date_to": "2018-04-30T23:59:59+11:00"
-}'
-```
-**Endpoint**
-`https://api.lexer.io/v1/activity/reports`
-
-**Type:** user_volume
-
-Property | Description | Type |
----------|-------------|------|
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-
 
 
 
