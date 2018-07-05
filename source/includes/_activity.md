@@ -127,6 +127,7 @@ Access your teams high level performance metrics - including total objects handl
 
 ![Source Volume](../images/activity/activity_summary.png)
 
+<br/><br/><br/><br/>
 
 **Summary Metrics**
 
@@ -437,7 +438,7 @@ Access your teams individual performance data - including objects handled per ag
 
 ![Source Volume](../images/activity/activity_team.png)
 
-
+<br/><br/><br/><br/>
 
 **Agent Summary**
 
@@ -542,6 +543,7 @@ Access performance metrics on the conversations your team are having, which we c
 
 ![Source Volume](../images/activity/activity_cases.png)
 
+<br/><br/><br/><br/>
 
 **Case Summary**
 
