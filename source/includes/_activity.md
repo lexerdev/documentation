@@ -442,7 +442,7 @@ Access your teams individual performance data - including objects handled per ag
 
 **Agent Summary**
 
-Description...
+Return the performance metrics for each agent in your team. The data you access in this request is used to populate the 'Team' chart in Activity.
 
 ```text
 curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-1234-123456789" https://api.lexer.io/v1/activity/reports -d '
@@ -534,9 +534,13 @@ fraction_broke_action_sla | broke_action_sla divided by responded_to | number
 
 
 
+<br/><br/><br/><br/><br/>
+
+
+
 **Agent Volume**
 
-Retrieve the count of objects currently assigned to each agent in your team. For each team member, this will also breakdown the objects by their current workflow state.
+Return the count of objects currently assigned to each agent in your team. For each team member, this will also breakdown the objects by their current workflow state.
 
 ```text
 curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-1234-123456789" https://api.lexer.io/v1/activity/reports -d '
@@ -622,6 +626,8 @@ Access performance metrics on the conversations your team are having, which we c
 
 **Case Summary**
 
+Return the summary metrics for the cases your team have handled. Cases are only created when an agent responds to a customer.
+
 ```text
 curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-1234-123456789" https://api.lexer.io/v1/activity/reports -d '
 {
@@ -635,25 +641,31 @@ curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-
 
 **Type:** case_summary
 
+```json
+{
+  "total_cases": 4,
+  "first_reply_time": 1907.187351,
+  "resolution_time": 1907.187351,
+  "agent_interactions": 1.0,
+  "agents_involved": 1.0
+}
+```
+
 Property | Description | Type |
 ---------|-------------|------|
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
+total_cases  | count of cases closed in this period | number
+first_reply_time  | average case first reply time | number
+resolution_time  | average case resolution time | number
+agent_interactions  | average number of agent replies per case | number
+agents_involved  | average number of agents responding per case | number
 
 
 
 
 
 **Case Volume**
+
+Return the count of open cases for each day. Cases are tracked from the first customer query to the last agent response. Cases are closed 24 hours of inactivity from either the customer or the agent, provided all customer messages are in a closed state.
 
 ```text
 curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-1234-123456789" https://api.lexer.io/v1/activity/reports -d '
@@ -668,26 +680,68 @@ curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-
 
 **Type:** case_volume
 
+```json
+{
+  "open": [
+    {
+      "value": 9,
+      "date_range": {
+        "date_from": "2018-04-01 00:00"
+      }
+    },
+    {
+      "value": 9,
+      "date_range": {
+        "date_from": "2018-04-02 00:00"
+      }
+    },
+    {
+      "value": 9,
+      "date_range": {
+        "date_from": "2018-04-03 00:00"
+      }
+    },
+    {
+      "value": 9,
+      "date_range": {
+        "date_from": "2018-04-04 00:00"
+      }
+    },
+    {
+      "value": 9,
+      "date_range": {
+        "date_from": "2018-04-05 00:00"
+      }
+    },
+    {
+      "value": 10,
+      "date_range": {
+        "date_from": "2018-04-06 00:00"
+      }
+    },
+    {
+      "value": 9,
+      "date_range": {
+        "date_from": "2018-04-07 00:00"
+      }
+    }
+  ]
+}
+```
+
 
 Property | Description | Type |
 ---------|-------------|------|
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
+value  | count of active cases | number
+date_from  | date interval | string
 
 
 
 
 
 **Case Classifications**
+
+Return the count of classifications applied to the cases in this time period. Classifications are only counted once per case, helping you understand the number of conversations about each topic.
 
 ```text
 curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-1234-123456789" https://api.lexer.io/v1/activity/reports -d '
@@ -702,20 +756,51 @@ curl -H "Content-Type: application/json" -H "Auth-Api-Token: 12345678-1234-1234-
 
 **Type:** case_classifications
 
+```json
+[
+  {
+    "classification_id": 466,
+    "classification": "positive",
+    "volume": 1
+  },
+  {
+    "classification_id": 526,
+    "classification": "social nps",
+    "volume": 1
+  },
+  {
+    "classification_id": 528,
+    "classification": "feedback",
+    "volume": 1
+  },
+  {
+    "classification_id": 1246,
+    "classification": "amusing",
+    "volume": 1
+  },
+  {
+    "classification_id": 1465,
+    "classification": "image",
+    "volume": 1
+  },
+  {
+    "classification_id": 1467,
+    "classification": "loyalty",
+    "volume": 1
+  },
+  {
+    "classification_id": 1472,
+    "classification": "bot",
+    "volume": 1
+  }
+]
+```
+
 Property | Description | Type |
 ---------|-------------|------|
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-field  | description | type
-
+classification_id  | unique id for each classification | number
+classification  | name for each classification | string
+volume  | count of classifications | number
 
 
 
