@@ -1922,7 +1922,7 @@
 </tr>
 </tbody></table>
 
-<p><br/><br/><br/><br/><br/></p>
+<p><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></p>
 
 <p><strong>Case Classifications</strong></p>
 
@@ -2233,6 +2233,52 @@
 </tbody></table>
 
 <h2 id="errors">Errors</h2>
+
+<p>The API may return the following error codes.</p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>400</td>
+<td>Invalid report - date range is too long</td>
+<td>Your date range must be not greather than 12 months</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Invalid report - starting date is a future date</td>
+<td>Starting date must be in the past</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Invalid report - invalid type</td>
+<td>Chart type provided is invalid</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized - api token not matching</td>
+<td>Your API token provided is not valid</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized</td>
+<td>missing authentication data</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not found</td>
+<td>General error for malformed request</td>
+</tr>
+<tr>
+<td>429</td>
+<td>Rate limited exceeded</td>
+<td>You&rsquo;re making too many requests</td>
+</tr>
+</tbody></table>
 
 <h2 id="rate-limiting">Rate Limiting</h2>
 
