@@ -736,7 +736,7 @@ value  | count of active cases | number
 date_from  | date interval | string
 
 
-<br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
 
 **Case Classifications**
@@ -980,6 +980,20 @@ nps_score | average nps score | number
 
 
 ## Errors
+
+The API may return the following error codes.
+
+Code | Type | Description |
+---------|-------------|------|
+400 | Invalid report - date range is too long | Your date range must be not greather than 12 months
+400 | Invalid report - starting date is a future date | Starting date must be in the past
+400 | Invalid report - invalid type| Chart type provided is invalid
+401 | Unauthorized - api token not matching| Your API token provided is not valid
+401 | Unauthorized | missing authentication data | API token is missing
+404 | Not found | General error for malformed request
+429 | Rate limited exceeded | You're making too many requests
+
+
 
 ## Rate Limiting
 
