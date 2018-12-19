@@ -612,6 +612,12 @@ states  | count of each state owned by agent | array
 
 
 
+## SLA
+
+Export a complete log of all customer messages your team has triaged and replied to from Engage. Use this file if you're looking for a single master document.
+
+
+
 
 
 
